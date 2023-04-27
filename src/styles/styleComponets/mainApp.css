@@ -1,0 +1,13 @@
+
+.contenedorMainApp{
+
+}
+
+.repartidorBoxContenedor{
+    display: flex;
+    max-width: 1300px;
+    margin: auto;
+    border: 2px solid black;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
