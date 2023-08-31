@@ -3,7 +3,8 @@ import { auth } from "../firebase/firebase"; // desde mi carpeta firebase
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../styles/styleComponets/loginView.css";
+import "../styles/styleComponets/loginComponent.css";
+
 
 export default function Login(){
 
@@ -128,7 +129,6 @@ export default function Login(){
 
 
     return (
-        <div className="contenedorGeneral">
             <div className="contenedorFormLogin">
                 <div className="containerGoogleLogin">
                     <button className="buttonGoogleLogin" onClick={handleClickLoginGoogle}>Login with Google</button>
@@ -141,6 +141,5 @@ export default function Login(){
                         {CurrentState}
                 </div>
             </div>
-        </div>
     );
 }

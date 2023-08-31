@@ -1,12 +1,4 @@
 
-.contenedorGeneral{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .contenedorFormLogin{
     width: 17rem;
     height: 30rem;

@@ -1,8 +1,17 @@
+import { onAuthStateChanged } from "firebase/auth"; // importado desde modules
+import { auth } from "../firebase/firebase"; // desde mi carpeta firebase
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 import RepartidorBox from "../components/repartidorBox";
 
-import "../styles/styleComponets/mainApp.css";
+import "../styles/mainApp.css";
 
 export default function MainApp(){
+
+
+
 
 
     return(

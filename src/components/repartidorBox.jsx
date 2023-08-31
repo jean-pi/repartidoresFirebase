@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-import "../styles/styleComponets/repartidorBox.css"
+import "../styles/styleComponets/repartidorBoxComponent.css"
 
 export default function RepartidorBox(){
 

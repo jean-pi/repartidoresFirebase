@@ -1,8 +1,13 @@
 
-import {Login} from "../components/login";
+import Login from "../components/login";
+
+//css
+import "../styles/loginView.css"
 
 export default function LoginView(){
     return(
-        <Login/> 
+        <div className="contenedorGeneral">
+            <Login/> 
+        </div>
     );
 }
