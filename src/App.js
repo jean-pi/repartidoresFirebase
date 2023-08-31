@@ -1,8 +1,7 @@
-import MainApp from "./components/mainApp";
+import LoginView from "./routes/loginView";
 
 function App() {
-  return <MainApp/> 
-  
+  return <LoginView/> 
 }
 
 export default App;

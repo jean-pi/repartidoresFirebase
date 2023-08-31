@@ -1,0 +1,45 @@
+
+.contenedorGeneral{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorFormLogin{
+    width: 17rem;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.016);
+    padding: .7rem;
+}
+
+.containerGoogleLogin{
+    border-bottom: solid 1px rgba(0, 0, 0, 0.108);
+    height: 6rem;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonGoogleLogin{
+    padding: .6rem 1rem;
+}
+
+
+
+.containerLoginEmail{
+    display: flex;
+    flex-direction: column;
+}
+.spanLoginEmail{
+    margin: .4rem .4rem .4rem 0 ;
+}
+.imputLoginEmail, .buttonLoginEmail{
+    margin: 0rem 0rem .7rem 0 ;
+}
+.ForgotPasswordLoginEmail{
+    color: black;
+}
+
+

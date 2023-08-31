@@ -1,4 +1,4 @@
-import RepartidorBox from "./repartidorBox";
+import RepartidorBox from "../components/repartidorBox";
 
 import "../styles/styleComponets/mainApp.css";
 
