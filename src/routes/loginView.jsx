@@ -1,13 +1,27 @@
+import { useEffect } from "react";
 
-import Login from "../components/login";
+
+import LoginGoogleButton from "../components/loginGoogleButton";
+import LoginEmailPassword from "../components/loginEmailPasswordForm"
 
 //css
-import "../styles/loginView.css"
+import "../styles/stylesRoutes/loginSignUpViews.css"
+
 
 export default function LoginView(){
+
+
+    useEffect(()=>{
+    },[]);
+
+
     return(
-        <div className="contenedorGeneral">
-            <Login/> 
+        <div className="contenedorGeneralLoginSignUp">
+            <h1 className="text3rem">Log in</h1>
+            <div className="contenedorFormLogin">
+                <LoginGoogleButton/> 
+                <LoginEmailPassword/> 
+            </div>
         </div>
     );
 }

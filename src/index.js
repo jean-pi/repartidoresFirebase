@@ -1,19 +1,17 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter} from "react-router-dom";// importo los componentes para crear rutas 
+
 import './index.css';
 import "./styles/normalize.css"
-import App from './App';
-import {BrowserRouter, Routes, Route } from "react-router-dom";// importo los componentes para crear rutas 
 
-//rutas
-import LoginView from './routes/loginView';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path = "login" element = {<LoginView/>} />
-      <Route path = "/" element = {<App/>}/>
-    </Routes>
-  </BrowserRouter>
-
+  <React.StrictMode>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
+  </React.StrictMode>
 );

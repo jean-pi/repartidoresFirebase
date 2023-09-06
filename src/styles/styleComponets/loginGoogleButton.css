@@ -1,0 +1,33 @@
+
+.containerGoogleLogin{
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .4rem;
+    
+}
+
+.logoIcon{
+    width: 1.5rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.1rem;
+}
+
+
+.buttonGoogleLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 2.3rem;
+    background-color: white;
+    border: 1px solid rgba(15, 15, 15, 0.15);
+    box-shadow: rgba(15, 15, 15, 0.05) 0px 1px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
+

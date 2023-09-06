@@ -1,0 +1,36 @@
+
+.contenedorGeneralLoginSignUp{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.text3rem{
+    font-size: 3.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:  0rem 0;
+}
+
+.contenedorFormLoginSignUp{
+
+}
+
+
+.loginNow{
+    position: absolute;
+    bottom: 3rem;
+    font-size: .86rem;
+    color: rgba(0, 0, 0, 0.249);
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.loginNowLink{
+    color: rgba(0, 0, 0, 0.249);
+}
+
+
+

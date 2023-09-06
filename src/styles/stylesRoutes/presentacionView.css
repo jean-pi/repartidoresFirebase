@@ -1,0 +1,46 @@
+
+
+.description{
+    max-width: 30rem;
+    max-height: 10rem;
+    position: absolute;
+    bottom: 9rem;
+    left: 6rem;
+    font-style: italic;
+    line-height: 1.25rem;
+    color: rgba(0, 0, 0, 0.774);
+    text-align: justify;
+}
+
+
+.buttonsLoginContainer{
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+}
+.button{
+    padding: .3rem .8rem;
+    border: solid 1px red;
+    margin-left: .9rem;
+    text-decoration: none;
+}
+.login{
+    color: red;
+    background-color: white;
+}
+.login:hover{
+    box-shadow: 0px 0px 28px -23px rgba(254,0,0,0.75) inset;
+-webkit-box-shadow: 0px 0px 28px -23px rgba(254,0,0,0.75) inset;
+-moz-box-shadow: 0px 0px 28px -23px rgba(254,0,0,0.75) inset;
+}
+.signup{
+    color: white;
+    background-color: red;
+}
+.signup:hover{
+    box-shadow: 0px 0px 28px -7px rgba(255,255,255,0.75) inset;
+-webkit-box-shadow: 0px 0px 28px -7px rgba(255,255,255,0.75) inset;
+-moz-box-shadow: 0px 0px 28px -7px rgba(255,255,255,0.75) inset;
+}
+
+

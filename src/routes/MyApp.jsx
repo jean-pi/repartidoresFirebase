@@ -4,18 +4,17 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
+//components
 import RepartidorBox from "../components/repartidorBox";
-
-import "../styles/mainApp.css";
-
-export default function MainApp(){
+import LogoutButton from "../components/logoutButton"
 
 
+import "../styles/stylesRoutes/MyApp.css";
 
-
+export default function MyApp(){
 
     return(
-        <div className="contenedorMainApp">
+        <div className="contenedorApp">
 
             <div className="repartidorBoxContenedor">
                 <RepartidorBox/>
@@ -32,6 +31,8 @@ export default function MainApp(){
                 <RepartidorBox/>
             </div>
             
+            <LogoutButton/>
+
         </div>
     );
 }
