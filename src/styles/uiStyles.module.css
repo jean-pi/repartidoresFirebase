@@ -31,10 +31,17 @@
 .retroalimentacionDiv{
     width: 20rem;
     height: auto;
-    border-top: 3px solid #8FAE1B;
-    background-color: #F4F7E8;
     text-align: justify;
     padding: .3rem;
+    margin: 0 0 .7rem 0;
+}
+.retroalimentacionDiv_red{
+    border-top: 3px solid #FF4F55;
+    background-color: #FFEDEE   ;
+}
+.retroalimentacionDiv_green{
+    border-top: 3px solid #8FAE1B;
+    background-color: #F4F7E8;
 }
 
 /* -------------------------------------------- */

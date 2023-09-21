@@ -2,12 +2,10 @@
 import { useNavigate, Link } from "react-router-dom";
 //hooks
 import { useState, useRef } from "react";
-
 //css
 import stylesLogin from "../../styles/styleComponets/login.module.css";
 import stylesText from "../../styles/texts.module.css";
 import uiStyles from "../../styles/uiStyles.module.css";
-
 //my componets
 import GoogleButton from "../loginSignupRegisterSistem/googleButton";
 import GithubButton from "../loginSignupRegisterSistem/githubButton";
@@ -25,6 +23,7 @@ export default function LoginEmailPasswordForm(){
     const [errorMessage, setErrorMesagge] = useState("");
     const [buttonLoading, setButtonLoading] = useState(false);
     const [loadingScreen, setLoadingScreen] = useState(false);
+    const [isVerificade, setIsVerificade] = useState(false);
     const [values, setValues] = useState({
         email: "",
         password: "",
@@ -88,7 +87,6 @@ export default function LoginEmailPasswordForm(){
             setButtonLoading(false);
             setLoadingScreen(true);
 
-            console.log(auth.currentUser)
             
         } catch (error) {
             console.log(error)
@@ -110,7 +108,6 @@ export default function LoginEmailPasswordForm(){
                 if(error.code === errors.tooManyRequests.codeErr){
                     setErrorMesagge(errors.tooManyRequests.messagErr);
                 }  
-
                 if(error.code === errors.wrongPassword.codeErr){
                     setErrorMesagge(errors.wrongPassword.messagErr);
                 }
@@ -128,9 +125,21 @@ export default function LoginEmailPasswordForm(){
             <div className={`${stylesLogin.containerDivLoginComponent} ${loadingScreen? stylesLogin.containerDivLoginComponent_disable : "" }`} >
                 <h1 className={stylesText.text3rem}>Log in</h1>
                 <GoogleButton/> 
-                <GithubButton/> 
+                {/* <GithubButton/>  */}
                 <div className={uiStyles.partingLine}></div>
                 <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
+
+                    <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
+                        <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
+                        <b>Error: </b>Your account is still pending approval. Verify your email by clicking on the link sent to your email.  
+                        <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`}> <br />Resend verification link.</span> 
+                        </p>
+                    </div>
+
+                    <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
+                        <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Verification Email Sent!</p>
+                    </div>
+
                     <span className={stylesText.text070rem}>Email</span>
                     <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
                     <span className={stylesText.text070rem}>Password</span>

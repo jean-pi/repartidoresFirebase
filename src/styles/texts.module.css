@@ -7,33 +7,40 @@
 
 /* --------------------------------------------- */
 
-.text13px{    
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    color: #677e14;
-}
+
 
 /* --------------------------------------------- */
 
 .text070rem{    
     font-family: Arial, Helvetica, sans-serif;
     font-size: .77rem;
-    color: rgba(0, 0, 0, 0.488);
+    color: rgba(0, 0, 0, 0.575);
+    line-height: .9rem;
 }
 .text070remLink{
-    color: rgba(0, 0, 0, 0.488);
+    color: rgba(0, 0, 0, 0.542);
     margin-bottom: .4rem;
+    text-decoration: underline;
 }
 .text070remStriking{
-    color: rgba(255, 63, 63, 0.597);
+    color: rgba(255, 63, 63, 0.719);
     margin-bottom: .4rem;
     font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .text070remLink:hover{
     color: rgba(255, 0, 0, 0.521);
 }
 .text070remLink:focus{
     outline: 2px solid rgba(7, 168, 255, 0.559);
+}
+.text070rem_green{
+    color: #677e14;
+}
+.text070rem_red{
+    color: #ff030bb8;
+    
 }
 
 /* -------------------------------------------------- */
