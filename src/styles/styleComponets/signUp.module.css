@@ -1,0 +1,79 @@
+
+.containerLoginSignUpEmailPassword{
+    
+}
+
+.containerDivLoginSignUpEmailPassword{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.3rem 0 .8rem 0;
+}
+.containerDivLoginSignUpEmailPassword_disable{
+    display: none;
+}
+
+.formLoginSignUpContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.partingLine{
+    border-top: 1px solid rgba(15, 15, 15, 0.15);
+    margin: 1.2rem 0 1rem 0;
+    width: 100%;
+}
+
+/* --------------------------------------------------- */
+
+.divLoading{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.divLoadingSpan{
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(108, 107, 107, 0.395);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --------------------------------------------------- */
+.divFinalScreen{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.507);
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: .06rem;
+    text-align: center;
+    z-index: 1;
+}
+
+/* ----------------------------------------------------- */
+
+

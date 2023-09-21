@@ -1,0 +1,55 @@
+
+.text3rem{
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:  0.5rem 0 2rem 0;
+}
+
+/* --------------------------------------------- */
+
+.text13px{    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #677e14;
+}
+
+/* --------------------------------------------- */
+
+.text070rem{    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .77rem;
+    color: rgba(0, 0, 0, 0.488);
+}
+.text070remLink{
+    color: rgba(0, 0, 0, 0.488);
+    margin-bottom: .4rem;
+}
+.text070remStriking{
+    color: rgba(255, 63, 63, 0.597);
+    margin-bottom: .4rem;
+    font-weight: 600;
+}
+.text070remLink:hover{
+    color: rgba(255, 0, 0, 0.521);
+}
+.text070remLink:focus{
+    outline: 2px solid rgba(7, 168, 255, 0.559);
+}
+
+/* -------------------------------------------------- */
+
+.textError{
+    color: rgba(216, 5, 5, 0.637);
+    text-align: center;
+    font-size: .92rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: .5rem 0 .6rem;
+}
+
+.cursiva1rem{
+    font-style: italic;
+    line-height: 1.25rem;
+    color: rgba(0, 0, 0, 0.774);
+    text-align: justify;
+}
+

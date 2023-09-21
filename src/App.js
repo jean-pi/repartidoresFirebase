@@ -5,10 +5,10 @@ import {Routes, Route } from "react-router-dom";// importo los componentes para 
 //import AnyLogin from "./routes/anylogin";
 
 //routes
-import PresentacionView from "./routes/presentacionView";
-import LoginView from './routes/loginView';
-import SignUpView from "./routes/signUpView"
-import RegistrationView from "./routes/registationView"
+import PresentacionView from "./routes/presentacionRoute";
+import LoginView from './routes/loginRoute';
+import SignUpView from "./routes/signUpRoute"
+import RegistrationView from "./routes/registrationRoute"
 import MyApp from "./routes/MyApp";
 
 function App() {

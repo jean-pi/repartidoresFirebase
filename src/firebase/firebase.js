@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app"; 
 
-// servicios y sus funciones a usar
 import {getAuth} from "firebase/auth"; 
 // usar los varios metodos de auth que ofrece firebase
+
+import { getStorage } from "firebase/storage";
 
 import { getFirestore, collection, getDocs, addDoc, getDoc, doc, query, where, setDoc, deleteDoc } from "firebase/firestore"; 
 // funciones para CRUD basico
@@ -11,6 +12,7 @@ import { getFirestore, collection, getDocs, addDoc, getDoc, doc, query, where, s
 
 import { getAnalytics } from "firebase/analytics";
  // data ilimitada de como se comportan mis usuarios
+
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY ,
@@ -29,6 +31,7 @@ export const app = initializeApp(firebaseConfig);
 
 // paso mi "llave" app
 export const auth = getAuth(app);
+export const storage = getStorage(app);
 const dbFirestore = getFirestore(app);
 const analytics = getAnalytics(app);
 

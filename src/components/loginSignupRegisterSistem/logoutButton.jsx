@@ -1,12 +1,11 @@
 
 //importo mi acceso a firebase
-import {auth} from "../firebase/firebase"
+import {auth} from "../../firebase/firebase"
 
 
-//importo las funciones promesas de fierebase
-import {revokeRefreshTokens} from "firebase/auth"
-import {Timestamp, getUser} from "firebase/firestore"
- 
+
+ //ventajas y desventajas de firebase
+ //https://es.linkedin.com/pulse/cu%C3%A1les-son-las-ventajas-y-desventajas-de-usar-para-aguilar-bernabe
 
     export default function LogoutButton(){
 

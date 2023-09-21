@@ -6,17 +6,16 @@ import { useNavigate } from "react-router-dom";
 
 //components
 import RepartidorBox from "../components/repartidorBox";
-import LogoutButton from "../components/logoutButton"
+import LogoutButton from "../components/loginSignupRegisterSistem/logoutButton"
 
-
-import "../styles/stylesRoutes/MyApp.css";
+//css
+import stylesMyApp from "../styles/stylesRoutes/MyApp.module.css";
 
 export default function MyApp(){
-
     return(
-        <div className="contenedorApp">
+        <div className={stylesMyApp.contenedorApp}>
 
-            <div className="repartidorBoxContenedor">
+            <div className={stylesMyApp.repartidorBoxContenedor}>
                 <RepartidorBox/>
                 <RepartidorBox/>
                 <RepartidorBox/>

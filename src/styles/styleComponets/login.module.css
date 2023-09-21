@@ -1,0 +1,73 @@
+
+.containerLoginComponent{
+    
+}
+
+.containerDivLoginComponent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.3rem 0 .8rem 0;
+}
+.containerDivLoginComponent_disable{
+    display: none;
+}
+
+
+.formLogin{
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/* ---------------------------------------------- */
+
+.containerDivLoadingLogin{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.divLoadingLogin{
+    padding: .8rem 1.4rem;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.396);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .9rem;
+    border: 1px solid rgba(183, 183, 183, 0.088);
+    box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
+    -webkit-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
+    -moz-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
+}
+.divLoadingLogin>span{
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(108, 107, 107, 0.286);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    position: relative;
+    top: .14rem;
+    right: .2rem;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation .8s linear infinite;
+    }
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
