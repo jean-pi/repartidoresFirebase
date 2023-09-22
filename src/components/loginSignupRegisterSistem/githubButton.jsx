@@ -1,5 +1,5 @@
 import { GithubAuthProvider,signInWithPopup} from "firebase/auth"; // importado desde modules
-import { auth } from "../../firebase/firebase"; // desde mi carpeta firebase
+import { auth } from "../../firebase/firebaseMyConfig"; // desde mi carpeta firebase
 import { useNavigate } from "react-router-dom";
 
 //css

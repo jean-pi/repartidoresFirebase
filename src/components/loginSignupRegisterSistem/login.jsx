@@ -10,7 +10,7 @@ import uiStyles from "../../styles/uiStyles.module.css";
 import GoogleButton from "../loginSignupRegisterSistem/googleButton";
 import GithubButton from "../loginSignupRegisterSistem/githubButton";
 //firebase auth con mi clave de proyecto
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebaseMyConfig";
 //firebase 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
