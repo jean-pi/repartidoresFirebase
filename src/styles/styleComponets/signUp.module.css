@@ -1,9 +1,6 @@
 
-.containerLoginSignUpEmailPassword{
-    
-}
 
-.containerDivLoginSignUpEmailPassword{
+.containerLoginSignUpEmailPassword{
     display: flex;
     flex-direction: column;
     align-items: center;

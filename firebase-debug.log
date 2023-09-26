@@ -1,0 +1,503 @@
+[debug] [2023-09-22T23:39:12.829Z] ----------------------------------------------------------------------
+[debug] [2023-09-22T23:39:12.832Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-09-22T23:39:12.832Z] CLI Version:   12.5.4
+[debug] [2023-09-22T23:39:12.833Z] Platform:      win32
+[debug] [2023-09-22T23:39:12.833Z] Node Version:  v18.17.1
+[debug] [2023-09-22T23:39:12.834Z] Time:          Fri Sep 22 2023 18:39:12 GMT-0500 (hora de Ecuador)
+[debug] [2023-09-22T23:39:12.834Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-22T23:39:12.905Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-22T23:39:12.906Z] > authorizing via signed-in user (jeanpierreveliz26@gmail.com)
+[debug] [2023-09-22T23:39:12.906Z] [iam] checking project proyect101-f914e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-09-22T23:39:12.908Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions [none]
+[debug] [2023-09-22T23:39:12.908Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:12.908Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-09-22T23:39:13.578Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions 200
+[debug] [2023-09-22T23:39:13.578Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-09-22T23:39:13.579Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-09-22T23:39:13.579Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-09-22T23:39:14.231Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-09-22T23:39:14.231Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'proyect101-f914e'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] +  functions: Finished running predeploy script. 
+[debug] [2023-09-22T23:39:18.817Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e [none]
+[debug] [2023-09-22T23:39:19.207Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e 200
+[debug] [2023-09-22T23:39:19.207Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e {"projectId":"proyect101-f914e","projectNumber":"984406228650","displayName":"proyect101","name":"projects/proyect101-f914e","resources":{"hostingSite":"proyect101-f914e","storageBucket":"proyect101-f914e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_bebb345f-2e3c-455e-baf8-3549e522768e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-09-22T23:39:19.211Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-09-22T23:39:19.212Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:19.215Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-09-22T23:39:19.215Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:19.217Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com [none]
+[debug] [2023-09-22T23:39:19.217Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:19.219Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com [none]
+[debug] [2023-09-22T23:39:19.219Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:19.991Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com 200
+[debug] [2023-09-22T23:39:19.991Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-09-22T23:39:20.003Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com 200
+[debug] [2023-09-22T23:39:20.003Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-09-22T23:39:20.014Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com 200
+[debug] [2023-09-22T23:39:20.014Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-09-22T23:39:20.327Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com 200
+[debug] [2023-09-22T23:39:20.328Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-09-22T23:39:20.329Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e/adminSdkConfig [none]
+[debug] [2023-09-22T23:39:20.746Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e/adminSdkConfig 200
+[debug] [2023-09-22T23:39:20.747Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e/adminSdkConfig {"projectId":"proyect101-f914e","storageBucket":"proyect101-f914e.appspot.com","locationId":"us-central"}
+[debug] [2023-09-22T23:39:20.747Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/proyect101-f914e/configs [none]
+[debug] [2023-09-22T23:39:21.517Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/proyect101-f914e/configs 200
+[debug] [2023-09-22T23:39:21.517Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/proyect101-f914e/configs {}
+[debug] [2023-09-22T23:39:21.519Z] Validating nodejs source
+[debug] [2023-09-22T23:39:22.647Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-09-22T23:39:22.648Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2023-09-22T23:39:22.649Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-09-22T23:39:22.657Z] Found firebase-functions binary at 'C:\Users\darwi\Desktop\vacaciones\repartidoresFirebase\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8213
+
+[debug] [2023-09-22T23:39:23.087Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\darwi\Desktop\vacaciones\repartidoresFirebase\functions (73.49 KB) for uploading 
+[debug] [2023-09-22T23:39:23.177Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/proyect101-f914e/locations/-/functions [none]
+[debug] [2023-09-22T23:39:23.936Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/proyect101-f914e/locations/-/functions 200
+[debug] [2023-09-22T23:39:23.936Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/proyect101-f914e/locations/-/functions {}
+[debug] [2023-09-22T23:39:23.937Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-09-22T23:39:24.523Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/-/functions 200
+[debug] [2023-09-22T23:39:24.523Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/-/functions {}
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2023-09-22T23:39:24.528Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com [none]
+[debug] [2023-09-22T23:39:24.528Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:24.530Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com [none]
+[debug] [2023-09-22T23:39:24.530Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:24.531Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com [none]
+[debug] [2023-09-22T23:39:24.531Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:24.532Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com [none]
+[debug] [2023-09-22T23:39:24.532Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:25.033Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com 200
+[debug] [2023-09-22T23:39:25.033Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com [omitted]
+[info] +  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2023-09-22T23:39:25.262Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com 200
+[debug] [2023-09-22T23:39:25.262Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com [omitted]
+[info] +  functions: required API storage.googleapis.com is enabled 
+[debug] [2023-09-22T23:39:25.357Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com 200
+[debug] [2023-09-22T23:39:25.357Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com [omitted]
+[info] +  functions: required API eventarc.googleapis.com is enabled 
+[debug] [2023-09-22T23:39:25.359Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com 200
+[debug] [2023-09-22T23:39:25.359Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com [omitted]
+[info] +  functions: required API run.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2023-09-22T23:39:25.361Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2023-09-22T23:39:25.362Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2023-09-22T23:39:26.526Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2023-09-22T23:39:26.526Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-984406228650@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"102886771331241277138"}}
+[debug] [2023-09-22T23:39:26.621Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2023-09-22T23:39:26.621Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-984406228650@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"111052228007491329997"}}
+[debug] [2023-09-22T23:39:26.623Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e [none]
+[debug] [2023-09-22T23:39:26.998Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e 200
+[debug] [2023-09-22T23:39:26.998Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e {"projectId":"proyect101-f914e","projectNumber":"984406228650","displayName":"proyect101","name":"projects/proyect101-f914e","resources":{"hostingSite":"proyect101-f914e","storageBucket":"proyect101-f914e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_bebb345f-2e3c-455e-baf8-3549e522768e"}
+[debug] [2023-09-22T23:39:26.999Z] [functions] found 1 new HTTP functions, testing setIamPolicy permission...
+[debug] [2023-09-22T23:39:26.999Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions [none]
+[debug] [2023-09-22T23:39:26.999Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-22T23:39:26.999Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2023-09-22T23:39:27.664Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions 200
+[debug] [2023-09-22T23:39:27.665Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2023-09-22T23:39:27.665Z] [functions] found setIamPolicy permission, proceeding with deploy
+[debug] [2023-09-22T23:39:27.665Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-09-22T23:39:28.247Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-09-22T23:39:28.247Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/eec9c067-686b-47be-b663-f5380066613e.zip?GoogleAccessId=service-984406228650@gcf-admin-robot.iam.gserviceaccount.com&Expires=1695427768&Signature=hEP3HHOOL32vX8qNn83trzrDXpvrt9%2Fq4BShuB9HHGDhLHqd2nhaQmb%2FpOOpH%2BSKt%2B7uNQVrDLqXjS1W8en4NOindW4gIEWPZpUDkjnpRnzyhdKsGQ%2FGJsRdM9XN8VQmJUREW2etL%2BfooxJvhT6ZHpIh4iMyPbfwOn2tBhauH2ERO3pWiAnm4pZFS7wY2UsrYl0p2M%2BqKHjxhMW3l2hQc0x0j8KA1OemQj%2BSot5He3sQLirsfTJ6GYyoGKAl%2B4P8zZsKiRbCC4gBqN7N8yaEaQKcl2AfSAxSqg5fqE9CTtqUcCQx%2FMv%2FOWqlcc7LD20F2FdvUwxcDC4alL958kTW4A%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-984406228650-us-central1","object":"eec9c067-686b-47be-b663-f5380066613e.zip"}}
+[debug] [2023-09-22T23:39:28.248Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/eec9c067-686b-47be-b663-f5380066613e.zip GoogleAccessId=service-984406228650%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1695427768&Signature=hEP3HHOOL32vX8qNn83trzrDXpvrt9%2Fq4BShuB9HHGDhLHqd2nhaQmb%2FpOOpH%2BSKt%2B7uNQVrDLqXjS1W8en4NOindW4gIEWPZpUDkjnpRnzyhdKsGQ%2FGJsRdM9XN8VQmJUREW2etL%2BfooxJvhT6ZHpIh4iMyPbfwOn2tBhauH2ERO3pWiAnm4pZFS7wY2UsrYl0p2M%2BqKHjxhMW3l2hQc0x0j8KA1OemQj%2BSot5He3sQLirsfTJ6GYyoGKAl%2B4P8zZsKiRbCC4gBqN7N8yaEaQKcl2AfSAxSqg5fqE9CTtqUcCQx%2FMv%2FOWqlcc7LD20F2FdvUwxcDC4alL958kTW4A%3D%3D
+[debug] [2023-09-22T23:39:28.248Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/eec9c067-686b-47be-b663-f5380066613e.zip [stream]
+[debug] [2023-09-22T23:39:28.981Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/eec9c067-686b-47be-b663-f5380066613e.zip 200
+[debug] [2023-09-22T23:39:28.981Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/eec9c067-686b-47be-b663-f5380066613e.zip [omitted]
+[info] +  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 18 (2nd Gen) function helloWorld(us-central1)... 
+[debug] [2023-09-22T23:39:28.987Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions functionId=helloWorld
+[debug] [2023-09-22T23:39:28.987Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions {"name":"projects/proyect101-f914e/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-uploads-984406228650-us-central1","object":"eec9c067-686b-47be-b663-f5380066613e.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"proyect101-f914e\",\"storageBucket\":\"proyect101-f914e.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"proyect101-f914e","EVENTARC_CLOUD_EVENT_SOURCE":"projects/proyect101-f914e/locations/us-central1/services/helloWorld"},"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"91dd339c3d8ad728de59cd748098278f33c4adcb"}}
+[debug] [2023-09-22T23:39:29.876Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions 400
+[debug] [2023-09-22T23:39:29.876Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions {"error":{"code":400,"message":"Could not create Cloud Run service helloworld. spec.template.spec.containers.resources.limits.cpu: Invalid value specified for cpu. For the specified value, maxScale may not exceed 10.\nConsider running your workload in a region with greater capacity, decreasing your requested cpu-per-instance, or requesting an increase in quota for this region if you are seeing sustained usage near this limit, see https://cloud.google.com/run/quotas. Your project may gain access to further scaling by adding billing information to your account.","status":"INVALID_ARGUMENT"}}
+[warn] !  functions: Your current project quotas don't allow for the current max instances setting of 100. Either reduce this function's maximum instances, or request a quota increase on the underlying Cloud Run service at https://cloud.google.com/run/quotas. 
+[warn] !  functions: You can adjust the max instances value in your function's runtime options:
+	setGlobalOptions({maxInstances: 10}) 
+[error] Failed to create function projects/proyect101-f914e/locations/us-central1/functions/helloWorld
+[debug] [2023-09-22T23:39:29.884Z] Total Function Deployment time: 896
+[debug] [2023-09-22T23:39:29.884Z] 1 Functions Deployed
+[debug] [2023-09-22T23:39:29.885Z] 1 Functions Errored
+[debug] [2023-09-22T23:39:29.885Z] 0 Function Deployments Aborted
+[debug] [2023-09-22T23:39:29.885Z] Average Function Deployment time: 895
+[info] 
+[info] Functions deploy had errors with the following functions:
+	helloWorld(us-central1)
+[debug] [2023-09-22T23:39:30.398Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[info] i  functions: cleaning up build files... 
+[debug] [2023-09-22T23:39:30.400Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world [none]
+[debug] [2023-09-22T23:39:30.401Z] >>> [apiv2][query] GET https://us.gcr.io/v2/proyect101-f914e/gcf/us-central1/tags/list [none]
+[debug] [2023-09-22T23:39:30.710Z] <<< [apiv2][status] GET https://us.gcr.io/v2/proyect101-f914e/gcf/us-central1/tags/list 200
+[debug] [2023-09-22T23:39:30.710Z] <<< [apiv2][body] GET https://us.gcr.io/v2/proyect101-f914e/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"proyect101-f914e/gcf/us-central1","tags":[]}
+[debug] [2023-09-22T23:39:30.710Z] Could not find image for function projects/proyect101-f914e/locations/us-central1/functions/helloWorld
+[debug] [2023-09-22T23:39:30.889Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world 404
+[debug] [2023-09-22T23:39:30.890Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world {"error":{"code":404,"message":"Package \"projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-09-22T23:39:30.890Z] Functions deploy failed.
+[debug] [2023-09-22T23:39:30.890Z] {
+  "endpoint": {
+    "id": "helloWorld",
+    "project": "proyect101-f914e",
+    "region": "us-central1",
+    "entryPoint": "helloWorld",
+    "platform": "gcfv2",
+    "runtime": "nodejs18",
+    "httpsTrigger": {},
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"proyect101-f914e\",\"storageBucket\":\"proyect101-f914e.appspot.com\",\"locationId\":\"us-central\"}",
+      "GCLOUD_PROJECT": "proyect101-f914e",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/proyect101-f914e/locations/us-central1/services/helloWorld"
+    },
+    "codebase": "default",
+    "cpu": 1,
+    "targetedByOnly": false,
+    "hash": "91dd339c3d8ad728de59cd748098278f33c4adcb"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/proyect101-f914e/locations/us-central1/functions/helloWorld"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/proyect101-f914e/locations/us-central1/functions/helloWorld",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Could not create Cloud Run service helloworld. spec.template.spec.containers.resources.limits.cpu: Invalid value specified for cpu. For the specified value, maxScale may not exceed 10.\nConsider running your workload in a region with greater capacity, decreasing your requested cpu-per-instance, or requesting an increase in quota for this region if you are seeing sustained usage near this limit, see https://cloud.google.com/run/quotas. Your project may gain access to further scaling by adding billing information to your account.",
+            "status": "INVALID_ARGUMENT"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, Could not create Cloud Run service helloworld. spec.template.spec.containers.resources.limits.cpu: Invalid value specified for cpu. For the specified value, maxScale may not exceed 10.\nConsider running your workload in a region with greater capacity, decreasing your requested cpu-per-instance, or requesting an increase in quota for this region if you are seeing sustained usage near this limit, see https://cloud.google.com/run/quotas. Your project may gain access to further scaling by adding billing information to your account.",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2023-09-22T23:39:31.117Z] Error: Failed to create function helloWorld in region us-central1
+    at C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:288:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV2Function (C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:276:30)
+    at async Fabricator.createEndpoint (C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:135:13)
+    at async handle (C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:88:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2023-09-23T00:20:25.708Z] ----------------------------------------------------------------------
+[debug] [2023-09-23T00:20:25.710Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2023-09-23T00:20:25.710Z] CLI Version:   12.5.4
+[debug] [2023-09-23T00:20:25.711Z] Platform:      win32
+[debug] [2023-09-23T00:20:25.711Z] Node Version:  v18.17.1
+[debug] [2023-09-23T00:20:25.715Z] Time:          Fri Sep 22 2023 19:20:25 GMT-0500 (hora de Ecuador)
+[debug] [2023-09-23T00:20:25.715Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-23T00:20:25.784Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-23T00:20:25.784Z] > authorizing via signed-in user (jeanpierreveliz26@gmail.com)
+[debug] [2023-09-23T00:20:25.784Z] [iam] checking project proyect101-f914e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-09-23T00:20:25.786Z] > refreshing access token with scopes: []
+[debug] [2023-09-23T00:20:25.787Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-09-23T00:20:25.787Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-23T00:20:26.090Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-09-23T00:20:26.091Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-23T00:20:26.094Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions [none]
+[debug] [2023-09-23T00:20:26.094Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:26.095Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-09-23T00:20:26.769Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions 200
+[debug] [2023-09-23T00:20:26.769Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-09-23T00:20:26.769Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-09-23T00:20:26.769Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-09-23T00:20:27.428Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-09-23T00:20:27.429Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/proyect101-f914e/serviceAccounts/proyect101-f914e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'proyect101-f914e'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] +  functions: Finished running predeploy script. 
+[debug] [2023-09-23T00:20:31.534Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e [none]
+[debug] [2023-09-23T00:20:31.945Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e 200
+[debug] [2023-09-23T00:20:31.945Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e {"projectId":"proyect101-f914e","projectNumber":"984406228650","displayName":"proyect101","name":"projects/proyect101-f914e","resources":{"hostingSite":"proyect101-f914e","storageBucket":"proyect101-f914e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_bebb345f-2e3c-455e-baf8-3549e522768e"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-09-23T00:20:31.949Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-09-23T00:20:31.949Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:31.950Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-09-23T00:20:31.950Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:31.951Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com [none]
+[debug] [2023-09-23T00:20:31.951Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:31.952Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com [none]
+[debug] [2023-09-23T00:20:31.952Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:32.713Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com 200
+[debug] [2023-09-23T00:20:32.714Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-09-23T00:20:32.714Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com 200
+[debug] [2023-09-23T00:20:32.714Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-09-23T00:20:32.766Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com 200
+[debug] [2023-09-23T00:20:32.766Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-09-23T00:20:32.769Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com 200
+[debug] [2023-09-23T00:20:32.769Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-09-23T00:20:32.770Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e/adminSdkConfig [none]
+[debug] [2023-09-23T00:20:33.154Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e/adminSdkConfig 200
+[debug] [2023-09-23T00:20:33.154Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e/adminSdkConfig {"projectId":"proyect101-f914e","storageBucket":"proyect101-f914e.appspot.com","locationId":"us-central"}
+[debug] [2023-09-23T00:20:33.155Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/proyect101-f914e/configs [none]
+[debug] [2023-09-23T00:20:33.609Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/proyect101-f914e/configs 200
+[debug] [2023-09-23T00:20:33.609Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/proyect101-f914e/configs {}
+[debug] [2023-09-23T00:20:33.610Z] Validating nodejs source
+[debug] [2023-09-23T00:20:35.034Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-09-23T00:20:35.034Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2023-09-23T00:20:35.037Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-09-23T00:20:35.044Z] Found firebase-functions binary at 'C:\Users\darwi\Desktop\vacaciones\repartidoresFirebase\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8258
+
+[debug] [2023-09-23T00:20:35.527Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\darwi\Desktop\vacaciones\repartidoresFirebase\functions (73.49 KB) for uploading 
+[debug] [2023-09-23T00:20:35.600Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/proyect101-f914e/locations/-/functions [none]
+[debug] [2023-09-23T00:20:36.480Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/proyect101-f914e/locations/-/functions 200
+[debug] [2023-09-23T00:20:36.481Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/proyect101-f914e/locations/-/functions {}
+[debug] [2023-09-23T00:20:36.481Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-09-23T00:20:37.099Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/-/functions 200
+[debug] [2023-09-23T00:20:37.099Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/-/functions {}
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2023-09-23T00:20:37.103Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com [none]
+[debug] [2023-09-23T00:20:37.103Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:37.104Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com [none]
+[debug] [2023-09-23T00:20:37.104Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:37.106Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com [none]
+[debug] [2023-09-23T00:20:37.106Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:37.107Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com [none]
+[debug] [2023-09-23T00:20:37.107Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:37.806Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com 200
+[debug] [2023-09-23T00:20:37.806Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/pubsub.googleapis.com [omitted]
+[info] +  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2023-09-23T00:20:37.868Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com 200
+[debug] [2023-09-23T00:20:37.868Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/eventarc.googleapis.com [omitted]
+[info] +  functions: required API eventarc.googleapis.com is enabled 
+[debug] [2023-09-23T00:20:37.870Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com 200
+[debug] [2023-09-23T00:20:37.871Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/run.googleapis.com [omitted]
+[info] +  functions: required API run.googleapis.com is enabled 
+[debug] [2023-09-23T00:20:37.871Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com 200
+[debug] [2023-09-23T00:20:37.871Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/proyect101-f914e/services/storage.googleapis.com [omitted]
+[info] +  functions: required API storage.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2023-09-23T00:20:37.873Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2023-09-23T00:20:37.874Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2023-09-23T00:20:38.713Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2023-09-23T00:20:38.713Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-984406228650@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"111052228007491329997"}}
+[debug] [2023-09-23T00:20:38.791Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2023-09-23T00:20:38.791Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/984406228650/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-984406228650@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"102886771331241277138"}}
+[debug] [2023-09-23T00:20:38.792Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e [none]
+[debug] [2023-09-23T00:20:39.158Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e 200
+[debug] [2023-09-23T00:20:39.158Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/proyect101-f914e {"projectId":"proyect101-f914e","projectNumber":"984406228650","displayName":"proyect101","name":"projects/proyect101-f914e","resources":{"hostingSite":"proyect101-f914e","storageBucket":"proyect101-f914e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_bebb345f-2e3c-455e-baf8-3549e522768e"}
+[debug] [2023-09-23T00:20:39.159Z] [functions] found 1 new HTTP functions, testing setIamPolicy permission...
+[debug] [2023-09-23T00:20:39.159Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions [none]
+[debug] [2023-09-23T00:20:39.159Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions x-goog-quota-user=projects/proyect101-f914e
+[debug] [2023-09-23T00:20:39.159Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2023-09-23T00:20:39.803Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions 200
+[debug] [2023-09-23T00:20:39.803Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/proyect101-f914e:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2023-09-23T00:20:39.803Z] [functions] found setIamPolicy permission, proceeding with deploy
+[debug] [2023-09-23T00:20:39.804Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-09-23T00:20:40.337Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-09-23T00:20:40.337Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/0513ea16-eca0-45cc-a62f-f48d00fa3034.zip?GoogleAccessId=service-984406228650@gcf-admin-robot.iam.gserviceaccount.com&Expires=1695430241&Signature=JuJzU%2F9g5NWIqedw3V2oWYH1toHTW2%2FJtSosgLrEbJbowEG95wVQVkT8U2fQ69xygM2erlT5GscQowKCv6taWf%2FgI%2FfCxeRqUbWptC%2F5M4nq1Op8kUmKmc%2FLS4GP7EelusZQlR04z259vDuAkACyvS5iMcRrSmMOEDRNm7hQl5PG%2B71y51nGQxqXbmQQj5726RvD2kP%2BETUuYVOL0olDaKFO3aZwG7%2BsUQn1mKUnHdEF74%2B4DxI%2BadF7vK9tLejuGNa1ilWXXfq3xIDd2j8%2BSsIQ9JG0HZKUb6tTspe6Edj7Lemm5TwJ4bI%2BbZapoJFR75%2BfUdpHuICSIn65ejSYKg%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-984406228650-us-central1","object":"0513ea16-eca0-45cc-a62f-f48d00fa3034.zip"}}
+[debug] [2023-09-23T00:20:40.338Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/0513ea16-eca0-45cc-a62f-f48d00fa3034.zip GoogleAccessId=service-984406228650%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1695430241&Signature=JuJzU%2F9g5NWIqedw3V2oWYH1toHTW2%2FJtSosgLrEbJbowEG95wVQVkT8U2fQ69xygM2erlT5GscQowKCv6taWf%2FgI%2FfCxeRqUbWptC%2F5M4nq1Op8kUmKmc%2FLS4GP7EelusZQlR04z259vDuAkACyvS5iMcRrSmMOEDRNm7hQl5PG%2B71y51nGQxqXbmQQj5726RvD2kP%2BETUuYVOL0olDaKFO3aZwG7%2BsUQn1mKUnHdEF74%2B4DxI%2BadF7vK9tLejuGNa1ilWXXfq3xIDd2j8%2BSsIQ9JG0HZKUb6tTspe6Edj7Lemm5TwJ4bI%2BbZapoJFR75%2BfUdpHuICSIn65ejSYKg%3D%3D
+[debug] [2023-09-23T00:20:40.338Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/0513ea16-eca0-45cc-a62f-f48d00fa3034.zip [stream]
+[debug] [2023-09-23T00:20:41.454Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/0513ea16-eca0-45cc-a62f-f48d00fa3034.zip 200
+[debug] [2023-09-23T00:20:41.454Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-984406228650-us-central1/0513ea16-eca0-45cc-a62f-f48d00fa3034.zip [omitted]
+[info] +  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 18 (2nd Gen) function helloWorld(us-central1)... 
+[debug] [2023-09-23T00:20:41.458Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions functionId=helloWorld
+[debug] [2023-09-23T00:20:41.458Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions {"name":"projects/proyect101-f914e/locations/us-central1/functions/helloWorld","buildConfig":{"runtime":"nodejs18","entryPoint":"helloWorld","source":{"storageSource":{"bucket":"gcf-v2-uploads-984406228650-us-central1","object":"0513ea16-eca0-45cc-a62f-f48d00fa3034.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"proyect101-f914e\",\"storageBucket\":\"proyect101-f914e.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"proyect101-f914e","EVENTARC_CLOUD_EVENT_SOURCE":"projects/proyect101-f914e/locations/us-central1/services/helloWorld"},"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"91dd339c3d8ad728de59cd748098278f33c4adcb"}}
+[debug] [2023-09-23T00:20:42.387Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions 400
+[debug] [2023-09-23T00:20:42.387Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/proyect101-f914e/locations/us-central1/functions {"error":{"code":400,"message":"Could not create Cloud Run service helloworld. spec.template.spec.containers.resources.limits.cpu: Invalid value specified for cpu. For the specified value, maxScale may not exceed 10.\nConsider running your workload in a region with greater capacity, decreasing your requested cpu-per-instance, or requesting an increase in quota for this region if you are seeing sustained usage near this limit, see https://cloud.google.com/run/quotas. Your project may gain access to further scaling by adding billing information to your account.","status":"INVALID_ARGUMENT"}}
+[warn] !  functions: Your current project quotas don't allow for the current max instances setting of 100. Either reduce this function's maximum instances, or request a quota increase on the underlying Cloud Run service at https://cloud.google.com/run/quotas. 
+[warn] !  functions: You can adjust the max instances value in your function's runtime options:
+	setGlobalOptions({maxInstances: 10}) 
+[error] Failed to create function projects/proyect101-f914e/locations/us-central1/functions/helloWorld
+[debug] [2023-09-23T00:20:42.394Z] Total Function Deployment time: 934
+[debug] [2023-09-23T00:20:42.394Z] 1 Functions Deployed
+[debug] [2023-09-23T00:20:42.394Z] 1 Functions Errored
+[debug] [2023-09-23T00:20:42.394Z] 0 Function Deployments Aborted
+[debug] [2023-09-23T00:20:42.394Z] Average Function Deployment time: 933
+[info] 
+[info] Functions deploy had errors with the following functions:
+	helloWorld(us-central1)
+[debug] [2023-09-23T00:20:42.655Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[info] i  functions: cleaning up build files... 
+[debug] [2023-09-23T00:20:42.657Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world [none]
+[debug] [2023-09-23T00:20:42.658Z] >>> [apiv2][query] GET https://us.gcr.io/v2/proyect101-f914e/gcf/us-central1/tags/list [none]
+[debug] [2023-09-23T00:20:43.113Z] <<< [apiv2][status] GET https://us.gcr.io/v2/proyect101-f914e/gcf/us-central1/tags/list 200
+[debug] [2023-09-23T00:20:43.113Z] <<< [apiv2][body] GET https://us.gcr.io/v2/proyect101-f914e/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"proyect101-f914e/gcf/us-central1","tags":[]}
+[debug] [2023-09-23T00:20:43.114Z] Could not find image for function projects/proyect101-f914e/locations/us-central1/functions/helloWorld
+[debug] [2023-09-23T00:20:43.249Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world 404
+[debug] [2023-09-23T00:20:43.249Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world {"error":{"code":404,"message":"Package \"projects/proyect101-f914e/locations/us-central1/repositories/gcf-artifacts/packages/hello_world\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-09-23T00:20:43.249Z] Functions deploy failed.
+[debug] [2023-09-23T00:20:43.249Z] {
+  "endpoint": {
+    "id": "helloWorld",
+    "project": "proyect101-f914e",
+    "region": "us-central1",
+    "entryPoint": "helloWorld",
+    "platform": "gcfv2",
+    "runtime": "nodejs18",
+    "httpsTrigger": {},
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"proyect101-f914e\",\"storageBucket\":\"proyect101-f914e.appspot.com\",\"locationId\":\"us-central\"}",
+      "GCLOUD_PROJECT": "proyect101-f914e",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/proyect101-f914e/locations/us-central1/services/helloWorld"
+    },
+    "codebase": "default",
+    "cpu": 1,
+    "targetedByOnly": false,
+    "hash": "91dd339c3d8ad728de59cd748098278f33c4adcb"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/proyect101-f914e/locations/us-central1/functions/helloWorld"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/proyect101-f914e/locations/us-central1/functions/helloWorld",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Could not create Cloud Run service helloworld. spec.template.spec.containers.resources.limits.cpu: Invalid value specified for cpu. For the specified value, maxScale may not exceed 10.\nConsider running your workload in a region with greater capacity, decreasing your requested cpu-per-instance, or requesting an increase in quota for this region if you are seeing sustained usage near this limit, see https://cloud.google.com/run/quotas. Your project may gain access to further scaling by adding billing information to your account.",
+            "status": "INVALID_ARGUMENT"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, Could not create Cloud Run service helloworld. spec.template.spec.containers.resources.limits.cpu: Invalid value specified for cpu. For the specified value, maxScale may not exceed 10.\nConsider running your workload in a region with greater capacity, decreasing your requested cpu-per-instance, or requesting an increase in quota for this region if you are seeing sustained usage near this limit, see https://cloud.google.com/run/quotas. Your project may gain access to further scaling by adding billing information to your account.",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2023-09-23T00:20:43.475Z] Error: Failed to create function helloWorld in region us-central1
+    at C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:288:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV2Function (C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:276:30)
+    at async Fabricator.createEndpoint (C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:135:13)
+    at async handle (C:\Users\darwi\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:88:17)
+[error] 
+[error] Error: There was an error deploying functions

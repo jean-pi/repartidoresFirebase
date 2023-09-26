@@ -3,8 +3,8 @@ import { useState, useRef, useEffect} from "react";
 //rutas
 import { Link, useNavigate } from "react-router-dom";
 //mi config firebase
-import { auth } from "../../firebase/firebase";
-import { storage } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebaseMyConfig";
+import { storage } from "../../firebase/firebaseMyConfig";
 //firebase dependencias
 import { updateProfile, } from "firebase/auth";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
@@ -124,13 +124,13 @@ export default function RegistrationForm(){
                 </div>
                 <span className={stylesText.text070rem}>What should we call you?</span>
                 <input tabIndex={"0"} className={uiStyless.inputText} type="text" name="nameUser" value={values.nameUser} onChange={handleInputChangeValues} autoComplete="off" placeholder="e.g. Ada Lovelace, Ada, AL" />
+                <span className={stylesText.text070rem}>What about your date of birth?</span>
+                <input className={uiStyless.inputText} type="date" name="dateBirth" value={values.dateBirth} onChange={handleInputChangeValues}  />  
                 <button tabIndex={"0"} className={`${uiStyless.buttonSubmit2} ${uiStyless.obtSubmitState}`} type="submit" ref={registrationSubmit} disabled = {submitState == "loading" || submitState == "disabled" ? true : false   } >
                     <span></span>
                     Continue
                 </button>
                 
-                {/* <span className={styles.Span}>What about your date of birth?</span>buttonSubmit2_active
-                <input className={styles.inputText} type="date" name="dateBirth" value={values.dateBirth} onChange={handleInputChangeValues}  />   */}
             </form>
             <p className={stylesText.text070rem}>Didn't intend to create a new account?</p>
                 <Link to={"/"} tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>

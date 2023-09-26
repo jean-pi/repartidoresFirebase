@@ -11,12 +11,14 @@ los motociclistas, la caja debe aparecer en color rojo y no me debe dejar
 tomar ese horario.
  
 
--sistema de confrimacion de registro
+-sistema de confirmacion de registro
 -eliminar un usuario luego de 30 dias
 -redireccion programatica
 -url con seguridad que la url de app sea inaxesible si no se logea
 -ojo para ver constraseña
+-agregar cofirmar password
 -seguridad en firebase estorage
 -firebase functions para mandar execiones personlaizadas, como el niver de segurirdad de contraseña y campos vacios (auth/empty) y eliminar cuntas no verificadas   
--agregar cofirmar password
 -agregar otro provedor de iniciar sesion
+-exportar las dependencias que solo utilizo no todo las dependecias de firebase 
+-comprobar todos los errores que arroja los metodos de firebase de cada metodo

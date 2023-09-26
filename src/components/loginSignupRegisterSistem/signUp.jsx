@@ -1,16 +1,15 @@
 //firebase
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 //mi acceso con mi Auth
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebaseMyConfig";
 //states
 import React, { useState, useRef } from "react";
 //router/react
 import { Link } from "react-router-dom";
 //css
 import stylesSignUp from "../../styles/styleComponets/signUp.module.css";
-import stylesText from "../../styles/texts.module.css"
-import uiStyles from "../../styles/uiStyles.module.css"
-
+import stylesText from "../../styles/texts.module.css";
+import uiStyles from "../../styles/uiStyles.module.css";
 //my component
 import GoogleButton from "../loginSignupRegisterSistem/googleButton";
 import GithubButton from "../loginSignupRegisterSistem/githubButton";
@@ -24,18 +23,18 @@ export default function SignUpEmailPasswordForm(){
     const [errorMessage, setErrorMesagge] = useState("");
     const [buttonLoading, setButtonLoading] = useState(false);
     const [isRegistrer, setIsRegistrer] = useState(false);
+
     const [values, setValues] = useState({
         email: "",
         password: "",
-    })
+    });
 
-    
     const inputsOnchange = (e) =>{
         const {name, value}= e.target;
         setValues({
             ...values,
             [name] : value,
-        })
+        });
     }
 
 
@@ -71,11 +70,15 @@ export default function SignUpEmailPasswordForm(){
 
     // let parametroPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
+
+    let actionCodeSettings = {
+        url: 'http://localhost:3000/login', // URL personalizada para redirigir después de la verificación
+        handleCodeInApp: false, // Abrir el enlace en la aplicación en lugar de en un navegador
+    };
+
     const submitCreateUser=(async(e)=>{
         e.preventDefault();
-
         setButtonLoading(true);
-        
         try {
 
             if(values.email === "") throw Error(errors.emailEmpty.codeErr);
@@ -83,9 +86,9 @@ export default function SignUpEmailPasswordForm(){
             // if(!parametroPassword.test(values.password)) throw Error(errors.passwordWeak.codeErr); 
             
             await createUserWithEmailAndPassword(auth,values.email,values.password);
+            // await sendEmailVerification(auth.currentUser);
+            await sendEmailVerification(auth.currentUser, actionCodeSettings);
             setErrorMesagge("");
-            await sendEmailVerification(auth.currentUser);
-
             setButtonLoading(false);
             setIsRegistrer(true);
             setValues({
@@ -94,12 +97,9 @@ export default function SignUpEmailPasswordForm(){
             });
 
         } catch (err) {
-
-            setTimeout(() => {
-                
+            setTimeout(() => {     
                 setButtonLoading(false);
                 setIsRegistrer(false)
-
                 if(err.code === errors.internalError.codeErr) {
                     setErrorMesagge(errors.internalError.errorMessage);
                 }  
@@ -128,18 +128,16 @@ export default function SignUpEmailPasswordForm(){
 
     return (
         <div className={stylesSignUp.containerLoginSignUpEmailPassword} >
-            <div className={stylesSignUp.containerDivLoginSignUpEmailPassword}>
+            {/* <div className={stylesSignUp.containerDivLoginSignUpEmailPassword}> */}
                 <h1 className={stylesText.text3rem}>Sign up</h1>
                 <form className={stylesSignUp.formLoginSignUpContainer} action="" onSubmit={submitCreateUser} >
-
-               
 
                     <span className={stylesText.text070rem}>Email</span>
                     <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.email.toLowerCase()} type="text" name="email" autoComplete="off"  placeholder="Enter your email address..." />
                     <span className={stylesText.text070rem}>Password</span>
                     <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.password} type="password" name="password" autoComplete="off" placeholder="Create a new password..." />
-                    {/* <span className={stylesText.text070rem}>Confirm password</span>
-                    <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.password} type="password" name="password" autoComplete="off" placeholder="Create a new password..." /> */}
+                    <span className={stylesText.text070rem}>Confirm password</span>
+                    <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.password} type="password" name="password" autoComplete="off" placeholder="Confirm your new password..." />
                     <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
                         <span></span>
                         Continue with email
@@ -156,7 +154,7 @@ export default function SignUpEmailPasswordForm(){
                 <GoogleButton/> 
                 {/* <GithubButton/>  */}
                 <div className={stylesText.text070rem}>Do you already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/login">Login now</Link></div>
-            </div>
+            {/* </div> */}
             
       
 

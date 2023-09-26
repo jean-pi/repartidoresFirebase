@@ -1,7 +1,7 @@
 //router react
 import { useNavigate, Link } from "react-router-dom";
 //hooks
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 //css
 import stylesLogin from "../../styles/styleComponets/login.module.css";
 import stylesText from "../../styles/texts.module.css";
@@ -12,7 +12,8 @@ import GithubButton from "../loginSignupRegisterSistem/githubButton";
 //firebase auth con mi clave de proyecto
 import { auth } from "../../firebase/firebaseMyConfig";
 //firebase 
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendEmailVerification, updateProfile, applyActionCode } from "firebase/auth";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 
 
@@ -22,8 +23,14 @@ export default function LoginEmailPasswordForm(){
 
     const [errorMessage, setErrorMesagge] = useState("");
     const [buttonLoading, setButtonLoading] = useState(false);
-    const [loadingScreen, setLoadingScreen] = useState(false);
-    const [isVerificade, setIsVerificade] = useState(false);
+    const [loginComplete, setLoginComplete] = useState(false);
+
+    //verification states
+    const [messagUserIsNotVerificated, setMessagUserIsNotVerificated] = useState(false);
+    const [resendVerificated, setResendVerificated] = useState(false);
+    const [correctVerification, setCorrectVerification] = useState(false);
+
+    // input states
     const [values, setValues] = useState({
         email: "",
         password: "",
@@ -73,24 +80,63 @@ export default function LoginEmailPasswordForm(){
     }
 
 
+
+
+    useEffect( () => {
+        const ulrVar = window.location.search;
+        const ulrParams = new URLSearchParams(ulrVar);
+        let oobCode = ulrParams.get("oobCode");
+        if(oobCode){
+            setCorrectVerification(true);
+            applyActionCode(auth, oobCode);
+        } 
+      }, []);
+
+
+    let actionCodeSettings = {
+        url: 'http://localhost:3000/login', // URL personalizada para redirigir después de la verificación
+        handleCodeInApp: false, // Abrir el enlace en la aplicación en lugar de en un navegador
+    };
+
+    const resendVerification=( async (e) =>{
+        try {
+            console.log("bb")
+            const a = await sendEmailVerification(auth.currentUser, actionCodeSettings);
+            setMessagUserIsNotVerificated(false);
+            setResendVerificated(true);
+            console.log(a)
+        } catch (error) {
+            
+        }
+
+    })
+
     const loginSubmit=( async (e)=>{
         e.preventDefault();
         setButtonLoading(true);
         try {
-            console.log("a")
-
             if(values.email === "") throw Error(errors.emailEmpty.codeErr)
             if(values.password === "") throw Error(errors.passwordEmpty.codeErr);
-
-            await signInWithEmailAndPassword(auth, values.email, values.password);  
-
-            setButtonLoading(false);
-            setLoadingScreen(true);
-
             
+            const signUser = await signInWithEmailAndPassword(auth, values.email, values.password); 
+            const isVerificated = signUser.user.emailVerified;
+            console.log(isVerificated)
+            console.log(auth.currentUser)
+
+            if(isVerificated === true) {
+                setLoginComplete(true);
+                setErrorMesagge("");
+            }
+            if(isVerificated === false) {
+                setMessagUserIsNotVerificated(true);
+                setButtonLoading(false);
+                setErrorMesagge("")
+            }
+
+    
         } catch (error) {
             console.log(error)
-
+            setMessagUserIsNotVerificated(false);
             setTimeout(() => {
                 setButtonLoading(false);
                 if(error.message === errors.emailEmpty.codeErr){
@@ -114,7 +160,6 @@ export default function LoginEmailPasswordForm(){
                 if(error.message === errors.passwordEmpty.codeErr){
                     setErrorMesagge(errors.passwordEmpty.messagErr);
                 }
-
             }, 400);
 
         }
@@ -122,23 +167,34 @@ export default function LoginEmailPasswordForm(){
    
     return (
         <div className={stylesLogin.containerLoginComponent}>
-            <div className={`${stylesLogin.containerDivLoginComponent} ${loadingScreen? stylesLogin.containerDivLoginComponent_disable : "" }`} >
+            <div className={`${stylesLogin.containerDivLoginComponent} ${loginComplete? stylesLogin.containerDivLoginComponent_disable : "" }`} >
                 <h1 className={stylesText.text3rem}>Log in</h1>
                 <GoogleButton/> 
                 {/* <GithubButton/>  */}
                 <div className={uiStyles.partingLine}></div>
                 <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
 
-                    <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
-                        <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                        <b>Error: </b>Your account is still pending approval. Verify your email by clicking on the link sent to your email.  
-                        <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`}> <br />Resend verification link.</span> 
-                        </p>
-                    </div>
 
-                    <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
-                        <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Verification Email Sent!</p>
-                    </div>
+                    {messagUserIsNotVerificated && (
+                        <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
+                            <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
+                                <b>Error: </b>Your account is still pending approval. Verify your email by clicking on the link sent to your email.  
+                                <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span> 
+                            </p>
+                        </div>
+                    )}
+
+                    {correctVerification && (
+                        <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
+                            <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Your account has been successfully verified! You can log in now.</p>
+                        </div>
+                    )}
+
+                    {resendVerificated && (
+                        <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
+                            <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Verification Email Sent!</p>
+                        </div>
+                    )}
 
                     <span className={stylesText.text070rem}>Email</span>
                     <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
@@ -154,7 +210,7 @@ export default function LoginEmailPasswordForm(){
                 <div className={stylesText.text070rem}>Do you not already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/signup">Sign up</Link></div>
             </div>
 
-            {loadingScreen &&(
+            {loginComplete &&(
             <div className={stylesLogin.containerDivLoadingLogin} >
                 <div className={stylesLogin.divLoadingLogin}>
                     <span></span> Logining...

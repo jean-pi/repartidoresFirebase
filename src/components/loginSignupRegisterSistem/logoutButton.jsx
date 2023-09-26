@@ -1,6 +1,6 @@
 
 //importo mi acceso a firebase
-import {auth} from "../../firebase/firebase"
+import {auth} from "../../firebase/firebaseMyConfig"
 
 
 
