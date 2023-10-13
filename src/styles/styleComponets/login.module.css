@@ -25,28 +25,16 @@
 
 /* ---------------------------------------------- */
 
-.containerDivLoadingLogin{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .divLoadingLogin{
     padding: .8rem 1.4rem;
     border-radius: 6px;
-    color: rgba(0, 0, 0, 0.396);
+    color: rgba(0, 0, 0, 0.242);
     font-family: Arial, Helvetica, sans-serif;
     font-size: .9rem;
-    border: 1px solid rgba(183, 183, 183, 0.088);
+    border: 1px solid rgba(183, 183, 183, 0.063);
     box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
-    -webkit-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
+    -webkit-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.118);
     -moz-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
 }
 .divLoadingLogin>span{

@@ -71,14 +71,11 @@ export default function SignUpEmailPasswordForm(){
     // let parametroPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
 
-    let actionCodeSettings = {
-        url: 'http://localhost:3000/login', // URL personalizada para redirigir después de la verificación
-        handleCodeInApp: false, // Abrir el enlace en la aplicación en lugar de en un navegador
-    };
 
     const submitCreateUser=(async(e)=>{
         e.preventDefault();
         setButtonLoading(true);
+        setIsRegistrer(false);
         try {
 
             if(values.email === "") throw Error(errors.emailEmpty.codeErr);
@@ -87,7 +84,6 @@ export default function SignUpEmailPasswordForm(){
             
             await createUserWithEmailAndPassword(auth,values.email,values.password);
             // await sendEmailVerification(auth.currentUser);
-            await sendEmailVerification(auth.currentUser, actionCodeSettings);
             setErrorMesagge("");
             setButtonLoading(false);
             setIsRegistrer(true);

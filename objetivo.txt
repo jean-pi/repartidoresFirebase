@@ -16,9 +16,9 @@ tomar ese horario.
 -redireccion programatica
 -url con seguridad que la url de app sea inaxesible si no se logea
 -ojo para ver constraseña
+-recuperar constraseña
 -agregar cofirmar password
 -seguridad en firebase estorage
 -firebase functions para mandar execiones personlaizadas, como el niver de segurirdad de contraseña y campos vacios (auth/empty) y eliminar cuntas no verificadas   
--agregar otro provedor de iniciar sesion
 -exportar las dependencias que solo utilizo no todo las dependecias de firebase 
 -comprobar todos los errores que arroja los metodos de firebase de cada metodo

@@ -15,11 +15,12 @@ function App() {
   return (
     <Routes>
       <Route path = "/" element = {<PresentacionView/>} />
-      <Route path = "presentacion" element = {<PresentacionView/>}/>
-      <Route path = "login" element = {<LoginView/>} />
-      <Route path = "signup" element = {<SignUpView/>} />
-      <Route path = "registration" element = {<RegistrationView/>}/>
-      <Route path = "app" element = {<MyApp/>}/>
+      <Route path = "/presentacion" element = {<PresentacionView/>}/>
+      <Route path = "/login" element = {<LoginView/>} />
+      <Route path = "/signup" element = {<SignUpView/>} />
+      <Route path = "/registration" element = {<RegistrationView/>}/>
+      <Route path = "/app" element = {<MyApp/>}/>
+      <Route path = "*" element = {<h1>Error 404?</h1>}/> 
     </Routes>
   );
 }
