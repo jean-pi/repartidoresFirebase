@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
 //css
-import stylesPresentacionRoute from "../styles/stylesRoutes/presentacionRoute.module.css"
+import styleslandingRoute from "../styles/stylesRoutes/landingRoute.module.css"
 import stylesText from "../styles/texts.module.css"
 
-export default function PresentacionView(){
+export default function LandingView(){
 return (
-    <div className={stylesPresentacionRoute.presentacionRouteContainer}>
-        <div className={`${stylesPresentacionRoute.ornament} ${stylesPresentacionRoute.ornament1}`}>*******</div>
-        <div className={`${stylesPresentacionRoute.ornament} ${stylesPresentacionRoute.ornament2}`}>******</div>
-        <div className={stylesPresentacionRoute.descriptionProjectContainer}>
+    <div className={styleslandingRoute.landingRouteContainer}>
+        <div className={`${styleslandingRoute.ornament} ${styleslandingRoute.ornament1}`}>*******</div>
+        <div className={`${styleslandingRoute.ornament} ${styleslandingRoute.ornament2}`}>******</div>
+        <div className={styleslandingRoute.descriptionProjectContainer}>
             <p className={stylesText.cursiva1rem}>
                 Build a list containing time slots, in 30-min intervals.
                 Let it start at 8 am and end at 8 pm. Or a box with a block
@@ -25,9 +25,9 @@ return (
             </p>
         </div>
         
-        <div className={stylesPresentacionRoute.buttonsLoginContainer}>
-            <Link tabIndex={"0"}  to="/login" className={`${stylesPresentacionRoute.button} ${stylesPresentacionRoute.login}`}>Log in</Link>
-            <Link tabIndex={"0"}  to="/signup" className={`${stylesPresentacionRoute.button} ${stylesPresentacionRoute.signup}`}>Sign up</Link>
+        <div className={styleslandingRoute.buttonsLoginContainer}>
+            <Link tabIndex={"0"}  to="/login" className={`${styleslandingRoute.button} ${styleslandingRoute.login}`}>Log in</Link>
+            <Link tabIndex={"0"}  to="/signup" className={`${styleslandingRoute.button} ${styleslandingRoute.signup}`}>Sign up</Link>
         </div>
     </div>
 );

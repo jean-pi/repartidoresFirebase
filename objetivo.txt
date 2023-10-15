@@ -15,7 +15,6 @@ tomar ese horario.
 -eliminar un usuario luego de 30 dias
 -redireccion programatica
 -url con seguridad que la url de app sea inaxesible si no se logea
--ojo para ver constraseña
 -recuperar constraseña
 -agregar cofirmar password
 -seguridad en firebase estorage

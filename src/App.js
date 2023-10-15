@@ -5,7 +5,7 @@ import {Routes, Route } from "react-router-dom";// importo los componentes para 
 //import AnyLogin from "./routes/anylogin";
 
 //routes
-import PresentacionView from "./routes/presentacionRoute";
+import LandingView from "./routes/landingRoute";
 import LoginView from './routes/loginRoute';
 import SignUpView from "./routes/signUpRoute"
 import RegistrationView from "./routes/registrationRoute"
@@ -14,8 +14,8 @@ import MyApp from "./routes/MyApp";
 function App() {
   return (
     <Routes>
-      <Route path = "/" element = {<PresentacionView/>} />
-      <Route path = "/presentacion" element = {<PresentacionView/>}/>
+      <Route path = "/" element = {<LandingView/>} />
+      <Route path = "/presentacion" element = {<LandingView/>}/>
       <Route path = "/login" element = {<LoginView/>} />
       <Route path = "/signup" element = {<SignUpView/>} />
       <Route path = "/registration" element = {<RegistrationView/>}/>

@@ -38,32 +38,7 @@ export default function SignUpEmailPasswordForm(){
     }
 
 
-    const errors = {
-        emailEmpty: {
-            codeErr:"email-empty",
-            messagErr: "Enter an email address."
-        } ,
-        passwordEmpty: {
-            codeErr: "password-empty",
-            messagErr: "Enter a password."
-        },
-        passwordWeak: {
-            codeErr: "auth/weak-password",
-            messagErr: "Make sure it's at least at least 6 characters."
-        },
-        invalidEmail: {
-            codeErr: "auth/invalid-email",
-            messagErr: "Invalid email address."
-        },
-        emailAlreadyInUse: {
-            codeErr: "auth/email-already-in-use",
-            messagErr: "Email already in use."
-        },
-        internalError: {
-            codeErr: "auth/internal-error",
-            messagErr: "Internal error try again later"
-        }
-    }
+
 
  //ventajas y desventajas de firebase
  //https://es.linkedin.com/pulse/cu%C3%A1les-son-las-ventajas-y-desventajas-de-usar-para-aguilar-bernabe
@@ -78,12 +53,12 @@ export default function SignUpEmailPasswordForm(){
         setIsRegistrer(false);
         try {
 
-            if(values.email === "") throw Error(errors.emailEmpty.codeErr);
-            if(values.password === "") throw Error(errors.passwordEmpty.codeErr)
+            if(values.email === "") throw Error("email-empty");
+            if(values.password === "") throw Error("password-empty")
             // if(!parametroPassword.test(values.password)) throw Error(errors.passwordWeak.codeErr); 
             
             await createUserWithEmailAndPassword(auth,values.email,values.password);
-            // await sendEmailVerification(auth.currentUser);
+            await sendEmailVerification(auth.currentUser);
             setErrorMesagge("");
             setButtonLoading(false);
             setIsRegistrer(true);
@@ -96,35 +71,31 @@ export default function SignUpEmailPasswordForm(){
             setTimeout(() => {     
                 setButtonLoading(false);
                 setIsRegistrer(false)
-                if(err.code === errors.internalError.codeErr) {
-                    setErrorMesagge(errors.internalError.errorMessage);
+                if(err.code === "auth/internal-error") {
+                    setErrorMesagge("Internal error try again later");
                 }  
-                if(err.code === errors.emailAlreadyInUse.codeErr) {
-                    setErrorMesagge(errors.emailAlreadyInUse.messagErr);
+                if(err.code === "auth/email-already-in-use") {
+                    setErrorMesagge("Email already in use.");
                 }  
-                if(err.message === errors.emailEmpty.codeErr){
-                    setErrorMesagge(errors.emailEmpty.messagErr);
+                if(err.message === "email-empty"){
+                    setErrorMesagge("Enter an email address.");
                 }
-                if(err.message === errors.passwordEmpty.codeErr){
-                    setErrorMesagge(errors.passwordEmpty.messagErr);
+                if(err.message === "password-empty"){
+                    setErrorMesagge("Enter a password.");
                 }
-                if(err.code === errors.passwordWeak.codeErr){
-                    setErrorMesagge(errors.passwordWeak.messagErr);
+                if(err.code === "auth/weak-password"){
+                    setErrorMesagge("Make sure it's at least at least 6 characters.");
                 }
-                if(err.code === errors.invalidEmail.codeErr){
-                    setErrorMesagge(errors.invalidEmail.messagErr);
+                if(err.code === "auth/invalid-email"){
+                    setErrorMesagge("Invalid email address.");
                 }    
-            }, 500);
-            
+            }, 500); 
         }   
-
-
         
     });
 
     return (
         <div className={stylesSignUp.containerLoginSignUpEmailPassword} >
-            {/* <div className={stylesSignUp.containerDivLoginSignUpEmailPassword}> */}
                 <h1 className={stylesText.text3rem}>Sign up</h1>
                 <form className={stylesSignUp.formLoginSignUpContainer} action="" onSubmit={submitCreateUser} >
 
@@ -150,11 +121,6 @@ export default function SignUpEmailPasswordForm(){
                 <GoogleButton/> 
                 {/* <GithubButton/>  */}
                 <div className={stylesText.text070rem}>Do you already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/login">Login now</Link></div>
-            {/* </div> */}
-            
-      
-
-
         </div>
     );
 }
