@@ -1,9 +1,4 @@
 
-.partingLine{
-    border-top: 1px solid rgba(15, 15, 15, 0.15);
-    margin: .5rem 0 1.2rem 0;
-    width: 100%;
-}
 
 /* -------------------------------------------------------- */
 
@@ -85,7 +80,6 @@
     font-weight:700;
     letter-spacing: 1px;
     cursor: pointer;
-
     background-color: rgb(254, 249, 249);
     box-shadow: none;
     border: 1.4px solid rgb(244, 214, 214);
@@ -116,14 +110,11 @@
 
 /* -------------------------------------------------- */
 
-.buttonSubmit2{
+.buttonSubmit2{ 
     width: 20rem;
     height: 2rem;
     background-color: rgba(118, 204, 251, 0.893);
     border: 1px solid rgb(81, 192, 252);
-    box-shadow: 0px 0px 98px -92px rgba(255,0,0,0.59) inset;
-    -webkit-box-shadow: 0px 0px 98px -92px rgba(255,0,0,0.59) inset;
-    -moz-box-shadow: 0px 0px 98px -92px rgba(255,0,0,0.59) inset;
     border-radius: 4px;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: .5rem ;
@@ -135,9 +126,12 @@
     cursor: initial;
 }
 
+
 .buttonSubmit2>span{
     width: 11px;
     height: 11px;
+    background-color: rgba(118, 204, 251, 0.893);
+    border: 1px solid rgb(81, 192, 252);
     position: relative;
     top: .08rem;
     right: .3rem;
@@ -156,10 +150,18 @@
         transform: rotate(360deg);
     }
 }
-.buttonSubmit2_loading>span{
+
+
+.buttonSubmit2_loading>span{ /*loading*/
     display: inline-block;
 }
-.buttonSubmit2_active{
+.buttonSubmit2_loading{
+    background-color: rgba(118, 204, 251, 0.893);
+    border: 1px solid rgb(81, 192, 252);
+}
+
+
+.buttonSubmit2_active{ /*button activo*/
     background-color: rgba(11, 168, 252, 0.893);
     border: 1px solid rgb(6, 156, 236);
     margin: .5rem 0;
@@ -179,7 +181,7 @@
 
 
 /* -------------------------------------------------------- */
-
+/* 
 
 .buttonSubmit2{
     width: 20rem;
@@ -217,7 +219,7 @@
     }
 }
 
-/* disabled - loading */
+
 .buttonSubmit2_disable, .buttonSubmit2_loading{
     background-color: rgba(118, 204, 251, 0.893);
     border: 1px solid rgb(81, 192, 252);
@@ -228,7 +230,7 @@
     display: inline-block;
 }
 
-/* active */
+
 .buttonSubmit2_active{
     background-color: rgba(11, 168, 252, 0.893);
     border: 1px solid rgb(6, 156, 236);
@@ -243,7 +245,7 @@
 }
 .buttonSubmit2_active:active{
     background-color: rgba(2, 147, 224, 0.893);
-}
+} */
 
 
 

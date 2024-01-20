@@ -9,6 +9,7 @@ export default function RegistrationView(){
 
     return(
         <div className={stylesRegistrationRoute.containerLogin_SignUp_RegistrationRoute}>
+            
             <RegistrationForm/>
         </div>
     );

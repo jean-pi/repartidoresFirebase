@@ -6,19 +6,23 @@ import { useState, useEffect } from "react";
 import stylesLogin from "../../styles/styleComponets/login.module.css";
 import stylesText from "../../styles/texts.module.css";
 import uiStyles from "../../styles/uiStyles.module.css";
-//my componets
-import GoogleButton from "../loginSignupRegisterSistem/googleButton";
-import GithubButton from "../loginSignupRegisterSistem/githubButton";
+
+
 //firebase auth con mi clave de proyecto
 import { auth } from "../../firebase/firebaseMyConfig";
 //firebase metodos 
-import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode } from "firebase/auth";
-
+import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode,onAuthStateChanged} from "firebase/auth";
 
 // COSAS QUE NO ME GUSTAN
     // El manejo del estado del usuario, deberia ser con un context?
     // La vadidacion de datos, deberia ser en servidor
     // redireccion app o registration
+
+// ERROR que no entiendo
+    // Cunado entro por primera vez al link de verificacion, si se verifica, pero me manda un error de auth/invalid-action-code
+
+//ventajas y desventajas de firebase
+    //https://es.linkedin.com/pulse/cu%C3%A1les-son-las-ventajas-y-desventajas-de-usar-para-aguilar-bernabe
 
 
 export default function LoginEmailPasswordForm(){
@@ -36,25 +40,16 @@ export default function LoginEmailPasswordForm(){
      * 1: resend verification email
      * 2: this email is not verificate
      * 3: verification link is expired
-     * 4: link de verificacion pedido muchas veces
+     * 4: too many request verification
+     * 5: expired code
      */
 
-    
-    const [verificationState, setVerifcationState] = useState(0);
-    /**
-     * 0: null
-     * 1: verificado
-     * 2: verificado pero no registrado
-     * 3: no verificado
-     */
 
     // input states onchanges
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
-
-    
     const changeDetector = (e) =>{
         e.preventDefault();
         const {name, value} = e.target;
@@ -63,11 +58,6 @@ export default function LoginEmailPasswordForm(){
             [name] : value
         })
     }
-
- //ventajas y desventajas de firebase
- //https://es.linkedin.com/pulse/cu%C3%A1les-son-las-ventajas-y-desventajas-de-usar-para-aguilar-bernabe
-
-
 
 
 
@@ -79,7 +69,6 @@ export default function LoginEmailPasswordForm(){
         if(mode){
             async function applyVerification (actionCode){
                 try {
-                    console.log("aaa")
                     console.log(auth.currentUser);
                     await applyActionCode(auth, actionCode);
                     console.log("si se envio el actio code y luego se mando un error?")
@@ -87,7 +76,6 @@ export default function LoginEmailPasswordForm(){
                 } catch (error) {
                     if(error.code === "auth/invalid-action-code"){
                         setMessageVerificatedEmail(3);
-                        console.log(error)
                     }
                 }
             }
@@ -110,6 +98,9 @@ export default function LoginEmailPasswordForm(){
             if(error.code === "auth/too-many-requests"){
                 setMessageVerificatedEmail(4);
             }
+            if(error.code === "auth/expired-action-code"){
+                setMessageVerificatedEmail(5);
+            }
         }
     })
 
@@ -130,10 +121,30 @@ export default function LoginEmailPasswordForm(){
 
             if(isVerificated) {
                 setLoginComplete(true);
+                const user = auth.currentUser;
+                let userLocalStorage = {
+                    uid: user.uid,
+                    email: user.email,
+                    diplayName: user.displayName,
+                    emailVerified: user.emailVerified,
+                    photoURL: user.photoURL,
+                  }
+                localStorage.setItem("user",JSON.stringify(userLocalStorage));
+                //console.log(JSON.parse(localStorage.getItem("user")));
+
+                setTimeout(() => {
+                    if(user.displayName){
+                        navigate("/app")
+                    }
+                    if(!user.displayName){
+                        navigate("/registration")
+                    }
+                }, 400);
             }
             if(!isVerificated) {
                 setLoginComplete(false);
                 setMessageVerificatedEmail(2);
+                console.log(auth.currentUser)
             }
 
             setButtonLoading(false);
@@ -163,7 +174,7 @@ export default function LoginEmailPasswordForm(){
                 if(error.message === "password-empty"){
                     setErrorMesagge("Enter a password.");
                 }
-            }, 300);
+            }, 200);
 
         }
     })
@@ -175,10 +186,7 @@ export default function LoginEmailPasswordForm(){
             {loginComplete === false && (
                 <div className={stylesLogin.containerDivLoginComponent} >
                 <h1 className={stylesText.text3rem}>Log in</h1>
-                <GoogleButton/> 
-                {/* <GithubButton/>  */}
 
-                <div className={uiStyles.partingLine}></div>
 
                     {messageVerificatedEmail === 0 && (
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
@@ -201,15 +209,22 @@ export default function LoginEmailPasswordForm(){
                     {messageVerificatedEmail === 3 && (
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                            <b>Error: </b>verification link is expired. no se poque parece que si se verifica pero igual aparece el error invalid actio code 
-                            <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span> 
+                            <b>Error: </b>This verification link has already been used.
                             </p>
                         </div>
                     )}
                     {messageVerificatedEmail === 4 &&(
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                                <b>Error: </b>We have detected unusual activity with your account. Many verification requests. try it later.  
+                                <b>Error: </b>Too many requests. Verification email recently sent. Check your email  
+                            </p>
+                        </div>
+                    )}
+                            {messageVerificatedEmail === 5 && (
+                        <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
+                            <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
+                            <b>Error: </b>Verification link is expired. 
+                            <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span> 
                             </p>
                         </div>
                     )}
@@ -235,7 +250,7 @@ export default function LoginEmailPasswordForm(){
 
             {loginComplete === true &&(
                 <div className={stylesLogin.divLoadingLogin}>
-                    <span></span> Logining...
+                    <span></span> {auth.currentUser.displayName ? " Logining" : "Just one second"}
                 </div>
             )}
 

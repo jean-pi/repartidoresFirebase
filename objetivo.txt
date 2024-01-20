@@ -11,13 +11,20 @@ los motociclistas, la caja debe aparecer en color rojo y no me debe dejar
 tomar ese horario.
  
 
--sistema de confirmacion de registro
--eliminar un usuario luego de 30 dias
+errores
+// se verifica pero igual manda error de "codigo invalido, codigo ya usado"? podria simular el error en el frontend login.jsx
+// en app cuando recargo se quiebra toda la aplicacion
+
+-detalle: agregar un link al login si el email ya es usado, cambiar pequeños texto, flecha para ir para atras ✅
+-sistema de confirmacion de registro ✅
+-feekback de vista registro
 -redireccion programatica
 -url con seguridad que la url de app sea inaxesible si no se logea
 -recuperar constraseña
--agregar cofirmar password
--seguridad en firebase estorage
--firebase functions para mandar execiones personlaizadas, como el niver de segurirdad de contraseña y campos vacios (auth/empty) y eliminar cuntas no verificadas   
--exportar las dependencias que solo utilizo no todo las dependecias de firebase 
+-agregar cofirmar password 
+
+
 -comprobar todos los errores que arroja los metodos de firebase de cada metodo
+-seguridad en firebase estorage, comprimir imagenes
+-firebase functions: eliminar un usuario luego de 30 dias, validar contraseña mas segura, validad si el usuario esta verificado desde el servidos
+-exportar las dependencias que solo utilizo no todo las dependecias de firebase 

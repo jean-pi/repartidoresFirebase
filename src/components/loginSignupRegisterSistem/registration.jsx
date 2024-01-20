@@ -18,28 +18,34 @@ import emptyUserImage from "../../img/empty-avatar.png";
 
 export default function RegistrationForm(){
 
-    let registrationSubmit = useRef();
     let imgUserImage = useRef();
+
     let navigate = useNavigate();
 
-    const [submitState, setSubmitState] = useState("disabled");
     const [values, setValues] = useState({
         userPhoto : emptyUserImage,
         nameUser: "",
-        // dateBirth: "",
     });
 
-    
-    //OnChange: input name 
     const handleInputChangeValues = (e) =>{
         const {name,value} = e.target;
         setValues({
             ...values,
             [name] : value,
-        });
+        }); 
     }
 
-    //OnChanges: input file
+    //  ----------------------------------
+    // FOPRMAS DE AGREGAR Y CLASES
+
+    // const condition_1 = true;
+    // const condition_2 = false;
+
+    //  ${condition_1 ? 'class_1' : 'class_2'}
+    //  ${condition_2 ? 'class_3' : ''}`} /> // => "class_0 class_1"
+    
+
+
     const handleInputChangeFiles = (e) =>{
         if(e.target.files[0]){
             const reader = new FileReader();
@@ -56,58 +62,39 @@ export default function RegistrationForm(){
         }
     }
 
-    useEffect(()=>{
-        const obtSubmitState = {
-            ...(submitState === "disabled" && "buttonSubmit2_disabled"),
-            ...(submitState === "active" && "buttonSubmit2_active"),
-            ...(submitState === "loading" && "buttonSubmit2_loading")
-        };
-        if(values.nameUser){
-            setSubmitState("active");
-            // registrationSubmit.current.classList.remove(uiStyless.buttonSubmit2_active);
-            // registrationSubmit.current.disabled = true;
-        } else{
-            setSubmitState("disabled")
-            // registrationSubmit.current.classList.add(uiStyless.buttonSubmit2_active);
-            // registrationSubmit.current.disabled = false;
-        }
-    },[values])
-
-
-    //submit: form
     const formSubmit = async (e) =>{
         e.preventDefault();
-        console.log(submitState)
         try {
-            setSubmitState("loading");
-            // registrationSubmit.current.classList.remove(uiStyless.buttonSubmit2_active);
-            // registrationSubmit.current.classList.add(uiStyless.buttonSubmit2_loading);
-            const refUserAvatar = ref(storage, `avatausers/useravatar:${auth.currentUser.uid}`);
+            const refUserAvatar = ref(storage, `avatarUsers/useravatar:${auth.currentUser.uid}`);
             await uploadString(refUserAvatar, values.userPhoto, "data_url");
             let urlServerImg = await getDownloadURL(refUserAvatar);
             await updateProfile(auth.currentUser,{
-                displayName: values.name, 
+                displayName: values.nameUser, 
                 photoURL: urlServerImg,
             });
-            setSubmitState("disabled");
-            // registrationSubmit.current.classList.remove(uiStyless.buttonSubmit2_loading)
-            // registrationSubmit.current.classList.add(uiStyless.buttonSubmit2_active);
-            //navigate("/app")
-            console.log(values)
+            navigate("/app")
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    const logOut = async () =>{
+        try {
+            console.log(auth.currentUser);
+            console.log("se cerro sesion")
+            let a=await auth.signOut();
+            console.log(a)
         } catch (error) {
             console.log(error)
         }
     }
-
-    //storageFirebase pide configurar las reglas de acceso publico
-    //se puede tener varios buckets(ubicaciones de servidores al rededor del mundo)
-    
-
-
+ 
     return (
         <div className={stylesRegistration.registrationContainerComponent}>
             <h1 className={stylesRegistration.h1}>Welcome</h1>
             <h3 className={stylesRegistration.h3}>First things first, tell us a bit about yourself.</h3>
+
             <form className={stylesRegistration.registrationForm} tabIndex={0} onSubmit={formSubmit}>
                 <img className={stylesRegistration.image} src={values.userPhoto} alt="avatar" ref={imgUserImage} />
                 <div  className={stylesRegistration.buttonAddFotoContainer}>
@@ -124,16 +111,15 @@ export default function RegistrationForm(){
                 </div>
                 <span className={stylesText.text070rem}>What should we call you?</span>
                 <input tabIndex={"0"} className={uiStyless.inputText} type="text" name="nameUser" value={values.nameUser} onChange={handleInputChangeValues} autoComplete="off" placeholder="e.g. Ada Lovelace, Ada, AL" />
-                <span className={stylesText.text070rem}>What about your date of birth?</span>
-                <input className={uiStyless.inputText} type="date" name="dateBirth" value={values.dateBirth} onChange={handleInputChangeValues}  />  
-                <button tabIndex={"0"} className={`${uiStyless.buttonSubmit2} ${uiStyless.obtSubmitState}`} type="submit" ref={registrationSubmit} disabled = {submitState == "loading" || submitState == "disabled" ? true : false   } >
+                {/* <span className={stylesText.text070rem}>What about your date of birth?</span>
+                <input className={uiStyless.inputText} type="date" name="dateBirth" value={values.dateBirth} onChange={handleInputChangeValues}  />   */}
+                <button tabIndex={"0"} className={`${uiStyless.buttonSubmit2} ${values.nameUser.length > 0 ? uiStyless.buttonSubmit2_active : "" }`} type="submit" disabled = {values.nameUser? false: true}>
                     <span></span>
                     Continue
                 </button>
-                
             </form>
             <p className={stylesText.text070rem}>Didn't intend to create a new account?</p>
-                <Link to={"/"} tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>
+                <Link to={"/login"} tabIndex={"0"} onClick={logOut} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>
         </div>
     );
 }

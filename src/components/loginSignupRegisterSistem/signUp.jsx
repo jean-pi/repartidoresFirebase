@@ -10,9 +10,7 @@ import { Link } from "react-router-dom";
 import stylesSignUp from "../../styles/styleComponets/signUp.module.css";
 import stylesText from "../../styles/texts.module.css";
 import uiStyles from "../../styles/uiStyles.module.css";
-//my component
-import GoogleButton from "../loginSignupRegisterSistem/googleButton";
-import GithubButton from "../loginSignupRegisterSistem/githubButton";
+
 
 export default function SignUpEmailPasswordForm(){
     
@@ -23,12 +21,11 @@ export default function SignUpEmailPasswordForm(){
     const [errorMessage, setErrorMesagge] = useState("");
     const [buttonLoading, setButtonLoading] = useState(false);
     const [isRegistrer, setIsRegistrer] = useState(false);
-
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
-
+    
     const inputsOnchange = (e) =>{
         const {name, value}= e.target;
         setValues({
@@ -117,9 +114,6 @@ export default function SignUpEmailPasswordForm(){
                         )
                     }
                 </form>
-                <div className={uiStyles.partingLine}></div>
-                <GoogleButton/> 
-                {/* <GithubButton/>  */}
                 <div className={stylesText.text070rem}>Do you already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/login">Login now</Link></div>
         </div>
     );

@@ -9,6 +9,29 @@
 }
 
 
+.linkBack{
+    text-decoration: none;
+}
+.divBack{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    padding: .1rem .2rem ;
+}
+
+
+.divBack_img{
+    left: .7rem;
+    width: .7rem;
+    background-color: rgba(255, 255, 255, 0.167);
+    margin-right: .3rem;
+}
+
+
+
 
 
 
