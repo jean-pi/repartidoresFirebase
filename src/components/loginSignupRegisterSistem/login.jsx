@@ -63,20 +63,22 @@ export default function LoginEmailPasswordForm(){
 
 
     useEffect( () => {
-        const ulrParams = new URLSearchParams(window.location.search);
+        let url = window.location.search;
+        const ulrParams = new URLSearchParams(url);
         let oobCode = ulrParams.get("oobCode");
-        let mode = ulrParams.get("mode")
-        if(mode){
+       
+        if(oobCode){
+            console.log(auth.currentUser)
             async function applyVerification (actionCode){
                 try {
                     console.log(auth.currentUser);
                     await applyActionCode(auth, actionCode);
-                    console.log("si se envio el actio code y luego se mando un error?")
                     setMessageVerificatedEmail(0);
                 } catch (error) {
                     if(error.code === "auth/invalid-action-code"){
                         setMessageVerificatedEmail(3);
                     }
+                    console.log("error")
                 }
             }
             applyVerification(oobCode);
@@ -139,7 +141,7 @@ export default function LoginEmailPasswordForm(){
                     if(!user.displayName){
                         navigate("/registration")
                     }
-                }, 400);
+                }, 500);
             }
             if(!isVerificated) {
                 setLoginComplete(false);
@@ -182,7 +184,6 @@ export default function LoginEmailPasswordForm(){
     return (
         <div className={stylesLogin.containerLoginComponent}>
 
-
             {loginComplete === false && (
                 <div className={stylesLogin.containerDivLoginComponent} >
                 <h1 className={stylesText.text3rem}>Log in</h1>
@@ -190,7 +191,7 @@ export default function LoginEmailPasswordForm(){
 
                     {messageVerificatedEmail === 0 && (
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
-                            <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Your account has been successfully verified! You can log in now.</p>
+                            <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Your account has been successfully verified! You can login now.</p>
                         </div>
                     )}
                     {messageVerificatedEmail === 1 && (
@@ -209,7 +210,7 @@ export default function LoginEmailPasswordForm(){
                     {messageVerificatedEmail === 3 && (
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                            <b>Error: </b>This verification link has already been used.
+                            <b>Error: </b>This code has already been used or has expired
                             </p>
                         </div>
                     )}
@@ -249,7 +250,7 @@ export default function LoginEmailPasswordForm(){
             
 
             {loginComplete === true &&(
-                <div className={stylesLogin.divLoadingLogin}>
+                <div className={uiStyles.divLoading}>
                     <span></span> {auth.currentUser.displayName ? " Logining" : "Just one second"}
                 </div>
             )}

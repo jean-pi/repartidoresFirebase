@@ -11,17 +11,17 @@ los motociclistas, la caja debe aparecer en color rojo y no me debe dejar
 tomar ese horario.
  
 
+
 errores
 // se verifica pero igual manda error de "codigo invalido, codigo ya usado"? podria simular el error en el frontend login.jsx
 // en app cuando recargo se quiebra toda la aplicacion
 
 -detalle: agregar un link al login si el email ya es usado, cambiar pequeños texto, flecha para ir para atras ✅
 -sistema de confirmacion de registro ✅
--feekback de vista registro
--redireccion programatica
--url con seguridad que la url de app sea inaxesible si no se logea
+-error de email confirmated y confirmar contraseña en sing up ✅
+-feekback de vista registro✅
+-redireccion programatica, bloquear urls
 -recuperar constraseña
--agregar cofirmar password 
 
 
 -comprobar todos los errores que arroja los metodos de firebase de cada metodo

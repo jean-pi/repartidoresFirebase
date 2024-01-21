@@ -11,12 +11,17 @@ import { ref, uploadString, getDownloadURL } from "firebase/storage";
 //css
 import stylesRegistration from "../../styles/styleComponets/registration.module.css";
 import stylesText from "../../styles/texts.module.css"
-import uiStyless from "../../styles/uiStyles.module.css"
+import uiStyles from "../../styles/uiStyles.module.css"
 //img
 import emptyUserImage from "../../img/empty-avatar.png";
 
 
+
+
 export default function RegistrationForm(){
+
+    const [registerComplete, setRegisterComplete] = useState(false);
+    const [buttonTreeStates, setButtonTreeStates] = useState(uiStyles.buttonSubmit2)
 
     let imgUserImage = useRef();
 
@@ -33,6 +38,12 @@ export default function RegistrationForm(){
             ...values,
             [name] : value,
         }); 
+
+        if(value === ""){
+            setButtonTreeStates(uiStyles.buttonSubmit2)
+        } else {
+            setButtonTreeStates(uiStyles.buttonSubmit2_active)
+        }
     }
 
     //  ----------------------------------
@@ -64,6 +75,7 @@ export default function RegistrationForm(){
 
     const formSubmit = async (e) =>{
         e.preventDefault();
+        setButtonTreeStates(uiStyles.buttonSubmit2_loading)
         try {
             const refUserAvatar = ref(storage, `avatarUsers/useravatar:${auth.currentUser.uid}`);
             await uploadString(refUserAvatar, values.userPhoto, "data_url");
@@ -72,7 +84,10 @@ export default function RegistrationForm(){
                 displayName: values.nameUser, 
                 photoURL: urlServerImg,
             });
-            navigate("/app")
+            setRegisterComplete(true);
+            setTimeout(() => {
+                navigate("/app")
+            }, 800);
         } catch (error) {
             console.log(error);
         }
@@ -89,37 +104,50 @@ export default function RegistrationForm(){
             console.log(error)
         }
     }
- 
-    return (
-        <div className={stylesRegistration.registrationContainerComponent}>
-            <h1 className={stylesRegistration.h1}>Welcome</h1>
-            <h3 className={stylesRegistration.h3}>First things first, tell us a bit about yourself.</h3>
 
-            <form className={stylesRegistration.registrationForm} tabIndex={0} onSubmit={formSubmit}>
-                <img className={stylesRegistration.image} src={values.userPhoto} alt="avatar" ref={imgUserImage} />
-                <div  className={stylesRegistration.buttonAddFotoContainer}>
-                    <input tabIndex={"0"} 
-                    className={stylesRegistration.buttonAddFoto} 
-                    files={values.userPhoto} 
-                    onChange={handleInputChangeFiles} 
-                    name="userPhoto" 
-                    type="file" 
-                    aria-label="foto ususario"
-                    accept="image/png, image/jpeg"
-                    />
-                    add a photo
+    
+    return (
+        <div>
+
+
+            {registerComplete === false && (
+                <div className={stylesRegistration.registrationContainerComponent}>
+                    <h1 className={stylesRegistration.h1}>Welcome</h1>
+                    <h3 className={stylesRegistration.h3}>First things first, tell us a bit about yourself.</h3>
+
+                    <form className={stylesRegistration.registrationForm} tabIndex={0} onSubmit={formSubmit}>
+                        <img className={stylesRegistration.image} src={values.userPhoto} alt="avatar" ref={imgUserImage} />
+                        <div  className={stylesRegistration.buttonAddFotoContainer}>
+                            <input tabIndex={"0"} 
+                            className={stylesRegistration.buttonAddFoto} 
+                            files={values.userPhoto} 
+                            onChange={handleInputChangeFiles} 
+                            name="userPhoto" 
+                            type="file" 
+                            aria-label="foto ususario"
+                            accept="image/png, image/jpeg"
+                            />
+                            add a photo
+                        </div>
+                        <span className={stylesText.text070rem}>What should we call you?</span>
+                        <input tabIndex={"0"} className={uiStyles.inputText} type="text" name="nameUser" value={values.nameUser} onChange={handleInputChangeValues} autoComplete="off" placeholder="e.g. Ada Lovelace, Ada, AL" />
+                        <button tabIndex={"0"} className={buttonTreeStates} type="submit" disabled = {values.nameUser? false: true}>
+                            <span></span>
+                            Continue
+                        </button>
+                    </form>
+                    <p className={stylesText.text070rem}>Didn't intend to create a new account?</p>
+                        <Link to={"/login"} tabIndex={"0"} onClick={logOut} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>
                 </div>
-                <span className={stylesText.text070rem}>What should we call you?</span>
-                <input tabIndex={"0"} className={uiStyless.inputText} type="text" name="nameUser" value={values.nameUser} onChange={handleInputChangeValues} autoComplete="off" placeholder="e.g. Ada Lovelace, Ada, AL" />
-                {/* <span className={stylesText.text070rem}>What about your date of birth?</span>
-                <input className={uiStyless.inputText} type="date" name="dateBirth" value={values.dateBirth} onChange={handleInputChangeValues}  />   */}
-                <button tabIndex={"0"} className={`${uiStyless.buttonSubmit2} ${values.nameUser.length > 0 ? uiStyless.buttonSubmit2_active : "" }`} type="submit" disabled = {values.nameUser? false: true}>
-                    <span></span>
-                    Continue
-                </button>
-            </form>
-            <p className={stylesText.text070rem}>Didn't intend to create a new account?</p>
-                <Link to={"/login"} tabIndex={"0"} onClick={logOut} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>
+            )}
+            
+            {registerComplete === true && (
+                <div className={uiStyles.divLoading}>
+                   <span></span> {"Creating account..."}
+                </div>
+            )}
+            
+    
         </div>
     );
 }

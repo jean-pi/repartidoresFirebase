@@ -24,6 +24,7 @@ export default function SignUpEmailPasswordForm(){
     const [values, setValues] = useState({
         email: "",
         password: "",
+        passwordRepeat: "",
     });
     
     const inputsOnchange = (e) =>{
@@ -48,10 +49,12 @@ export default function SignUpEmailPasswordForm(){
         e.preventDefault();
         setButtonLoading(true);
         setIsRegistrer(false);
+        setErrorMesagge("");
         try {
-
-            if(values.email === "") throw Error("email-empty");
-            if(values.password === "") throw Error("password-empty")
+            // if(values.email === "") throw Error("email-empty");
+            // if(values.password === "") throw Error("password-empty")
+            if(values.email === "" || values.password === "" || values.passwordRepeat === "") throw Error("empty-fields")
+            if(values.password != values.passwordRepeat) throw Error("passwords-dont-match")
             // if(!parametroPassword.test(values.password)) throw Error(errors.passwordWeak.codeErr); 
             
             await createUserWithEmailAndPassword(auth,values.email,values.password);
@@ -62,24 +65,29 @@ export default function SignUpEmailPasswordForm(){
             setValues({
                 email: "",
                 password: "",
+                passwordRepeat: "",
             });
 
         } catch (err) {
             setTimeout(() => {     
                 setButtonLoading(false);
                 setIsRegistrer(false)
-                if(err.code === "auth/internal-error") {
-                    setErrorMesagge("Internal error try again later");
-                }  
+                console.log(err)
                 if(err.code === "auth/email-already-in-use") {
                     setErrorMesagge("Email already in use.");
                 }  
-                if(err.message === "email-empty"){
-                    setErrorMesagge("Enter an email address.");
+                if(err.code === "auth/internal-error") {
+                    setErrorMesagge("Internal error try again later");
+                }  
+                if(err.message === "passwords-dont-match") {
+                    setErrorMesagge("Passwords don't match, try again");
+                } 
+                if(err.message === "empty-fields"){
+                    setErrorMesagge("Please fill out the fields");
                 }
-                if(err.message === "password-empty"){
-                    setErrorMesagge("Enter a password.");
-                }
+                // if(err.message === "password-empty"){
+                //     setErrorMesagge("Enter a password.");
+                // }
                 if(err.code === "auth/weak-password"){
                     setErrorMesagge("Make sure it's at least at least 6 characters.");
                 }
@@ -93,6 +101,9 @@ export default function SignUpEmailPasswordForm(){
 
     return (
         <div className={stylesSignUp.containerLoginSignUpEmailPassword} >
+
+
+
                 <h1 className={stylesText.text3rem}>Sign up</h1>
                 <form className={stylesSignUp.formLoginSignUpContainer} action="" onSubmit={submitCreateUser} >
 
@@ -101,12 +112,12 @@ export default function SignUpEmailPasswordForm(){
                     <span className={stylesText.text070rem}>Password</span>
                     <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.password} type="password" name="password" autoComplete="off" placeholder="Create a new password..." />
                     <span className={stylesText.text070rem}>Confirm password</span>
-                    <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.password} type="password" name="password" autoComplete="off" placeholder="Confirm your new password..." />
+                    <input className={uiStyles.inputText} onChange={inputsOnchange} value={values.passwordRepeat} type="password" name="passwordRepeat" autoComplete="off" placeholder="Confirm your new password..." />
+                    <span className={stylesText.textError}>{errorMessage}</span>
                     <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
                         <span></span>
                         Continue with email
                     </button>
-                    <span className={stylesText.textError}>{errorMessage}</span>
                     {isRegistrer &&(
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>User registered. Verify your email by clicking on the link sent to your email. If you don't receive the link, please check in your spam box.</p>
@@ -114,6 +125,7 @@ export default function SignUpEmailPasswordForm(){
                         )
                     }
                 </form>
+                <div className={uiStyles.partingLine}></div>
                 <div className={stylesText.text070rem}>Do you already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/login">Login now</Link></div>
         </div>
     );

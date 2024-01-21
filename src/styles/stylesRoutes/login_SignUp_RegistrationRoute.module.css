@@ -10,17 +10,25 @@
 
 
 .linkBack{
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
     text-decoration: none;
+    border: 2px solid rgba(11, 168, 252, 0);
+
 }
+.linkBack:focus{
+    border: 2px solid rgba(11, 168, 252, 0.893);
+}
+
+
 .divBack{
     background-color: rgb(0, 0, 0);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    position: absolute;
-    top: 2rem;
-    left: 3rem;
     padding: .1rem .2rem ;
 }
+
 
 
 .divBack_img{

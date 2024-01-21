@@ -127,18 +127,63 @@
 }
 
 
-.buttonSubmit2>span{
+
+.buttonSubmit2_active{ /*button activo*/
+    background-color: rgba(11, 168, 252, 0.893);
+    border: 1px solid rgb(6, 156, 236);
+    margin: .5rem 0;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 20rem;
+    height: 2rem;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: .5rem ;
+    font-size: .8rem;
+    font-weight:700;
+    letter-spacing: 1px;
+    cursor: initial;
+}
+
+.buttonSubmit2_active:hover{
+    background-color: rgb(34, 171, 245);
+}
+.buttonSubmit2_active:focus{
+    outline: 1px solid rgba(7, 168, 255, 0.559);
+}
+.buttonSubmit2_active:active{
+    background-color: rgba(2, 147, 224, 0.893);
+}
+
+
+
+.buttonSubmit2_loading{
+    width: 20rem;
+    height: 2rem;
+    background-color: rgba(118, 204, 251, 0.893);
+    border: 1px solid rgb(81, 192, 252);
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: .5rem ;
+    font-size: .8rem;
+    margin: .5rem 0;
+    color: rgba(255, 255, 255, 0.686);
+    font-weight:700;
+    letter-spacing: 1px;
+    cursor: initial;
+}
+.buttonSubmit2_loading>span{
     width: 11px;
     height: 11px;
     background-color: rgba(118, 204, 251, 0.893);
     border: 1px solid rgb(81, 192, 252);
     position: relative;
     top: .08rem;
+    display: inline-block;
     right: .3rem;
     border: 2px solid rgba(255, 255, 255, 0.566);
     border-bottom-color: transparent;
     border-radius: 50%;
-    display: none;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
     }
@@ -152,32 +197,42 @@
 }
 
 
-.buttonSubmit2_loading>span{ /*loading*/
+
+
+
+/* ---------------------------------------------------------*/
+
+.divLoading{
+    padding: .8rem 1.4rem;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.242);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .9rem;
+    box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
+    -webkit-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.118);
+    -moz-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
+}
+.divLoading>span{
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(108, 107, 107, 0.286);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    position: relative;
+    top: .14rem;
+    right: .2rem;
     display: inline-block;
+    box-sizing: border-box;
+    animation: rotation .8s linear infinite;
+    }
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
-.buttonSubmit2_loading{
-    background-color: rgba(118, 204, 251, 0.893);
-    border: 1px solid rgb(81, 192, 252);
-}
-
-
-.buttonSubmit2_active{ /*button activo*/
-    background-color: rgba(11, 168, 252, 0.893);
-    border: 1px solid rgb(6, 156, 236);
-    margin: .5rem 0;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-.buttonSubmit2_active:hover{
-    background-color: rgb(34, 171, 245);
-}
-.buttonSubmit2_active:focus{
-    outline: 1px solid rgba(7, 168, 255, 0.559);
-}
-.buttonSubmit2_active:active{
-    background-color: rgba(2, 147, 224, 0.893);
-}
-
 
 
 /* -------------------------------------------------------- */

@@ -23,36 +23,3 @@
 /* ---------------------------------------------- */
 
 
-.divLoadingLogin{
-    padding: .8rem 1.4rem;
-    border-radius: 6px;
-    color: rgba(0, 0, 0, 0.242);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .9rem;
-    border: 1px solid rgba(183, 183, 183, 0.87);
-    box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
-    -webkit-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.118);
-    -moz-box-shadow: 0px 0px 20px -4px rgba(155, 154, 154, 0.166);
-}
-.divLoadingLogin>span{
-    width: 14px;
-    height: 14px;
-    border: 2px solid rgba(108, 107, 107, 0.286);
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    position: relative;
-    top: .14rem;
-    right: .2rem;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation .8s linear infinite;
-    }
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-

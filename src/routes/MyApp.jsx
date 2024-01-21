@@ -10,7 +10,7 @@ import { auth } from "../firebase/firebaseMyConfig";
 
 
 export default function MyApp(){
-    console.log(auth.currentUser)
+    let user = auth.currentUser;
     return(
         <div className={stylesMyApp.contenedorApp}>
 
@@ -31,15 +31,14 @@ export default function MyApp(){
             
             <br /><LogoutButton/><br />
             
-            {/* {`uid = ${user.uid}`} <br />
+            {`uid = ${user.uid}`} <br />
             {`displayName = ${user.displayName}`} <br />
             {`email = ${user.email}`} <br />
             {`verified? = ${user.emailVerified}`} <br />
             {`photoURL = ${user.photoURL}`} <br />
-            {`provider data = ${user.providerData}`} <br /> */}
-            
-            
+            <img src={user.photoURL} alt="" />
 
+            
         </div>
     );
 }

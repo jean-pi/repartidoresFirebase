@@ -23,36 +23,7 @@
 
 /* --------------------------------------------------- */
 
-.divLoading{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-}
 
-.divLoadingSpan{
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(108, 107, 107, 0.395);
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    }
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
 
 /* --------------------------------------------------- */
 
