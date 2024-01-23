@@ -122,8 +122,11 @@ export default function LoginEmailPasswordForm(){
             const isVerificated = signUser.user.emailVerified;
 
             if(isVerificated) {
+
                 setLoginComplete(true);
+
                 const user = auth.currentUser;
+
                 let userLocalStorage = {
                     uid: user.uid,
                     email: user.email,
@@ -131,6 +134,7 @@ export default function LoginEmailPasswordForm(){
                     emailVerified: user.emailVerified,
                     photoURL: user.photoURL,
                   }
+                  
                 localStorage.setItem("user",JSON.stringify(userLocalStorage));
                 //console.log(JSON.parse(localStorage.getItem("user")));
 
@@ -143,10 +147,17 @@ export default function LoginEmailPasswordForm(){
                     }
                 }, 500);
             }
+
             if(!isVerificated) {
                 setLoginComplete(false);
                 setMessageVerificatedEmail(2);
                 console.log(auth.currentUser)
+                auth.signOut()
+                .then(()=>{
+                    console.log("cuenta no verificada logOut automatico")
+                },err => {
+                    console.log(err);
+                })
             }
 
             setButtonLoading(false);

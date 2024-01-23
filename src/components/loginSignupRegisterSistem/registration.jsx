@@ -97,7 +97,8 @@ export default function RegistrationForm(){
     const logOut = async () =>{
         try {
             console.log(auth.currentUser);
-            console.log("se cerro sesion")
+            console.log("se cerro sesion, porque se quiere logear con otra cuenta")
+            localStorage.clear();
             let a=await auth.signOut();
             console.log(a)
         } catch (error) {

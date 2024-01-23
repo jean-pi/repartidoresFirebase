@@ -19,10 +19,10 @@ import { useNavigate } from "react-router-dom";
             auth.signOut()
                 .then(()=>{
                     console.log("signOut");
+                    localStorage.clear();
                     navigate("/login")
                 },err => {
                     console.log(err);
-                    console.log("hubo un error al lasir d ela cuenta        ")
                 })
         }
 
