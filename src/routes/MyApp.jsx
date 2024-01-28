@@ -31,12 +31,12 @@ export default function MyApp(){
             
             <br /><LogoutButton/><br />
             
-            {`uid = ${user.uid}`} <br />
+            {/* {`uid = ${user.uid}`} <br />
             {`displayName = ${user.displayName}`} <br />
             {`email = ${user.email}`} <br />
             {`verified? = ${user.emailVerified}`} <br />
             {`photoURL = ${user.photoURL}`} <br />
-            <img src={user.photoURL} alt="" />
+            <img src={user.photoURL} alt="" /> */}
 
             
         </div>

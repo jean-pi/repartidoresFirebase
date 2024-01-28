@@ -21,23 +21,12 @@ import {useNavigate} from "react-router-dom"
 
 function App() {
 
-  console.log(JSON.parse(localStorage.getItem("user")));
+
 
   const navigate = useNavigate()
 
   useEffect( () => {
     let dataUserLocalStorage = JSON.parse(localStorage.getItem("user"));
-
-    // diplayName: "a"
-    // email: "jeanpierreveliz26@gmail.com"
-    // emailVerified: truephotoURL: 
-    // "https://firebasestorage.googleapis.com/v0/b/proyect101-f914e.appspot.com/o/avatarUsers%2Fuseravatar%3ANHPpqP81rkg7O3lbPYhrNjhRCvA3?alt=media&token=2aef81d7-367c-434f-abaf-c3ff066eb8bc"
-    // uid: "NHPpqP81rkg7O3lbPYhrNjhRCvA3"
-    
-    // if (dataUserLocalStorage === null) {
-    //     navigate("/presentacion");
-    // }
-
     if(dataUserLocalStorage){
       if (!dataUserLocalStorage.diplayName) {
         navigate("/registration");

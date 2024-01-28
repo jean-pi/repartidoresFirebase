@@ -92,9 +92,15 @@ export default function LoginEmailPasswordForm(){
 
     const resendVerification=( async (e) =>{
         try {
+
             const a = await sendEmailVerification(auth.currentUser);
             setMessageVerificatedEmail(1);
-            
+            auth.signOut()
+            .then(()=>{
+               //cierra sesion cuando se envia en link de verificacion
+            },err => {
+                console.log(err);
+            })
         } catch (error) {    
             console.log(error)
             if(error.code === "auth/too-many-requests"){
@@ -152,12 +158,6 @@ export default function LoginEmailPasswordForm(){
                 setLoginComplete(false);
                 setMessageVerificatedEmail(2);
                 console.log(auth.currentUser)
-                auth.signOut()
-                .then(()=>{
-                    console.log("cuenta no verificada logOut automatico")
-                },err => {
-                    console.log(err);
-                })
             }
 
             setButtonLoading(false);
@@ -213,8 +213,9 @@ export default function LoginEmailPasswordForm(){
                     {messageVerificatedEmail === 2 &&(
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                                <b>Error: </b>This account is still pending approval. Verify your email by clicking on the link sent to your email.  
+                                <b>Error: </b>This account is still pending approval. Non-active accounts are automatically deleted after 30 days please verify your email by clicking on the link sent to your email, if you don't receive the link check in your spam box.
                                 <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span> 
+                                
                             </p>
                         </div>
                     )}

@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
                 .then(()=>{
                     console.log("signOut");
                     localStorage.clear();
-                    navigate("/login")
+                    navigate("/presentacion")
                 },err => {
                     console.log(err);
                 })

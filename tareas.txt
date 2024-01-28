@@ -12,15 +12,12 @@ tomar ese horario.
  
 
 
-errores
-// se verifica pero igual manda error de "codigo invalido, codigo ya usado"? podria simular el error en el frontend login.jsx
-// en app cuando recargo se quiebra toda la aplicacion
-
 -detalle: agregar un link al login si el email ya es usado, cambiar pequeños texto, flecha para ir para atras ✅
 -sistema de confirmacion de registro ✅
 -error de email confirmated y confirmar contraseña en sing up ✅
 -feekback de vista registro✅
 -redireccion programatica, bloquear urls
+-permitir ver contraseña contraseña
 -recuperar constraseña
 
 

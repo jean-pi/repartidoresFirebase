@@ -84,10 +84,22 @@ export default function RegistrationForm(){
                 displayName: values.nameUser, 
                 photoURL: urlServerImg,
             });
+            
+            const user = auth.currentUser;
+            let userLocalStorage = {
+                uid: user.uid,
+                email: user.email,
+                diplayName: values.nameUser,
+                emailVerified: user.emailVerified,
+                photoURL: urlServerImg,
+              }
+            localStorage.setItem("user",JSON.stringify(userLocalStorage));
+            
             setRegisterComplete(true);
             setTimeout(() => {
                 navigate("/app")
             }, 800);
+            
         } catch (error) {
             console.log(error);
         }
