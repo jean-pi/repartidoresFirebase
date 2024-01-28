@@ -2,7 +2,7 @@
 .text3rem{
     font-size: 3rem;
     font-family: Helvetica, sans-serif;
-    margin:  0.5rem 0 2rem 0;
+    margin:  0.5rem 0 1.4rem 0;
 }
 
 
@@ -14,11 +14,20 @@
     color: rgba(0, 0, 0, 0.575);
     line-height: .9rem;
 }
-.text070remLink{
-    color: rgba(0, 0, 0, 0.542);
-    margin-bottom: .4rem;
-    text-decoration: underline;
+
+.text070remCenter{    
+    font-family: Helvetica, sans-serif;
+    font-size: .75rem;
+    color: rgba(0, 0, 0, 0.575);
+    line-height: .9rem;
+    margin: auto;
 }
+
+/* .text070remLink{
+    color: rgba(0, 0, 0, 0.542);
+    text-decoration: underline;
+    margin: 0 auto 10rem auto;
+} */
 .text070remStriking{
     color: rgba(255, 63, 63, 0.696);
     margin-bottom: .4rem;
@@ -43,11 +52,10 @@
 /* -------------------------------------------------- */
 
 .textError{
-    color: rgba(216, 5, 5, 0.637);
+    color: rgba(216, 5, 5, 0.516);
     text-align: center;
     font-size: .92rem;
     font-family: Helvetica, sans-serif;
-    margin: .5rem 0 .6rem;
 }
 
 .cursiva1rem{

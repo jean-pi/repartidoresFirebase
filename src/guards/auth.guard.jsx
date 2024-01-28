@@ -2,11 +2,11 @@ import {Navigate, Outlet} from "react-router-dom";
 import { publicRoutes } from "../models/routes";
 
 
-export const authGuard = () =>{
+export const AuthGuard = () =>{
     const dataUserLocalStorage = JSON.parse(localStorage.getItem("user"));
-    console.log("zz")
+    console.log(dataUserLocalStorage)
     return dataUserLocalStorage? <Outlet/> : <Navigate replace to={publicRoutes.LOGIN_PUBLIC}/>
 };
 
 
-export default authGuard;   
+export default AuthGuard;   

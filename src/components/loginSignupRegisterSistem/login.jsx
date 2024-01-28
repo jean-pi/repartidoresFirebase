@@ -10,7 +10,7 @@ import uiStyles from "../../styles/uiStyles.module.css";
 
 //firebase auth con mi clave de proyecto
 import { auth } from "../../firebase/firebaseMyConfig";
-//firebase metodos 
+//firebase metodos
 import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode,onAuthStateChanged} from "firebase/auth";
 import { publicRoutes, restrictedRoutes } from "../../models/routes";
 
@@ -67,7 +67,7 @@ export default function LoginEmailPasswordForm(){
         let url = window.location.search;
         const ulrParams = new URLSearchParams(url);
         let oobCode = ulrParams.get("oobCode");
-       
+
         if(oobCode){
             console.log(auth.currentUser)
             async function applyVerification (actionCode){
@@ -83,7 +83,7 @@ export default function LoginEmailPasswordForm(){
                 }
             }
             applyVerification(oobCode);
-        } 
+        }
     }, []);
 
 
@@ -102,7 +102,7 @@ export default function LoginEmailPasswordForm(){
             },err => {
                 console.log(err);
             })
-        } catch (error) {    
+        } catch (error) {
             console.log(error)
             if(error.code === "auth/too-many-requests"){
                 setMessageVerificatedEmail(4);
@@ -121,11 +121,12 @@ export default function LoginEmailPasswordForm(){
         e.preventDefault();
         setButtonLoading(true);
         setMessageVerificatedEmail();
+        setErrorMesagge("")
         try {
             if(values.email === "") throw Error("email-empty")
             if(values.password === "") throw Error("password-empty");
-            
-            const signUser = await signInWithEmailAndPassword(auth, values.email, values.password); 
+
+            const signUser = await signInWithEmailAndPassword(auth, values.email, values.password);
             const isVerificated = signUser.user.emailVerified;
 
             if(isVerificated) {
@@ -141,7 +142,7 @@ export default function LoginEmailPasswordForm(){
                     emailVerified: user.emailVerified,
                     photoURL: user.photoURL,
                   }
-                  
+
                 localStorage.setItem("user",JSON.stringify(userLocalStorage));
                 //console.log(JSON.parse(localStorage.getItem("user")));
 
@@ -172,16 +173,16 @@ export default function LoginEmailPasswordForm(){
                 }
                 if(error.code === "auth/internal-error") {
                     setErrorMesagge("Internal error, try again later.");
-                }   
+                }
                 if(error.code === "auth/user-not-found"){
                     setErrorMesagge("This user does not exist.");
                 }
                 if(error.code === "auth/invalid-email"){
                     setErrorMesagge("Invalid email address.");
-                }   
+                }
                 if(error.code === "auth/too-many-requests"){
                     setErrorMesagge("Temporarily blocked. We have detected unusual activity in this account. Try again later.");
-                }  
+                }
                 if(error.code === "auth/wrong-password"){
                     setErrorMesagge("Invalid password. try again.");
                 }
@@ -192,7 +193,7 @@ export default function LoginEmailPasswordForm(){
 
         }
     })
-   
+
     return (
         <div className={stylesLogin.containerLoginComponent}>
 
@@ -215,8 +216,8 @@ export default function LoginEmailPasswordForm(){
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
                                 <b>Error: </b>This account is still pending approval. Non-active accounts are automatically deleted after 30 days please verify your email by clicking on the link sent to your email, if you don't receive the link check in your spam box.
-                                <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span> 
-                                
+                                <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span>
+
                             </p>
                         </div>
                     )}
@@ -230,15 +231,15 @@ export default function LoginEmailPasswordForm(){
                     {messageVerificatedEmail === 4 &&(
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                                <b>Error: </b>Too many requests. Verification email recently sent. Check your email  
+                                <b>Error: </b>Too many requests. Verification email recently sent. Check your email
                             </p>
                         </div>
                     )}
                             {messageVerificatedEmail === 5 && (
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                            <b>Error: </b>Verification link is expired. 
-                            <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span> 
+                            <b>Error: </b>Verification link is expired.
+                            <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span>
                             </p>
                         </div>
                     )}
@@ -254,13 +255,24 @@ export default function LoginEmailPasswordForm(){
                         <span></span>
                         Continue with email
                     </button>
+                    <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You do not have an account yet? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
+                    <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} to="/">Did you forget your password? </Link>
                 </form>
 
-                <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/">Did you forget your password? </Link>
-                <div className={stylesText.text070rem}>Do you not already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
+                {/* <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
+                    <span className={stylesText.text070rem}>Email</span>
+                    <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
+                    <p className={stylesText.textError}>{errorMessage}</p>
+                    <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
+                        <span></span>
+                        Recover password
+                    </button>
+                    <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You can also <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/">continue with your email </Link></div>
+                </form> */}
+
             </div>
             )}
-            
+
 
             {loginComplete === true &&(
                 <div className={uiStyles.divLoading}>

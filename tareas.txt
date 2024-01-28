@@ -16,12 +16,11 @@ tomar ese horario.
 -sistema de confirmacion de registro ✅
 -error de email confirmated y confirmar contraseña en sing up ✅
 -feekback de vista registro✅
--redireccion programatica, bloquear urls
--permitir ver contraseña contraseña
+-redireccion programatica, bloquear urls✅
 -recuperar constraseña
 
 
--comprimir imagenes
 -firebase functions: eliminar un usuario luego de 30 dias
+-comprimir imagenes
 -validad contraseña mas segura
--exportar las dependencias que solo utilizo no todo las dependecias de firebase 
+-exportar solo las dependencias que utilizo (auth,DB,cloud functions), no todo las dependecias de firebase.

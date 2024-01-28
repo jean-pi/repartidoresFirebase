@@ -13,6 +13,9 @@
 
 .formLogin{
     width: 20rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.144);
+    padding-top: 1rem;
+    height: auto;
     display: flex;
     flex-direction: column;
 }

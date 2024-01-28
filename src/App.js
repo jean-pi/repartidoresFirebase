@@ -19,7 +19,7 @@ import {useEffect} from "react";
 import {useNavigate} from "react-router-dom"
 
 
-import {authGuard} from "./guards/auth.guard"
+import {AuthGuard} from "./guards/auth.guard"
 
 
 function App() {
@@ -45,15 +45,15 @@ function App() {
           <Route path = {publicRoutes.PRESENTATION_PUBLIC} element = {<React.StrictMode><LandingView/></React.StrictMode>}/>
           <Route path = {publicRoutes.SIGNUP_PUBLIC} element = {<React.StrictMode><SignUpView/></React.StrictMode>} />
           <Route path = {publicRoutes.LOGIN_PUBLIC} element = {<LoginView/> } />
-          <Route path = {restrictedRoutes.REGISTARION_RESTRICTED} element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
-          <Route />
-            <Route path = {restrictedRoutes.APP_RESTRICTED} element = {<React.StrictMode><MyApp/> </React.StrictMode>}/>
-          <Route/>
+          <Route element={<AuthGuard/>}>
+            <Route path = {restrictedRoutes.APP_RESTRICTED} element = {<React.StrictMode> <MyApp/> </React.StrictMode>}/>
+            <Route path = {restrictedRoutes.REGISTARION_RESTRICTED} element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
+          </Route>
           <Route path = "*" element = {<h1>Error 404?</h1>}/> 
-          <authGuard/>
+          
       </Routes>
 
-          // why strictMode: strict mode causes components to be rendered twice in order to find bugs
+      // why strictMode: strict mode causes components to be rendered twice in order to find bugs
       // but in my login component it has an error because it is rendered twice, I have a confirmation code
       // mail that can only be used once so I get an error
   );
