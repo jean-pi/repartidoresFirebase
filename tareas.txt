@@ -21,7 +21,7 @@ tomar ese horario.
 -recuperar constraseña
 
 
--comprobar todos los errores que arroja los metodos de firebase de cada metodo
--seguridad en firebase estorage, comprimir imagenes
--firebase functions: eliminar un usuario luego de 30 dias, validar contraseña mas segura, validad si el usuario esta verificado desde el servidos
+-comprimir imagenes
+-firebase functions: eliminar un usuario luego de 30 dias
+-validad contraseña mas segura
 -exportar las dependencias que solo utilizo no todo las dependecias de firebase 

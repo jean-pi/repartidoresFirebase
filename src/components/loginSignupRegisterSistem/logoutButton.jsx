@@ -3,6 +3,7 @@
 import {auth} from "../../firebase/firebaseMyConfig"
 //router dom
 import { useNavigate } from "react-router-dom";
+import { publicRoutes } from "../../models/routes";
 
 
 
@@ -13,14 +14,13 @@ import { useNavigate } from "react-router-dom";
     export default function LogoutButton(){
         
         const navigate = useNavigate();
-        let uid;
 
         function signOut(){
             auth.signOut()
                 .then(()=>{
                     console.log("signOut");
                     localStorage.clear();
-                    navigate("/presentacion")
+                    navigate(publicRoutes.PRESENTATION_PUBLIC)
                 },err => {
                     console.log(err);
                 })

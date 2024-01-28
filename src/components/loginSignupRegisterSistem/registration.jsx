@@ -14,6 +14,7 @@ import stylesText from "../../styles/texts.module.css"
 import uiStyles from "../../styles/uiStyles.module.css"
 //img
 import emptyUserImage from "../../img/empty-avatar.png";
+import { publicRoutes } from "../../models/routes";
 
 
 
@@ -150,7 +151,7 @@ export default function RegistrationForm(){
                         </button>
                     </form>
                     <p className={stylesText.text070rem}>Didn't intend to create a new account?</p>
-                        <Link to={"/login"} tabIndex={"0"} onClick={logOut} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>
+                        <Link to={publicRoutes.LOGIN_PUBLIC} tabIndex={"0"} onClick={logOut} className={`${stylesText.text070rem} ${stylesText.text070remLink} ${stylesText.text070remStriking}`} >Sign in whith another email</Link>
                 </div>
             )}
             

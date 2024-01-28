@@ -12,6 +12,7 @@ import uiStyles from "../../styles/uiStyles.module.css";
 import { auth } from "../../firebase/firebaseMyConfig";
 //firebase metodos 
 import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode,onAuthStateChanged} from "firebase/auth";
+import { publicRoutes, restrictedRoutes } from "../../models/routes";
 
 // COSAS QUE NO ME GUSTAN
     // El manejo del estado del usuario, deberia ser con un context?
@@ -146,10 +147,10 @@ export default function LoginEmailPasswordForm(){
 
                 setTimeout(() => {
                     if(user.displayName){
-                        navigate("/app")
+                        navigate(restrictedRoutes.APP_RESTRICTED)
                     }
                     if(!user.displayName){
-                        navigate("/registration")
+                        navigate(restrictedRoutes.REGISTARION_RESTRICTED)
                     }
                 }, 500);
             }
@@ -256,7 +257,7 @@ export default function LoginEmailPasswordForm(){
                 </form>
 
                 <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/">Did you forget your password? </Link>
-                <div className={stylesText.text070rem}>Do you not already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/signup">Sign up</Link></div>
+                <div className={stylesText.text070rem}>Do you not already have an account? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
             </div>
             )}
             

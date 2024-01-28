@@ -9,13 +9,14 @@ import backArrowImg from "../img/backArrowPng.png";
 
 //router/react
 import { Link } from "react-router-dom";
+import { publicRoutes } from "../models/routes";
 
 export default function LoginView(){
 
 
     return(
         <div className={stylesSignUpRoute.containerLogin_SignUp_RegistrationRoute}> 
-            <Link className={stylesSignUpRoute.linkBack} to="/presentacion">
+            <Link className={stylesSignUpRoute.linkBack} to={publicRoutes.PRESENTATION_PUBLIC}>
                 <div className={stylesSignUpRoute.divBack}>            
                     <img className={stylesSignUpRoute.divBack_img} src={backArrowImg} alt="" />
                     Back

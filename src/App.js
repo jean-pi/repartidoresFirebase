@@ -9,6 +9,8 @@ import SignUpView from "./routes/signUpRoute"
 import RegistrationView from "./routes/registrationRoute"
 import MyApp from "./routes/MyApp";
 
+//routesModels
+import { publicRoutes,restrictedRoutes} from "./models/routes";
 
 // hooks
 import {useEffect} from "react";
@@ -17,10 +19,10 @@ import {useEffect} from "react";
 import {useNavigate} from "react-router-dom"
 
 
+import {authGuard} from "./guards/auth.guard"
 
 
 function App() {
-
 
 
   const navigate = useNavigate()
@@ -29,26 +31,29 @@ function App() {
     let dataUserLocalStorage = JSON.parse(localStorage.getItem("user"));
     if(dataUserLocalStorage){
       if (!dataUserLocalStorage.diplayName) {
-        navigate("/registration");
+        navigate(restrictedRoutes.REGISTARION_RESTRICTED);
       }else{
-        navigate("/app");
+        navigate(restrictedRoutes.APP_RESTRICTED);
       }
     }
-
   }, []);
 
 
   return (
       <Routes>
           <Route path = "/" element = {<React.StrictMode><LandingView/></React.StrictMode> } />
-          <Route path = "/presentacion" element = {<React.StrictMode><LandingView/></React.StrictMode>}/>
-          <Route path = "/signup" element = {<React.StrictMode><SignUpView/></React.StrictMode>} />
-          <Route path = "/registration" element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
-          <Route path = "/app" element = {<React.StrictMode><MyApp/> </React.StrictMode>}/>
+          <Route path = {publicRoutes.PRESENTATION_PUBLIC} element = {<React.StrictMode><LandingView/></React.StrictMode>}/>
+          <Route path = {publicRoutes.SIGNUP_PUBLIC} element = {<React.StrictMode><SignUpView/></React.StrictMode>} />
+          <Route path = {publicRoutes.LOGIN_PUBLIC} element = {<LoginView/> } />
+          <Route path = {restrictedRoutes.REGISTARION_RESTRICTED} element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
+          <Route />
+            <Route path = {restrictedRoutes.APP_RESTRICTED} element = {<React.StrictMode><MyApp/> </React.StrictMode>}/>
+          <Route/>
           <Route path = "*" element = {<h1>Error 404?</h1>}/> 
-          <Route path = "/login" element = {<LoginView/> } />
+          <authGuard/>
       </Routes>
-      // why strictMode: strict mode causes components to be rendered twice in order to find bugs
+
+          // why strictMode: strict mode causes components to be rendered twice in order to find bugs
       // but in my login component it has an error because it is rendered twice, I have a confirmation code
       // mail that can only be used once so I get an error
   );

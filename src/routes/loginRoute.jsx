@@ -12,6 +12,7 @@ import backArrowImg from "../img/backArrowPng.png";
 
 //router/react
 import { Link } from "react-router-dom";
+import { publicRoutes } from "../models/routes";
 
 
 export default function LoginView(){
@@ -23,7 +24,7 @@ export default function LoginView(){
 
     return(
         <div className={stylesLoginRoute.containerLogin_SignUp_RegistrationRoute}>
-            <Link tabIndex={"0"} className={stylesLoginRoute.linkBack} to="/presentacion">
+            <Link tabIndex={"0"} className={stylesLoginRoute.linkBack} to={publicRoutes.PRESENTATION_PUBLIC}>
                 <div  className={stylesLoginRoute.divBack}>            
                     <img className={stylesLoginRoute.divBack_img} src={backArrowImg} alt="" />
                     Back
