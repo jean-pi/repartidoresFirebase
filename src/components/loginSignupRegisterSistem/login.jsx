@@ -7,20 +7,16 @@ import stylesLogin from "../../styles/styleComponets/login.module.css";
 import stylesText from "../../styles/texts.module.css";
 import uiStyles from "../../styles/uiStyles.module.css";
 
-
 //firebase auth con mi clave de proyecto
 import { auth } from "../../firebase/firebaseMyConfig";
+
 //firebase metodos
-import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode,onAuthStateChanged} from "firebase/auth";
+import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode} from "firebase/auth";
+
+//routes models
 import { publicRoutes, restrictedRoutes } from "../../models/routes";
 
-// COSAS QUE NO ME GUSTAN
-    // El manejo del estado del usuario, deberia ser con un context?
-    // La vadidacion de datos, deberia ser en servidor
-    // redireccion app o registration
 
-// ERROR que no entiendo
-    // Cunado entro por primera vez al link de verificacion, si se verifica, pero me manda un error de auth/invalid-action-code
 
 //ventajas y desventajas de firebase
     //https://es.linkedin.com/pulse/cu%C3%A1les-son-las-ventajas-y-desventajas-de-usar-para-aguilar-bernabe
@@ -33,7 +29,6 @@ export default function LoginEmailPasswordForm(){
     const [errorMessage, setErrorMesagge] = useState("");
     const [buttonLoading, setButtonLoading] = useState(false);
     const [loginComplete, setLoginComplete] = useState(false);
-
     const [messageVerificatedEmail, setMessageVerificatedEmail] = useState();
     /**
      *  : null
@@ -45,11 +40,18 @@ export default function LoginEmailPasswordForm(){
      * 5: expired code
      */
 
+    //estados recover password
+    const [errorMessageRecoverEmail, setErrorMesaggeRecoverEmail] = useState("");
+    const [RecoverPasswordState, setRecoverPasswordState] = useState("NoRecoverPassword")
+    const [buttonLoadingRecoverPassword, setButtonLoadingRecoverPassword] = useState(false);
+
+
 
     // input states onchanges
     const [values, setValues] = useState({
         email: "",
         password: "",
+        emailRecover:""
     });
     const changeDetector = (e) =>{
         e.preventDefault();
@@ -64,6 +66,7 @@ export default function LoginEmailPasswordForm(){
 
 
     useEffect( () => {
+        
         let url = window.location.search;
         const ulrParams = new URLSearchParams(url);
         let oobCode = ulrParams.get("oobCode");
@@ -84,9 +87,9 @@ export default function LoginEmailPasswordForm(){
             }
             applyVerification(oobCode);
         }
+
+        
     }, []);
-
-
 
 
 
@@ -112,9 +115,6 @@ export default function LoginEmailPasswordForm(){
             }
         }
     })
-
-
-
 
 
     const loginSubmit=( async (e)=>{
@@ -194,6 +194,36 @@ export default function LoginEmailPasswordForm(){
         }
     })
 
+
+    const sendRecoverPassWord = async (e) =>{
+        e.preventDefault();
+        setErrorMesagge("");
+        setErrorMesaggeRecoverEmail("");
+        setButtonLoadingRecoverPassword(true);
+        try {
+            await auth().generatePasswordResetLink(values.emailRecover)
+        } catch (error) {
+            setTimeout(() => {
+                setButtonLoading(false);
+                if(error.message === "email-empty"){
+                    setErrorMesagge("Enter an email address.");
+                }
+                if(error.code === "auth/internal-error") {
+                    setErrorMesagge("Internal error, try again later.");
+                }
+                if(error.code === "auth/user-not-found"){
+                    setErrorMesagge("This user does not exist.");
+                }
+                if(error.code === "auth/invalid-email"){
+                    setErrorMesagge("Invalid email address.");
+                }
+                if(error.code === "auth/too-many-requests"){
+                    setErrorMesagge("Temporarily blocked. We have detected unusual activity in this account. Try again later.");
+                }
+            }, 200);
+        }
+    }
+
     return (
         <div className={stylesLogin.containerLoginComponent}>
 
@@ -244,31 +274,35 @@ export default function LoginEmailPasswordForm(){
                         </div>
                     )}
 
+                    <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
+                        <span className={stylesText.text070rem}>Email</span>
+                        <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
+                        <span className={stylesText.text070rem}>Password</span>
+                        <input className={uiStyles.inputText} onChange={changeDetector} value={values.password.toLowerCase()} name="password" type="password" autoComplete="off" placeholder="Enter your password..." />
+                        <p className={stylesText.textError}>{errorMessage}</p>
+                        <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
+                            <span></span>
+                            Continue with email
+                        </button>
+                        <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You do not have an account yet? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
+                        <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} onClick={() => RecoverPasswordState === "recoverPassword" ? setRecoverPasswordState("notRecoverPassword") : setRecoverPasswordState("recoverPassword")}>Did you forget your password? </Link>
+                    </form>
+   
 
-                <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
-                    <span className={stylesText.text070rem}>Email</span>
-                    <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
-                    <span className={stylesText.text070rem}>Password</span>
-                    <input className={uiStyles.inputText} onChange={changeDetector} value={values.password.toLowerCase()} name="password" type="password" autoComplete="off" placeholder="Enter your password..." />
-                    <p className={stylesText.textError}>{errorMessage}</p>
-                    <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
-                        <span></span>
-                        Continue with email
-                    </button>
-                    <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You do not have an account yet? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
-                    <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} to="/">Did you forget your password? </Link>
-                </form>
+                {RecoverPasswordState === "recoverPassword" && (
+                    <form className={stylesLogin.formLogin} action="" onSubmit={sendRecoverPassWord}>
+                       <input className={uiStyles.inputText} onChange={changeDetector} value={values.emailRecover.toLowerCase()} name="emailRecover" type="text" autoComplete="off"  placeholder="Enter your email to recover your password..." />
+                       <p className={stylesText.textError}>{errorMessageRecoverEmail}</p>
+                       <button tabIndex={"0"} className={`${!buttonLoadingRecoverPassword? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
+                           <span></span>
+                           Recover password
+                       </button>
+                    </form>
+                )}
 
-                {/* <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
-                    <span className={stylesText.text070rem}>Email</span>
-                    <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
-                    <p className={stylesText.textError}>{errorMessage}</p>
-                    <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
-                        <span></span>
-                        Recover password
-                    </button>
-                    <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You can also <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to="/">continue with your email </Link></div>
-                </form> */}
+             
+
+                
 
             </div>
             )}

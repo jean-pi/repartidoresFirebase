@@ -1,6 +1,7 @@
 
 export const publicRoutes = {
-    PRESENTATION_PUBLIC: "/presentation",
+    MAINROUTE_PUBLIC:"/",
+    PRESENTATION_PUBLIC: "/landing",
     SIGNUP_PUBLIC: "/signup",
     LOGIN_PUBLIC: "/login"
 }

@@ -16,7 +16,7 @@ export default function LoginView(){
 
     return(
         <div className={stylesSignUpRoute.containerLogin_SignUp_RegistrationRoute}> 
-            <Link className={stylesSignUpRoute.linkBack} to={publicRoutes.PRESENTATION_PUBLIC}>
+            <Link className={stylesSignUpRoute.linkBack} to={publicRoutes.MAINROUTE_PUBLIC}>
                 <div className={stylesSignUpRoute.divBack}>            
                     <img className={stylesSignUpRoute.divBack_img} src={backArrowImg} alt="" />
                     Back
