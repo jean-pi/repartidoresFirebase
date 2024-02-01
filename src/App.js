@@ -20,6 +20,7 @@ import {useNavigate} from "react-router-dom"
 
 
 import {AuthGuard} from "./guards/auth.guard"
+import RecoverRouter from "./routes/recoverRouter";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route path = {restrictedRoutes.APP_RESTRICTED} element = {<React.StrictMode> <MyApp/> </React.StrictMode>}/>
             <Route path = {restrictedRoutes.REGISTARION_RESTRICTED} element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
           </Route>
+          <Route path={restrictedRoutes.RECOVERPASSWORD_RESTRICTED} element={<React.StrictMode> <RecoverRouter/> </React.StrictMode>}></Route> 
           <Route path = "*" element = {<h1>Error 404?</h1>}/> 
           
       </Routes>

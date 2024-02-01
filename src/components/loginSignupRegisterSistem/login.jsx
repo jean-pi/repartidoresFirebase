@@ -11,7 +11,7 @@ import uiStyles from "../../styles/uiStyles.module.css";
 import { auth } from "../../firebase/firebaseMyConfig";
 
 //firebase metodos
-import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode} from "firebase/auth";
+import { signInWithEmailAndPassword, sendEmailVerification, applyActionCode, sendPasswordResetEmail} from "firebase/auth";
 
 //routes models
 import { publicRoutes, restrictedRoutes } from "../../models/routes";
@@ -41,8 +41,8 @@ export default function LoginEmailPasswordForm(){
      */
 
     //estados recover password
-    const [errorMessageRecoverEmail, setErrorMesaggeRecoverEmail] = useState("");
-    const [RecoverPasswordState, setRecoverPasswordState] = useState("NoRecoverPassword")
+    const [errorMessageRecoverEmail, setErrorMessageRecoverEmail] = useState("");
+    const [RecoverPasswordState, setRecoverPasswordState] = useState(false)
     const [buttonLoadingRecoverPassword, setButtonLoadingRecoverPassword] = useState(false);
 
 
@@ -198,28 +198,35 @@ export default function LoginEmailPasswordForm(){
     const sendRecoverPassWord = async (e) =>{
         e.preventDefault();
         setErrorMesagge("");
-        setErrorMesaggeRecoverEmail("");
+        setErrorMessageRecoverEmail("");
         setButtonLoadingRecoverPassword(true);
         try {
-            await auth().generatePasswordResetLink(values.emailRecover)
+            console.log(values.emailRecover)
+            await sendPasswordResetEmail(auth, values.emailRecover);
+            setButtonLoadingRecoverPassword(false);
+            setValues({
+                emailRecover:""
+            })
         } catch (error) {
             setTimeout(() => {
-                setButtonLoading(false);
-                if(error.message === "email-empty"){
-                    setErrorMesagge("Enter an email address.");
+                console.log(error)
+                setButtonLoadingRecoverPassword(false);
+                if(error.code === "auth/missing-email"){
+                    setErrorMessageRecoverEmail("Enter an email address.");
                 }
                 if(error.code === "auth/internal-error") {
-                    setErrorMesagge("Internal error, try again later.");
+                    setErrorMessageRecoverEmail("Internal error, try again later.");
                 }
                 if(error.code === "auth/user-not-found"){
-                    setErrorMesagge("This user does not exist.");
+                    setErrorMessageRecoverEmail("This user does not exist.");
                 }
                 if(error.code === "auth/invalid-email"){
-                    setErrorMesagge("Invalid email address.");
+                    setErrorMessageRecoverEmail("Invalid email address.");
                 }
                 if(error.code === "auth/too-many-requests"){
-                    setErrorMesagge("Temporarily blocked. We have detected unusual activity in this account. Try again later.");
+                    setErrorMessageRecoverEmail("Temporarily blocked. We have detected unusual activity in this account. Try again later.");
                 }
+                
             }, 200);
         }
     }
@@ -285,11 +292,11 @@ export default function LoginEmailPasswordForm(){
                             Continue with email
                         </button>
                         <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You do not have an account yet? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
-                        <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} onClick={() => RecoverPasswordState === "recoverPassword" ? setRecoverPasswordState("notRecoverPassword") : setRecoverPasswordState("recoverPassword")}>Did you forget your password? </Link>
+                        <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} onClick={() => RecoverPasswordState? setRecoverPasswordState(false) : setRecoverPasswordState(true)}>Did you forget your password? </Link>
                     </form>
    
 
-                {RecoverPasswordState === "recoverPassword" && (
+                {RecoverPasswordState && (
                     <form className={stylesLogin.formLogin} action="" onSubmit={sendRecoverPassWord}>
                        <input className={uiStyles.inputText} onChange={changeDetector} value={values.emailRecover.toLowerCase()} name="emailRecover" type="text" autoComplete="off"  placeholder="Enter your email to recover your password..." />
                        <p className={stylesText.textError}>{errorMessageRecoverEmail}</p>
@@ -300,7 +307,13 @@ export default function LoginEmailPasswordForm(){
                     </form>
                 )}
 
-             
+            {messageVerificatedEmail === 0 && (
+                <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
+                    <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Your account has been successfully verified! You can login now.</p>
+                </div>
+            )}
+
+                
 
                 
 
@@ -313,6 +326,8 @@ export default function LoginEmailPasswordForm(){
                     <span></span> {auth.currentUser.displayName ? " Logining" : "Just one second"}
                 </div>
             )}
+
+
 
         </div>
     );

@@ -9,5 +9,6 @@ export const publicRoutes = {
 
 export const restrictedRoutes = {
     REGISTARION_RESTRICTED: "/registration",
-    APP_RESTRICTED: "/app"
+    APP_RESTRICTED: "/app",
+    RECOVERPASSWORD_RESTRICTED: "/recover"
 }
