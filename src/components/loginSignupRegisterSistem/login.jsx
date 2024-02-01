@@ -44,6 +44,8 @@ export default function LoginEmailPasswordForm(){
     const [errorMessageRecoverEmail, setErrorMessageRecoverEmail] = useState("");
     const [RecoverPasswordState, setRecoverPasswordState] = useState(false)
     const [buttonLoadingRecoverPassword, setButtonLoadingRecoverPassword] = useState(false);
+    const [messageRecoverEmail, setMessageRecoverEmail] = useState(false);
+
 
 
 
@@ -200,11 +202,15 @@ export default function LoginEmailPasswordForm(){
         setErrorMesagge("");
         setErrorMessageRecoverEmail("");
         setButtonLoadingRecoverPassword(true);
+        setMessageRecoverEmail(false)
         try {
             console.log(values.emailRecover)
             await sendPasswordResetEmail(auth, values.emailRecover);
             setButtonLoadingRecoverPassword(false);
+            setMessageRecoverEmail(true)
             setValues({
+                email: "",
+                password: "",
                 emailRecover:""
             })
         } catch (error) {
@@ -230,6 +236,18 @@ export default function LoginEmailPasswordForm(){
             }, 200);
         }
     }
+
+
+    const activeNonActiveRecoverPassword = () =>{
+        if(RecoverPasswordState){
+            setRecoverPasswordState(false);
+            setMessageRecoverEmail(false);
+        } else {
+            setRecoverPasswordState(true)
+        }
+    }
+
+
 
     return (
         <div className={stylesLogin.containerLoginComponent}>
@@ -281,6 +299,7 @@ export default function LoginEmailPasswordForm(){
                         </div>
                     )}
 
+                
                     <form className={stylesLogin.formLogin} action="" onSubmit={loginSubmit}>
                         <span className={stylesText.text070rem}>Email</span>
                         <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
@@ -292,7 +311,7 @@ export default function LoginEmailPasswordForm(){
                             Continue with email
                         </button>
                         <div className={`${stylesText.text070rem} ${stylesText.text070remCenter}`}>You do not have an account yet? <Link className={`${stylesText.text070rem} ${stylesText.text070remLink}`} to={publicRoutes.SIGNUP_PUBLIC}>Sign up</Link></div>
-                        <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} onClick={() => RecoverPasswordState? setRecoverPasswordState(false) : setRecoverPasswordState(true)}>Did you forget your password? </Link>
+                        <Link tabIndex={"0"} className={`${stylesText.text070rem} ${stylesText.text070remCenter} ${stylesText.text070remLink}`} onClick={activeNonActiveRecoverPassword}>Did you forget your password? </Link>
                     </form>
    
 
@@ -307,9 +326,9 @@ export default function LoginEmailPasswordForm(){
                     </form>
                 )}
 
-            {messageVerificatedEmail === 0 && (
+            {messageRecoverEmail && RecoverPasswordState && (
                 <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_green}` }>
-                    <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>Your account has been successfully verified! You can login now.</p>
+                    <p className={`${stylesText.text070rem} ${stylesText.text070rem_green}`}>We send recovery link to your email,, If you don't receive the link, please check in your spam box.</p>
                 </div>
             )}
 
