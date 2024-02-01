@@ -155,7 +155,7 @@ export default function LoginEmailPasswordForm(){
                     if(!user.displayName){
                         navigate(restrictedRoutes.REGISTARION_RESTRICTED)
                     }
-                }, 500);
+                }, 300);
             }
 
             if(!isVerificated) {

@@ -17,7 +17,11 @@ tomar ese horario.
 -error de email confirmated y confirmar contraseña en sing up ✅
 -feekback de vista registro✅
 -redireccion programatica, bloquear urls✅
--recuperar constraseña
+-recuperar constraseña✅
+
+-crear base de datos inicial y mostrar el valor de cada motociclista en cada caja
+-mostrar info del usuario junto a botton de eliminar cuenta
+-aumentar y disminuir la cantidad de motociclistas con un clic
 
 
 -firebase functions: eliminar un usuario luego de 30 dias

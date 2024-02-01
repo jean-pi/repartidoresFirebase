@@ -36,6 +36,7 @@ export default function SignUpEmailPasswordForm(){
     }
 
 
+    
 
 
  //ventajas y desventajas de firebase
@@ -94,7 +95,7 @@ export default function SignUpEmailPasswordForm(){
                 if(err.code === "auth/invalid-email"){
                     setErrorMesagge("Invalid email address.");
                 }    
-            }, 500); 
+            }, 200); 
         }   
         
     });

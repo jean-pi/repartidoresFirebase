@@ -23,6 +23,9 @@
     margin: auto;
 }
 
+.text070remCenter_green{
+    color: rgb(136, 214, 105);
+}
 /* .text070remLink{
     color: rgba(0, 0, 0, 0.542);
     text-decoration: underline;

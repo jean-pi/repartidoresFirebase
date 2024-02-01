@@ -1,9 +1,16 @@
 
+//componets
+import RecoverPassword from "../components/loginSignupRegisterSistem/recoverPassword"
+
+//css
+import stylesLoginRoute from "../styles/stylesRoutes/login_SignUp_RegistrationRoute.module.css"
+
+
 
 export default function RecoverRouter() {
   return (
-    <div>
-        <h1>Recover</h1>
+    <div className={stylesLoginRoute.containerLogin_SignUp_RegistrationRoute}>
+      <RecoverPassword/>
     </div>
-  )
+  ) 
 }
