@@ -22,7 +22,7 @@ import {useNavigate} from "react-router-dom";
 
 //guards
 import {AuthGuard} from "./guards/auth.guard";
-import DetectorUrlAction from "./guards/detectorUrlAction";
+import DetectorUrlAction from "./guards/detectorUrlAction.guard";
 
 
 function App() {
