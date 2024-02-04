@@ -35,3 +35,8 @@ export const storage = getStorage(app);
 const dbFirestore = getFirestore(app);
 const analytics = getAnalytics(app);
 
+
+
+
+// npm i firebase: se descargan todas las dependencias otra opcion seria pegar e codigo html que te da firenase cuando creas un proyecto
+

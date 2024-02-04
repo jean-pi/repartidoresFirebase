@@ -24,20 +24,13 @@ export default function RepartidorBox(){
         setDisponible(false);
         setRepartidores(repartidores - 1);
         e.target.textContent = "Cancelar";
-        e.target.parentElement.style = "background-color: rgb(105, 241, 105)";
 
-        console.log("se ejecuto handleOrdenar");
-        console.log(isDisponible);
     };
     function handleClickCancelarOrden(e){
         setDisponible(true);
         let repartidoresActuales = repartidores + 1;
         setRepartidores(repartidoresActuales);
         e.target.textContent = "Ordenar";
-        e.target.parentElement.style  = "background-color: rgb(255, 255, 255);";
-
-        console.log("se ejecuto handleCancelar");
-        console.log(isDisponible);
     };
 
     

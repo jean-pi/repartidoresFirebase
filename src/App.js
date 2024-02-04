@@ -43,6 +43,7 @@ function App() {
 
 
   return (
+    
       <Routes>
           <Route element={<DetectorUrlAction/>}>
             <Route path = "/" element = {<React.StrictMode><LandingView/></React.StrictMode> } />
