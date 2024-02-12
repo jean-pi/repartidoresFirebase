@@ -2,7 +2,7 @@
 
 //components
 import RepartidorBox from "../components/repartidorBox";
-import CardUserLogeado from "../components/loginSignupRegisterSistem/cardUserLogeado";
+import CardUserLogeado from "../components/cardUserLogeado";
 
 
 //css

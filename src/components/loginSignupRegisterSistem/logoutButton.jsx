@@ -18,7 +18,6 @@ import { publicRoutes } from "../../models/routes";
         function signOut(){
             auth.signOut()
                 .then(()=>{
-                    console.log("signOut");
                     localStorage.clear();
                     navigate(publicRoutes.PRESENTATION_PUBLIC)
                 },err => {

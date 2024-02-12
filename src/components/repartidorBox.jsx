@@ -23,14 +23,14 @@ export default function RepartidorBox(){
     function handleClickOrdenar(e){
         setDisponible(false);
         setRepartidores(repartidores - 1);
-        e.target.textContent = "Cancelar";
+        e.target.textContent = "Cancel order";
 
     };
     function handleClickCancelarOrden(e){
         setDisponible(true);
         let repartidoresActuales = repartidores + 1;
         setRepartidores(repartidoresActuales);
-        e.target.textContent = "Ordenar";
+        e.target.textContent = "Make an order";
     };
 
     
@@ -42,7 +42,7 @@ export default function RepartidorBox(){
     return(
     <div className={stylesRepartidorBox.repartidorBox}>
         <div className={stylesRepartidorBox.repartidorBoxEstado}>Repartidores disponibles: {repartidores} </div>
-        <div onClick={isDisponible? handleClickOrdenar : handleClickCancelarOrden} className={stylesRepartidorBox.repartidorBoxButton}>Ordenar</div>
+        <div onClick={isDisponible? handleClickOrdenar : handleClickCancelarOrden} className={stylesRepartidorBox.repartidorBoxButton}>Make a order</div>
    </div>
     );
 }
