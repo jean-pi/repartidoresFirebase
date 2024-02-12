@@ -5,9 +5,49 @@
 
 .repartidorBoxContenedor{
     display: flex;
-    max-width: 1300px;
-    margin: auto;
-    border: 2px solid black;
+    max-width: 90rem;
+    margin: 0 auto;
     flex-wrap: wrap;
     padding: 1rem;
+}
+
+.descriptionProyect{
+    max-width: 90rem;
+    margin: .9rem auto 1.4rem auto;
+    padding: 1.3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+    line-height: 1.25rem;
+    color: rgba(0, 0, 0, 0.774);
+    text-align: justify;
+}
+
+
+.footer{
+    width: 100%;
+    height: 4rem;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    padding: 0 2rem;
+}
+
+
+.footer_a{
+    color: black;
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+.footer_a:nth-child(1){
+    flex: 2;
+}
+.footer_a:nth-child(2){
+    flex: 0;
+}
+.footer_a:nth-child(3){
+    flex: 0;
+}
+.footer_a:nth-child(4){
+    flex: 0;
 }
