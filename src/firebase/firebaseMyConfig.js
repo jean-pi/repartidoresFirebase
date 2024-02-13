@@ -5,7 +5,7 @@ import {getAuth} from "firebase/auth";
 
 import { getStorage } from "firebase/storage";
 
-import { getFirestore, collection, getDocs, addDoc, getDoc, doc, query, where, setDoc, deleteDoc } from "firebase/firestore"; 
+import { getFirestore } from "firebase/firestore"; 
 // funciones para CRUD basico
 // getFirestore , una de las bases de datos que ofrese Firebase
 // Firestore es una base de datos NoSQL flexible, escalable y en la nube
@@ -32,10 +32,8 @@ export const app = initializeApp(firebaseConfig);
 // paso mi "llave" app
 export const auth = getAuth(app);
 export const storage = getStorage(app);
-const dbFirestore = getFirestore(app);
+export const dbFirestore = getFirestore(app);
 const analytics = getAnalytics(app);
-
-
 
 
 // npm i firebase: se descargan todas las dependencias otra opcion seria pegar e codigo html que te da firenase cuando creas un proyecto

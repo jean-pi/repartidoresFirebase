@@ -13,8 +13,8 @@ return (
         <div className={styleslandingRoute.descriptionProjectContainer}>
             <p className={stylesText.cursiva1rem}>
                 Build a list containing time slots, in 30-min intervals.
-                Let it start at 8 am and end at 8 pm. Or a box with a block
-                Let it start at 8, then 8:30, 9, 9, 30... like this until 8pm. The company
+                Let it start at 9 am and end at 5 pm. Or a box with a block
+                Let it start at 9, then 9:30, 10, 10:30... like this until 8pm. The company
                 has availability of 8 motorcyclists every 30 min. when someone does
                 clicking on one of these little boxes should take a biker resource.
                 In other words, a counter that starts at 8 and then goes down to 7, in addition to marking the
@@ -22,7 +22,7 @@ return (
                 the resource, if it was in green, you must release the resource, that is, the
                 counter again goes from 7 to 8. If other users have taken all
                 motorcyclists, the box should appear red and should not let me
-                take that schedule.
+                take that schedule. Values must be updated in real time
             </p>
         </div>
         

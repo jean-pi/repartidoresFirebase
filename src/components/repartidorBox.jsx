@@ -3,7 +3,7 @@ import React from "react";
 
 import stylesRepartidorBox from  "../styles/styleComponets/repartidorBoxComponent.module.css"
 
-export default function RepartidorBox(){
+export default function RepartidorBox({time, repartidores}){
 
     
  //ventajas y desventajas de firebase
@@ -18,20 +18,14 @@ export default function RepartidorBox(){
 
  
     const [isDisponible,setDisponible] = useState(true);
-    const [repartidores,setRepartidores] = useState(8);
+    // const [repartidores,setRepartidores] = useState(8);
 
     function handleClickOrdenar(e){
-        setDisponible(false);
-        setRepartidores(repartidores - 1);
-        e.target.textContent = "Cancel order";
-
+        isDisponible? setDisponible(false):setDisponible(true)
+        // isDisponible? setRepartidores(repartidores - 1) : setRepartidores(repartidores + 1)
+        console.log(repartidores)
     };
-    function handleClickCancelarOrden(e){
-        setDisponible(true);
-        let repartidoresActuales = repartidores + 1;
-        setRepartidores(repartidoresActuales);
-        e.target.textContent = "Make an order";
-    };
+    
 
     
  //ventajas y desventajas de firebase
@@ -40,9 +34,10 @@ export default function RepartidorBox(){
 
 
     return(
-    <div className={stylesRepartidorBox.repartidorBox}>
-        <div className={stylesRepartidorBox.repartidorBoxEstado}>Repartidores disponibles: {repartidores} </div>
-        <div onClick={isDisponible? handleClickOrdenar : handleClickCancelarOrden} className={stylesRepartidorBox.repartidorBoxButton}>Make a order</div>
+    <div className={`${stylesRepartidorBox.repartidorBox} ${!isDisponible? stylesRepartidorBox.repartidorBox_disabled : stylesRepartidorBox.repartidorBox_active }`}>
+        <div >Repartidores disponibles: {repartidores} </div>
+        <div onClick={handleClickOrdenar} className={`${stylesRepartidorBox.repartidorBoxButton} ${!isDisponible? stylesRepartidorBox.repartidorBoxButton_disabled : stylesRepartidorBox.repartidorBoxButton_active }`}> {isDisponible? "Make an order" : "Cancel order"} </div>
+        <div>{time}</div>
    </div>
     );
 }

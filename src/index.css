@@ -1,5 +1,5 @@
 body, html{
-  overflow: hidden;
+  /* overflow: hidden; */
   user-select: none;
 }
   body::-webkit-scrollbar {
