@@ -20,50 +20,35 @@ import {dbFirestore} from "../firebase/firebaseMyConfig"
 export default function MyApp(){
 
     const [repartidores, setRepartidores] = useState({
-        repartidor_09_00: "0",
-        repartidor_09_30: "0",
-        repartidor_10_00: "0",
-        repartidor_10_30: "0",
-        repartidor_11_00: "0",
-        repartidor_11_30: "0",
-        repartidor_12_00: "0",
-        repartidor_12_30: "0",
-        repartidor_13_00: "0",
-        repartidor_13_30: "0",
-        repartidor_14_00: "0",
-        repartidor_14_30: "0",
-        repartidor_15_00: "0",
-        repartidor_15_30: "0",
-        repartidor_16_00: "0",
-        repartidor_16_30: "0",
-        repartidor_17_00: "0",
+        repartidor_09_00: "-",
+        repartidor_09_30: "-",
+        repartidor_10_00: "-",
+        repartidor_10_30: "-",
+        repartidor_11_00: "-",
+        repartidor_11_30: "-",
+        repartidor_12_00: "-",
+        repartidor_12_30: "-",
+        repartidor_13_00: "-",
+        repartidor_13_30: "-",
+        repartidor_14_00: "-",
+        repartidor_14_30: "-",
+        repartidor_15_00: "-",
+        repartidor_15_30: "-",
+        repartidor_16_00: "-",
+        repartidor_16_30: "-",
+        repartidor_17_00: "-",
     })
 
+
+    const listenLastestChanges = () =>{
+        return onSnapshot(doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo"), (doc) =>{
+            const objRepartidores = doc.data()
+            setRepartidores(objRepartidores)
+        })
+    }
+
     useEffect( () => {
-        
-        (async ()=>{
-            try {
-
-                const listenLastestChanges = (callback) =>{
-                    return onSnapshot(doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo"), (doc) =>{
-                        console.log(doc)
-                        callback(doc)
-                    })
-                }
-
-
-
-                const querySnapshot = await getDocs(collection(dbFirestore, "repartidoresCollection"));
-                //getDocs acepta una coleccion y devuelve todos los doc que estan en esa coleccion, la respuesta de cada doc viene con los datos que tiene dentro
-                querySnapshot.forEach((doc) =>{
-                    setRepartidores(doc.data())
-                    console.log(repartidores)
-                })
-              } catch (error) {
-                console.log(error);
-              }
-        })();
-
+        listenLastestChanges()
     }, []); 
 
 
