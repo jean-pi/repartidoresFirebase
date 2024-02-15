@@ -18,13 +18,9 @@ tomar ese horario.
 -feekback de vista registro✅
 -redireccion programatica, bloquear urls✅
 -recuperar constraseña✅
-
--crear base de datos inicial y mostrar el valor de cada motociclista en cada caja
--mostrar info del usuario junto a botton de eliminar cuenta
--aumentar y disminuir la cantidad de motociclistas con un clic
-
-
+-crear base de datos inicial y mostrar el valor de cada motociclista en cada caja✅
+-mostrar info del usuario junto a botton de eliminar cuenta✅
+-caja roja cuando no haya motociclistas disponibles✅
+-aumentar y disminuir la cantidad de motociclistas de la base de datos
+-pantalla de carga de milisegundos para evitar que se vea la redireccion y la carga de la cantidad de motocilicstas
 -firebase functions: eliminar un usuario luego de 30 dias
--comprimir imagenes
--validad contraseña mas segura
--exportar solo las dependencias que utilizo (auth,DB,cloud functions), no todo las dependecias de firebase.

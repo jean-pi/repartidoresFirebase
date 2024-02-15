@@ -19,7 +19,7 @@ export default function RepartidorBox({time, repartidores}){
         if(repartidores === 0 ) setDisponible(false)
         console.log(repartidores)
         console.log(isDisponible)
-    }, []);
+    }, [repartidores]);
     
 
 
