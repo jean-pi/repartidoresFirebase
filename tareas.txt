@@ -22,5 +22,5 @@ tomar ese horario.
 -mostrar info del usuario junto a botton de eliminar cuenta✅
 -caja roja cuando no haya motociclistas disponibles✅
 -aumentar y disminuir la cantidad de motociclistas de la base de datos
--pantalla de carga de milisegundos para evitar que se vea la redireccion y la carga de la cantidad de motocilicstas
+-pantalla de carga de milisegundos para evitar que se vea la redireccion y la carga de la cantidad de motociclistas
 -firebase functions: eliminar un usuario luego de 30 dias

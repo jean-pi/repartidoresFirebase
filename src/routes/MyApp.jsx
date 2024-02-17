@@ -19,50 +19,19 @@ import {dbFirestore} from "../firebase/firebaseMyConfig"
 
 export default function MyApp(){
 
-    const [repartidores, setRepartidores] = useState({
-        repartidor_09_00: "-",
-        repartidor_09_30: "-",
-        repartidor_10_00: "-",
-        repartidor_10_30: "-",
-        repartidor_11_00: "-",
-        repartidor_11_30: "-",
-        repartidor_12_00: "-",
-        repartidor_12_30: "-",
-        repartidor_13_00: "-",
-        repartidor_13_30: "-",
-        repartidor_14_00: "-",
-        repartidor_14_30: "-",
-        repartidor_15_00: "-",
-        repartidor_15_30: "-",
-        repartidor_16_00: "-",
-        repartidor_16_30: "-",
-        repartidor_17_00: "-",
-    })
+    const [repartidores, setRepartidores] = useState(["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-",])
 
 
     const listenLastestChanges = () =>{
         return onSnapshot(doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo"), (doc) =>{
             const objRepartidores = doc.data()
-            setRepartidores(objRepartidores)
-        })
+            setRepartidores(objRepartidores.repartidores)        })
     }
 
     useEffect( () => {
         listenLastestChanges()
     }, []); 
 
-
-    // async function a(){
-    //     try {
-    //         const querySnapshot = await getDocs(collection(dbFirestore, "repartidoresCollection"));
-    //         //getDocs acepta una coleccion y devuelve todos los doc que estan en esa coleccion, la respuesta de cada doc viene con los datos que tiene dentro
-    //         querySnapshot.forEach((doc) =>{
-    //             objDbRepartidores = doc.data();
-    //         })
-    //       } catch (error) {
-    //         console.log(error);
-    //       }
-    // }
 
 
     
@@ -73,7 +42,6 @@ export default function MyApp(){
 
             <CardUserLogeado/>
 
-            {/* <button onClick={a}>a</button> */}
 
             <p className={stylesMyApp.descriptionProyect}>
                 Build a list containing time slots, in 30-min intervals.
@@ -86,27 +54,29 @@ export default function MyApp(){
                 the resource, if it was in green, you must release the resource, that is, the
                 counter again goes from 7 to 8. If other users have taken all
                 motorcyclists, the box should appear red and should not let me
-                take that schedule. Values must be updated in real time
+                take that schedule. Values must be updated in real time.
             </p>
 
+            <div>{repartidores}</div>
+
             <div className={stylesMyApp.repartidorBoxContenedor}>
-                <RepartidorBox time="9:00" repartidores= {repartidores.repartidor_09_00} />
-                <RepartidorBox time="9:30" repartidores= {repartidores.repartidor_09_30} />
-                <RepartidorBox time="10:00" repartidores={repartidores.repartidor_10_00} />
-                <RepartidorBox time="10:30" repartidores={repartidores.repartidor_10_30} />
-                <RepartidorBox time="11:00" repartidores={repartidores.repartidor_11_00} />
-                <RepartidorBox time="11:30" repartidores={repartidores.repartidor_11_30} />
-                <RepartidorBox time="12:00" repartidores={repartidores.repartidor_12_00} />
-                <RepartidorBox time="12:30" repartidores={repartidores.repartidor_12_30} />
-                <RepartidorBox time="13:00" repartidores={repartidores.repartidor_13_00} />
-                <RepartidorBox time="13:30" repartidores={repartidores.repartidor_13_30} />
-                <RepartidorBox time="14:00" repartidores={repartidores.repartidor_14_00} />
-                <RepartidorBox time="14:30" repartidores={repartidores.repartidor_14_30} />
-                <RepartidorBox time="15:00" repartidores={repartidores.repartidor_15_00} />
-                <RepartidorBox time="15:30" repartidores={repartidores.repartidor_15_30} />
-                <RepartidorBox time="16:00" repartidores={repartidores.repartidor_16_00} />
-                <RepartidorBox time="16:30" repartidores={repartidores.repartidor_16_30} />
-                <RepartidorBox time="17:00" repartidores={repartidores.repartidor_17_00} />
+                <RepartidorBox time="9:00"  repartidoresSpecific={repartidores[0]}  repartidoresTotales={repartidores} arrayIndiceInDb={0} />
+                <RepartidorBox time="9:30"  repartidoresSpecific={repartidores[2]}  repartidoresTotales={repartidores} arrayIndiceInDb={1} />
+                <RepartidorBox time="10:00" repartidoresSpecific={repartidores[3]}  repartidoresTotales={repartidores} arrayIndiceInDb={2} />
+                <RepartidorBox time="10:30" repartidoresSpecific={repartidores[4]}  repartidoresTotales={repartidores} arrayIndiceInDb={3} />
+                <RepartidorBox time="11:00" repartidoresSpecific={repartidores[5]}  repartidoresTotales={repartidores} arrayIndiceInDb={4} />
+                <RepartidorBox time="11:30" repartidoresSpecific={repartidores[6]}  repartidoresTotales={repartidores} arrayIndiceInDb={5} />
+                <RepartidorBox time="12:00" repartidoresSpecific={repartidores[7]}  repartidoresTotales={repartidores} arrayIndiceInDb={6} />
+                <RepartidorBox time="12:30" repartidoresSpecific={repartidores[8]}  repartidoresTotales={repartidores} arrayIndiceInDb={7} />
+                <RepartidorBox time="13:00" repartidoresSpecific={repartidores[9]}  repartidoresTotales={repartidores} arrayIndiceInDb={8} />
+                <RepartidorBox time="13:30" repartidoresSpecific={repartidores[10]} repartidoresTotales={repartidores} arrayIndiceInDb={9}  />
+                <RepartidorBox time="14:00" repartidoresSpecific={repartidores[11]} repartidoresTotales={repartidores} arrayIndiceInDb={10}  />
+                <RepartidorBox time="14:30" repartidoresSpecific={repartidores[12]} repartidoresTotales={repartidores} arrayIndiceInDb={11}  />
+                <RepartidorBox time="15:00" repartidoresSpecific={repartidores[13]} repartidoresTotales={repartidores} arrayIndiceInDb={12}  />
+                <RepartidorBox time="15:30" repartidoresSpecific={repartidores[14]} repartidoresTotales={repartidores} arrayIndiceInDb={13}  />
+                <RepartidorBox time="16:00" repartidoresSpecific={repartidores[15]} repartidoresTotales={repartidores} arrayIndiceInDb={14}  />
+                <RepartidorBox time="16:30" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} arrayIndiceInDb={15}  />
+                <RepartidorBox time="17:00" repartidoresSpecific={repartidores[17]} repartidoresTotales={repartidores} arrayIndiceInDb={17}  />
             </div>
             
   

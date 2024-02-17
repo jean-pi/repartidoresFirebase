@@ -22,7 +22,7 @@ return (
                 the resource, if it was in green, you must release the resource, that is, the
                 counter again goes from 7 to 8. If other users have taken all
                 motorcyclists, the box should appear red and should not let me
-                take that schedule. Values must be updated in real time
+                take that schedule. Values must be updated in real time.
             </p>
         </div>
         
