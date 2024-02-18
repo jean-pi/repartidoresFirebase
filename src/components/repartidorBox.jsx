@@ -18,32 +18,38 @@ export default function RepartidorBox({time, repartidoresSpecific, repartidoresT
     const [isDisponible,setDisponible] = useState(true);
 
 
-    function z(){
-        let array = [8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8];
-        
-        let arrayCopy = [...array]
-
-        let arrayNew;
-        console.log(arrayNew = arrayCopy.splice(0, 1, "a") )
-    }
-
-
-    z()
 
     const docRepartidoresRef = doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo");
     
     async function handleClickOrdenar(e){
+
+
+        if(isDisponible === true){
+            setDisponible(false)
+            console.log("2")
+        } else{
+            setDisponible(true)
+            console.log("1")
+        }
+        console.log(isDisponible)
+        
+        isDisponible 
+            ? repartidoresTotales.splice(arrayIndiceInDb, 1, repartidoresSpecific - 1  ) 
+            : repartidoresTotales.splice(arrayIndiceInDb, 1, repartidoresSpecific + 1  )
+
+
         try {
             await updateDoc(docRepartidoresRef, {
-                repartidores: repartidoresTotales.splice(arrayIndiceInDb, 1, repartidoresSpecific + 1  )
+                repartidores: repartidoresTotales,
             });
+            console.log(isDisponible)
         } catch (error) {
             console.log(error)
         }
     };
 
     useEffect( () => {
-        repartidoresSpecific === 0? setDisponible(false) : setDisponible(true)
+        if(repartidoresSpecific === 0) setDisponible(false)
     }, [repartidoresTotales]);
 
 

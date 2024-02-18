@@ -19,7 +19,7 @@ import {dbFirestore} from "../firebase/firebaseMyConfig"
 
 export default function MyApp(){
 
-    const [repartidores, setRepartidores] = useState(["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-",])
+    const [repartidores, setRepartidores] = useState(["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0",])
 
 
     const listenLastestChanges = () =>{
@@ -57,26 +57,25 @@ export default function MyApp(){
                 take that schedule. Values must be updated in real time.
             </p>
 
-            <div>{repartidores}</div>
 
             <div className={stylesMyApp.repartidorBoxContenedor}>
                 <RepartidorBox time="9:00"  repartidoresSpecific={repartidores[0]}  repartidoresTotales={repartidores} arrayIndiceInDb={0} />
-                <RepartidorBox time="9:30"  repartidoresSpecific={repartidores[2]}  repartidoresTotales={repartidores} arrayIndiceInDb={1} />
-                <RepartidorBox time="10:00" repartidoresSpecific={repartidores[3]}  repartidoresTotales={repartidores} arrayIndiceInDb={2} />
-                <RepartidorBox time="10:30" repartidoresSpecific={repartidores[4]}  repartidoresTotales={repartidores} arrayIndiceInDb={3} />
-                <RepartidorBox time="11:00" repartidoresSpecific={repartidores[5]}  repartidoresTotales={repartidores} arrayIndiceInDb={4} />
-                <RepartidorBox time="11:30" repartidoresSpecific={repartidores[6]}  repartidoresTotales={repartidores} arrayIndiceInDb={5} />
-                <RepartidorBox time="12:00" repartidoresSpecific={repartidores[7]}  repartidoresTotales={repartidores} arrayIndiceInDb={6} />
-                <RepartidorBox time="12:30" repartidoresSpecific={repartidores[8]}  repartidoresTotales={repartidores} arrayIndiceInDb={7} />
-                <RepartidorBox time="13:00" repartidoresSpecific={repartidores[9]}  repartidoresTotales={repartidores} arrayIndiceInDb={8} />
-                <RepartidorBox time="13:30" repartidoresSpecific={repartidores[10]} repartidoresTotales={repartidores} arrayIndiceInDb={9}  />
-                <RepartidorBox time="14:00" repartidoresSpecific={repartidores[11]} repartidoresTotales={repartidores} arrayIndiceInDb={10}  />
-                <RepartidorBox time="14:30" repartidoresSpecific={repartidores[12]} repartidoresTotales={repartidores} arrayIndiceInDb={11}  />
-                <RepartidorBox time="15:00" repartidoresSpecific={repartidores[13]} repartidoresTotales={repartidores} arrayIndiceInDb={12}  />
-                <RepartidorBox time="15:30" repartidoresSpecific={repartidores[14]} repartidoresTotales={repartidores} arrayIndiceInDb={13}  />
-                <RepartidorBox time="16:00" repartidoresSpecific={repartidores[15]} repartidoresTotales={repartidores} arrayIndiceInDb={14}  />
-                <RepartidorBox time="16:30" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} arrayIndiceInDb={15}  />
-                <RepartidorBox time="17:00" repartidoresSpecific={repartidores[17]} repartidoresTotales={repartidores} arrayIndiceInDb={17}  />
+                <RepartidorBox time="9:30"  repartidoresSpecific={repartidores[1]}  repartidoresTotales={repartidores} arrayIndiceInDb={1} />
+                <RepartidorBox time="10:00" repartidoresSpecific={repartidores[2]}  repartidoresTotales={repartidores} arrayIndiceInDb={2} />
+                <RepartidorBox time="10:30" repartidoresSpecific={repartidores[3]}  repartidoresTotales={repartidores} arrayIndiceInDb={3} />
+                <RepartidorBox time="11:00" repartidoresSpecific={repartidores[4]}  repartidoresTotales={repartidores} arrayIndiceInDb={4} />
+                <RepartidorBox time="11:30" repartidoresSpecific={repartidores[5]}  repartidoresTotales={repartidores} arrayIndiceInDb={5} />
+                <RepartidorBox time="12:00" repartidoresSpecific={repartidores[6]}  repartidoresTotales={repartidores} arrayIndiceInDb={6} />
+                <RepartidorBox time="12:30" repartidoresSpecific={repartidores[7]}  repartidoresTotales={repartidores} arrayIndiceInDb={7} />
+                <RepartidorBox time="13:00" repartidoresSpecific={repartidores[8]}  repartidoresTotales={repartidores} arrayIndiceInDb={8} />
+                <RepartidorBox time="13:30" repartidoresSpecific={repartidores[9]}  repartidoresTotales={repartidores} arrayIndiceInDb={9}  />
+                <RepartidorBox time="14:00" repartidoresSpecific={repartidores[10]} repartidoresTotales={repartidores} arrayIndiceInDb={10}  />
+                <RepartidorBox time="14:30" repartidoresSpecific={repartidores[11]} repartidoresTotales={repartidores} arrayIndiceInDb={11}  />
+                <RepartidorBox time="15:00" repartidoresSpecific={repartidores[12]} repartidoresTotales={repartidores} arrayIndiceInDb={12}  />
+                <RepartidorBox time="15:30" repartidoresSpecific={repartidores[13]} repartidoresTotales={repartidores} arrayIndiceInDb={13}  />
+                <RepartidorBox time="16:00" repartidoresSpecific={repartidores[14]} repartidoresTotales={repartidores} arrayIndiceInDb={14}  />
+                <RepartidorBox time="16:30" repartidoresSpecific={repartidores[15]} repartidoresTotales={repartidores} arrayIndiceInDb={15}  />
+                <RepartidorBox time="17:00" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} arrayIndiceInDb={16}  />
             </div>
             
   

@@ -16,8 +16,6 @@ import { publicRoutes } from "../models/routes";
 function CardUserLogeado() {
 
     let userDataLocal = JSON.parse(localStorage.getItem("user"));
-
-    const currentUser = auth.currentUser;
         
     const navigate = useNavigate();
 
@@ -32,15 +30,6 @@ function CardUserLogeado() {
             })
     }
 
-    function deleteAccount(){
-        try {
-            deleteUser(currentUser);
-            localStorage.clear();
-            navigate(publicRoutes.PRESENTATION_PUBLIC);
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
 
 
@@ -51,7 +40,6 @@ function CardUserLogeado() {
             <span className={cardUsercss.emailNameContainer_email}>{userDataLocal.email}</span>
             <span className={cardUsercss.emailNameContainer_name}>{userDataLocal.diplayName}</span>
         </div>
-        <button className={cardUsercss.buttonDeleteAcount} onClick={deleteAccount}>Delete account</button>
         <button className={cardUsercss.buttonLogOut} onClick={signOut}>Log out</button>
     </div>
   )
