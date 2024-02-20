@@ -21,79 +21,65 @@ export default function RepartidorBox({time, repartidoresSpecific, repartidoresT
 
     const docRepartidoresRef = doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo");
 
+    let uidUser = JSON.parse(localStorage.getItem("user")).uid;
+
     
     async function handleClickOrdenar(e){
 
 
 
-        let userLocalStorage = JSON.parse(localStorage.getItem("user"));
-        let uidUser = userLocalStorage.uid
-        let objRepartidoresOcupados = repartidoresTomados[arrayIndiceInDb];
 
 
         if(isDisponible){
             setDisponible(false)
             repartidoresTotales.splice(arrayIndiceInDb, 1, repartidoresSpecific - 1);
-            objRepartidoresOcupados = {
-                ...objRepartidoresOcupados,
-                uidUser: uidUser,
-            }
-            repartidoresTomados.splice(arrayIndiceInDb, 1, objRepartidoresOcupados)
+            repartidoresTomados.splice(0,0, uidUser);
         } 
         if(!isDisponible) {
             setDisponible(true)
-            repartidoresTotales.splice(arrayIndiceInDb, 1, repartidoresSpecific + 1)
-            delete objRepartidoresOcupados.uidUser;
-            repartidoresTomados.splice(arrayIndiceInDb, 1, objRepartidoresOcupados)
+            repartidoresTotales.splice(arrayIndiceInDb, 1, repartidoresSpecific + 1);
+            repartidoresTomados = repartidoresTomados.filter( (i)=> {return i != uidUser});
+        }
+ 
+        function whatRepartidor(){
+            if(arrayIndiceInDb === 0) return {repartidores: repartidoresTotales,  repartidor900: repartidoresTomados}
+            if(arrayIndiceInDb === 1) return {repartidores: repartidoresTotales,  repartidor930: repartidoresTomados}
+            if(arrayIndiceInDb === 2) return {repartidores: repartidoresTotales,  repartidor1000: repartidoresTomados}
+            if(arrayIndiceInDb === 3) return {repartidores: repartidoresTotales,  repartidor1030: repartidoresTomados}
+            if(arrayIndiceInDb === 4) return {repartidores: repartidoresTotales,  repartidor1100: repartidoresTomados}
+            if(arrayIndiceInDb === 5) return {repartidores: repartidoresTotales,  repartidor1130: repartidoresTomados}
+            if(arrayIndiceInDb === 6) return {repartidores: repartidoresTotales,  repartidor1200: repartidoresTomados}
+            if(arrayIndiceInDb === 7) return {repartidores: repartidoresTotales,  repartidor1230: repartidoresTomados}
+            if(arrayIndiceInDb === 8) return {repartidores: repartidoresTotales,  repartidor1300: repartidoresTomados}
+            if(arrayIndiceInDb === 9) return {repartidores: repartidoresTotales,  repartidor1330: repartidoresTomados}
+            if(arrayIndiceInDb === 10) return {repartidores: repartidoresTotales, repartidor1400: repartidoresTomados}
+            if(arrayIndiceInDb === 11) return {repartidores: repartidoresTotales, repartidor1430: repartidoresTomados}
+            if(arrayIndiceInDb === 12) return {repartidores: repartidoresTotales, repartidor1500: repartidoresTomados}
+            if(arrayIndiceInDb === 13) return {repartidores: repartidoresTotales, repartidor1530: repartidoresTomados}
+            if(arrayIndiceInDb === 14) return {repartidores: repartidoresTotales, repartidor1600: repartidoresTomados}
+            if(arrayIndiceInDb === 15) return {repartidores: repartidoresTotales, repartidor1630: repartidoresTomados}
+            if(arrayIndiceInDb === 16) return {repartidores: repartidoresTotales, repartidor1700: repartidoresTomados}
 
         }
-        
-        console.log(objRepartidoresOcupados)
-        console.log(repartidoresTomados)
+
 
         try {
-            await updateDoc(docRepartidoresRef, {
-                repartidores: repartidoresTotales,
-                // repartidoresTomados: repartidoresTomados,
-                // repartidoresTomadosMap: objRepartidoresOcupados
-            });
-            console.log(objRepartidoresOcupados)
-            console.log(repartidoresTomados)
-
-
-
-            // console.log(repartidoresTomados[arrayIndiceInDb])
-            // let arreglo = repartidoresTomados[arrayIndiceInDb]
-            // let arregloCopia = {...repartidoresTomados[arrayIndiceInDb]}
-
-
-            // let uid = "zyx1234567"
-            // let uid2 = "xyz1234567"
-            // arregloCopia = {
-            //     uid: uid
-            // }
-            // console.log(arregloCopia);
-            // console.log(arreglo);
-            // arregloCopia = {
-            //     ...arregloCopia,
-            //     uid2: uid2
-            // }
-            // console.log(arregloCopia);
-            // console.log(arreglo);
-
-            // delete arregloCopia.uid2;
-            // console.log(arregloCopia);
-            // console.log(arreglo);
-
-
+            await updateDoc(docRepartidoresRef, whatRepartidor());
         } catch (error) {
             console.log(error)
         }
     };
 
     useEffect( () => {
-        if(repartidoresSpecific === 0) setDisponible(false)
-    }, [repartidoresTotales]);
+        //if(repartidoresSpecific === 0) setDisponible(false) 
+        let isRepartidorTomado = true;
+        repartidoresTomados.forEach( (uid) => {
+            if(uid === uidUser) isRepartidorTomado = false;
+        });
+        setDisponible(isRepartidorTomado)
+        // console.log(repartidoresTomados)
+
+    }, [repartidoresTomados]);
 
 
     return(

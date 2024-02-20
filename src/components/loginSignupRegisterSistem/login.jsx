@@ -270,7 +270,7 @@ export default function LoginEmailPasswordForm(){
                     {messageVerificatedEmail === 2 &&(
                         <div className={ `${uiStyles.retroalimentacionDiv} ${uiStyles.retroalimentacionDiv_red}` }>
                             <p className={`${stylesText.text070rem} ${stylesText.text070rem_red}`}>
-                                <b>Error: </b>This account is still pending approval. Non-active accounts are automatically deleted after 30 days please verify your email by clicking on the link sent to your email, if you don't receive the link check in your spam box.
+                                <b>Error: </b>This account is still pending approval. Please verify your email by clicking on the link sent to your email, if you don't receive the link check in your spam box.
                                 <span className={`${stylesText.text070rem} ${stylesText.text070remStriking}`} onClick={resendVerification}> <br />Resend verification link.</span>
 
                             </p>

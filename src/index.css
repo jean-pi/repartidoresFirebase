@@ -1,7 +1,5 @@
-body, html{
-  /* overflow: hidden; */
-  user-select: none;
+body{
+    position: relative;
+    padding-bottom: 4rem;
+    min-height: 100vh;
 }
-  /* body::-webkit-scrollbar {
-  display: none;
-} */

@@ -20,7 +20,8 @@ import {dbFirestore} from "../firebase/firebaseMyConfig"
 export default function MyApp(){
 
     const [repartidores, setRepartidores] = useState(["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0",]);
-    const [repartidoresTomadosMap, setRepartidoresTomadosMap] = useState([]);
+    const [repartidoresOcupados, setRepartidoresOcupados] = useState([[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],]);
+    
 
 
 
@@ -29,9 +30,25 @@ export default function MyApp(){
         return onSnapshot(doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo"), (doc) =>{
             const objRepartidores = doc.data()
             setRepartidores(objRepartidores.repartidores);   
-            setRepartidoresTomadosMap(objRepartidores.repartidoresTomadosMap)
-
-
+            setRepartidoresOcupados([
+                objRepartidores.repartidor900,
+                objRepartidores.repartidor930,
+                objRepartidores.repartidor1000,
+                objRepartidores.repartidor1030,
+                objRepartidores.repartidor1100,
+                objRepartidores.repartidor1130,
+                objRepartidores.repartidor1200,
+                objRepartidores.repartidor1230,
+                objRepartidores.repartidor1300,
+                objRepartidores.repartidor1330,
+                objRepartidores.repartidor1400,
+                objRepartidores.repartidor1430,
+                objRepartidores.repartidor1500,
+                objRepartidores.repartidor1530,
+                objRepartidores.repartidor1600,
+                objRepartidores.repartidor1630,
+                objRepartidores.repartidor1700,
+            ])
         })
     }
 
@@ -56,7 +73,7 @@ export default function MyApp(){
                 Let it start at 9 am and end at 5 pm. Or a box with a block
                 Let it start at 9, then 9:30, 10, :30... like this until 8pm. The company
                 has availability of 8 motorcyclists every 30 min. when someone does
-                clicking on one of these little boxes should take a biker resource.
+                clicking on one of these little boxes should take a biker resource. 
                 In other words, a counter that starts at 8 and then goes down to 7, in addition to marking the
                 box in green If the same user clicks on the same box, he must release
                 the resource, if it was in green, you must release the resource, that is, the
@@ -67,23 +84,23 @@ export default function MyApp(){
 
 
             <div className={stylesMyApp.repartidorBoxContenedor}>
-                <RepartidorBox time="9:00"  repartidoresSpecific={repartidores[0]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={0} />
-                <RepartidorBox time="9:30"  repartidoresSpecific={repartidores[1]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={1} />
-                <RepartidorBox time="10:00" repartidoresSpecific={repartidores[2]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={2} />
-                <RepartidorBox time="10:30" repartidoresSpecific={repartidores[3]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={3} />
-                <RepartidorBox time="11:00" repartidoresSpecific={repartidores[4]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={4} />
-                <RepartidorBox time="11:30" repartidoresSpecific={repartidores[5]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={5} />
-                <RepartidorBox time="12:00" repartidoresSpecific={repartidores[6]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={6} />
-                <RepartidorBox time="12:30" repartidoresSpecific={repartidores[7]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={7} />
-                <RepartidorBox time="13:00" repartidoresSpecific={repartidores[8]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={8} />
-                <RepartidorBox time="13:30" repartidoresSpecific={repartidores[9]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={9}  />
-                <RepartidorBox time="14:00" repartidoresSpecific={repartidores[10]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={10}  />
-                <RepartidorBox time="14:30" repartidoresSpecific={repartidores[11]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={11}  />
-                <RepartidorBox time="15:00" repartidoresSpecific={repartidores[12]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={12}  />
-                <RepartidorBox time="15:30" repartidoresSpecific={repartidores[13]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={13}  />
-                <RepartidorBox time="16:00" repartidoresSpecific={repartidores[14]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={14}  />
-                <RepartidorBox time="16:30" repartidoresSpecific={repartidores[15]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={15}  />
-                <RepartidorBox time="17:00" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresTomadosMap} arrayIndiceInDb={16}  />
+                <RepartidorBox time="9:00"  repartidoresSpecific={repartidores[0]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[0]} arrayIndiceInDb={0} />
+                <RepartidorBox time="9:30"  repartidoresSpecific={repartidores[1]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[1]} arrayIndiceInDb={1} />
+                <RepartidorBox time="10:00" repartidoresSpecific={repartidores[2]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[2]} arrayIndiceInDb={2} />
+                <RepartidorBox time="10:30" repartidoresSpecific={repartidores[3]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[3]} arrayIndiceInDb={3} />
+                <RepartidorBox time="11:00" repartidoresSpecific={repartidores[4]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[4]} arrayIndiceInDb={4} />
+                <RepartidorBox time="11:30" repartidoresSpecific={repartidores[5]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[5]} arrayIndiceInDb={5} />
+                <RepartidorBox time="12:00" repartidoresSpecific={repartidores[6]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[6]} arrayIndiceInDb={6} />
+                <RepartidorBox time="12:30" repartidoresSpecific={repartidores[7]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[7]} arrayIndiceInDb={7} />
+                <RepartidorBox time="13:00" repartidoresSpecific={repartidores[8]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[8]} arrayIndiceInDb={8} />
+                <RepartidorBox time="13:30" repartidoresSpecific={repartidores[9]}  repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[9]} arrayIndiceInDb={9}  />
+                <RepartidorBox time="14:00" repartidoresSpecific={repartidores[10]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[10]} arrayIndiceInDb={10}  />
+                <RepartidorBox time="14:30" repartidoresSpecific={repartidores[11]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[11]} arrayIndiceInDb={11}  />
+                <RepartidorBox time="15:00" repartidoresSpecific={repartidores[12]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[12]} arrayIndiceInDb={12}  />
+                <RepartidorBox time="15:30" repartidoresSpecific={repartidores[13]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[13]} arrayIndiceInDb={13}  />
+                <RepartidorBox time="16:00" repartidoresSpecific={repartidores[14]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[14]} arrayIndiceInDb={14}  />
+                <RepartidorBox time="16:30" repartidoresSpecific={repartidores[15]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[15]} arrayIndiceInDb={15}  />
+                {/* <RepartidorBox time="17:00" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[16]} arrayIndiceInDb={16}  /> */}
             </div>
             
             

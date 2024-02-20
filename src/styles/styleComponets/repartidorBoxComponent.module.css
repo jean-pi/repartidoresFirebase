@@ -24,8 +24,6 @@
 
 }
 
-
-
 .repartidorBoxButton{
     margin: .7rem;
     border-radius: 4px;
@@ -48,3 +46,10 @@
 }
 
 
+@media (max-width: 600px){
+    .repartidorBox{ 
+        padding: .4rem .4rem;
+        margin: .4rem ;
+        font-size: .8rem;
+    }
+}
