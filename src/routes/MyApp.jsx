@@ -9,6 +9,7 @@ import CardUserLogeado from "../components/cardUserLogeado";
 
 //css
 import stylesMyApp from "../styles/stylesRoutes/MyApp.module.css";
+import uiStyles from "../styles/uiStyles.module.css"
 
 // funciones db de firestore
 import { collection, getDocs, addDoc, getDoc, doc, query, where, setDoc, onSnapshot, deleteDoc } from "firebase/firestore"; 
@@ -70,14 +71,13 @@ export default function MyApp(){
 
             <p className={stylesMyApp.descriptionProyect}>
                 Build a list containing time slots, in 30-min intervals.
-                Let it start at 9 am and end at 5 pm. Or a box with a block
-                Let it start at 9, then 9:30, 10, :30... like this until 8pm. The company
+                Let it start at 9 am and end at 5 pm. The company
                 has availability of 8 motorcyclists every 30 min. when someone does
-                clicking on one of these little boxes should take a biker resource. 
-                In other words, a counter that starts at 8 and then goes down to 7, in addition to marking the
+                clicking on one of these little boxes should take a biker resource.
+                In other words, a counter that starts at 3 and then goes down to 2, in addition to marking the
                 box in green If the same user clicks on the same box, he must release
                 the resource, if it was in green, you must release the resource, that is, the
-                counter again goes from 7 to 8. If other users have taken all
+                counter again goes from 2 to 3. If other users have taken all
                 motorcyclists, the box should appear red and should not let me
                 take that schedule. Values must be updated in real time.
             </p>
@@ -100,19 +100,35 @@ export default function MyApp(){
                 <RepartidorBox time="15:30" repartidoresSpecific={repartidores[13]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[13]} arrayIndiceInDb={13}  />
                 <RepartidorBox time="16:00" repartidoresSpecific={repartidores[14]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[14]} arrayIndiceInDb={14}  />
                 <RepartidorBox time="16:30" repartidoresSpecific={repartidores[15]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[15]} arrayIndiceInDb={15}  />
-                {/* <RepartidorBox time="17:00" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[16]} arrayIndiceInDb={16}  /> */}
+                <RepartidorBox time="17:00" repartidoresSpecific={repartidores[16]} repartidoresTotales={repartidores} repartidoresTomados={repartidoresOcupados[16]} arrayIndiceInDb={16}  />
             </div>
             
             
 
             
             <footer className={stylesMyApp.footer}>
-                <a className={stylesMyApp.footer_a} href="">©ejerciciofirebase.github.io</a>
-                <a className={stylesMyApp.footer_a} target="_blank" href="https://twitter.com/sweetJean26">↖X</a>
-                <a className={stylesMyApp.footer_a} target="_blank" href="https://github.com/jean-pi">↖Github</a>
-                <a className={stylesMyApp.footer_a} target="_blank" href="https://www.instagram.com/jeanpierre_veliz/">↖Instagram</a>
+                <div className={stylesMyApp.footer_aContainer}>
+                    <a className={stylesMyApp.footer_a} href="">©ejerciciofirebase.github.io</a>
+                </div>
+                <div className={stylesMyApp.footer_aContainer}>
+                    <a className={stylesMyApp.footer_a} target="_blank" href="https://twitter.com/sweetJean26">↖X</a>
+                </div>
+                <div className={stylesMyApp.footer_aContainer}>
+                    <a className={stylesMyApp.footer_a} target="_blank" href="https://github.com/jean-pi">↖Github</a>
+                </div>
+                <div className={stylesMyApp.footer_aContainer}>
+                    <a className={stylesMyApp.footer_a} target="_blank" href="https://www.instagram.com/jeanpierre_veliz/">↖Instagram</a>
+                </div>
             </footer>
             
+
+{/* 
+            {1 === 1 &&(
+                <div className={uiStyles.divLoading}>
+                    <span></span>
+                </div>
+            )}
+ */}
 
         </div>
     );

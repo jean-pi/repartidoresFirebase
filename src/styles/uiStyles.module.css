@@ -204,8 +204,17 @@
 /* ---------------------------------------------------------*/
 
 .divLoading{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: .8rem 1.4rem;
-    border-radius: 6px;
     color: rgba(0, 0, 0, 0.242);
     font-family: Arial, Helvetica, sans-serif;
     font-size: .9rem;
@@ -237,73 +246,10 @@
 
 
 /* -------------------------------------------------------- */
-/* 
 
-.buttonSubmit2{
-    width: 20rem;
-    height: 2rem;
-    box-shadow: 0px 0px 98px -92px rgba(255,0,0,0.59) inset;
-    -webkit-box-shadow: 0px 0px 98px -92px rgba(255,0,0,0.59) inset;
-    -moz-box-shadow: 0px 0px 98px -92px rgba(255,0,0,0.59) inset;
-    border-radius: 4px;
-    font-size: .8rem;
-    margin: .5rem 0;
-    letter-spacing: 1px;
-    letter-spacing: 1px;
-    font-weight:700;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.buttonSubmit2>span{
-    width: 11px;
-    height: 11px;
-    position: relative;
-    top: .08rem;
-    right: .3rem;
-    border: 2px solid rgba(255, 255, 255, 0.566);
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: none;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+
+@media (max-width: 345px){
+    .inputText, .retroalimentacionDiv,.buttonSubmit1, .buttonSubmit2{
+        width: 18rem;
     }
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
-.buttonSubmit2_disable, .buttonSubmit2_loading{
-    background-color: rgba(118, 204, 251, 0.893);
-    border: 1px solid rgb(81, 192, 252);
-    color: rgba(255, 255, 255, 0.686);
-    cursor: initial;
-}
-.buttonSubmit2_loading>span{
-    display: inline-block;
-}
-
-
-.buttonSubmit2_active{
-    background-color: rgba(11, 168, 252, 0.893);
-    border: 1px solid rgb(6, 156, 236);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-.buttonSubmit2_active:hover{
-    background-color: rgb(34, 171, 245);
-}
-.buttonSubmit2_active:focus{
-    outline: 1px solid rgba(7, 168, 255, 0.559);
-}
-.buttonSubmit2_active:active{
-    background-color: rgba(2, 147, 224, 0.893);
-} */
-
-
-
-
-
+ }

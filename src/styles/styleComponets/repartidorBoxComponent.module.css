@@ -25,6 +25,7 @@
 }
 
 .repartidorBoxButton{
+    min-width: 8.7rem;
     margin: .7rem;
     border-radius: 4px;
     padding: .4rem .8rem;
@@ -45,11 +46,38 @@
     border: 1px solid rgba(132, 255, 0, 0.289);
 }
 
+.repartidorBox_noMotorcyclists{
+    background-color: rgb(255, 252, 255);
+    border: 1px solid rgba(132, 255, 0, 0.388);
+    color: rgba(40, 248, 47, 0.388);
+}
+/* .repartidorBox > div{
+    cursor:auto;
+} */
+
 
 @media (max-width: 600px){
     .repartidorBox{ 
         padding: .4rem .4rem;
-        margin: .4rem ;
+        margin: .4rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 435px){
+    .repartidorBox{ 
+        font-size: .9rem; 
+        padding: .2rem .2rem;
+    }
+    .repartidorBoxButton{
+        min-width: 6rem;
+    }
+}
+
+@media (max-width: 345px){
+    .repartidorBox{ 
+        padding: .4rem .2rem;
+        margin: .3rem;
         font-size: .8rem;
     }
 }

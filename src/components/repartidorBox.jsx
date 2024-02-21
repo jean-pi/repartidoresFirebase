@@ -28,7 +28,10 @@ export default function RepartidorBox({time, repartidoresSpecific, repartidoresT
 
 
 
-
+        if(repartidoresSpecific === 0 && isRepartidorTomado){ 
+            setDisponible(false);
+            return;
+        }
 
         if(isDisponible){
             setDisponible(false)
@@ -70,22 +73,22 @@ export default function RepartidorBox({time, repartidoresSpecific, repartidoresT
         }
     };
 
+    let isRepartidorTomado = true;
+
     useEffect( () => {
-        //if(repartidoresSpecific === 0) setDisponible(false) 
-        let isRepartidorTomado = true;
         repartidoresTomados.forEach( (uid) => {
-            if(uid === uidUser) isRepartidorTomado = false;
+            if(uid === uidUser || repartidoresSpecific === 0) isRepartidorTomado = false;
         });
         setDisponible(isRepartidorTomado)
-        // console.log(repartidoresTomados)
-
     }, [repartidoresTomados]);
+
+
 
 
     return(
     <div className={`${stylesRepartidorBox.repartidorBox} ${!isDisponible? stylesRepartidorBox.repartidorBox_disabled : stylesRepartidorBox.repartidorBox_active }`}>
-        <div >Repartidores disponibles: {repartidoresSpecific} </div>
-        <div onClick={handleClickOrdenar} className={`${stylesRepartidorBox.repartidorBoxButton} ${!isDisponible? stylesRepartidorBox.repartidorBoxButton_disabled : stylesRepartidorBox.repartidorBoxButton_active }`}> {isDisponible? "Make an order" : "Cancel order"} </div>
+        <p >Motorcyclists: {repartidoresSpecific} </p>
+        <div  onClick={handleClickOrdenar} className={`${stylesRepartidorBox.repartidorBoxButton} ${!isDisponible? stylesRepartidorBox.repartidorBoxButton_disabled : stylesRepartidorBox.repartidorBoxButton_active }`}> {isDisponible? "Make an order" : "Cancel order"} </div>
         <div>{time}</div>
    </div>
     );

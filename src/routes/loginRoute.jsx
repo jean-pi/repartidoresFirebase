@@ -14,7 +14,7 @@ import backArrowImg from "../img/backArrowPng.png";
 import { Link } from "react-router-dom";
 import { publicRoutes } from "../models/routes";
 
-
+    
 export default function LoginView(){
 
 

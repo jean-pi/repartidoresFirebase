@@ -1,5 +1,15 @@
 body{
     position: relative;
-    padding-bottom: 4rem;
+    padding-bottom: 5rem;
     min-height: 100vh;
+
 }
+html{
+    overflow: hidden;
+}
+
+*{
+    user-select: none;
+}
+
+
