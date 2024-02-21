@@ -19,7 +19,7 @@ export default function LoginView(){
             <Link className={stylesSignUpRoute.linkBack} to={publicRoutes.MAINROUTE_PUBLIC}>
                 <div className={stylesSignUpRoute.divBack}>            
                     <img className={stylesSignUpRoute.divBack_img} src={backArrowImg} alt="" />
-                    Back
+                    back
                 </div>
             </Link>  
             <SignUpEmailPasswordForm/>

@@ -95,7 +95,7 @@ export default function SignUpEmailPasswordForm(){
                 if(err.code === "auth/invalid-email"){
                     setErrorMesagge("Invalid email address.");
                 }    
-            }, 200); 
+            }, 400); 
         }   
         
     });

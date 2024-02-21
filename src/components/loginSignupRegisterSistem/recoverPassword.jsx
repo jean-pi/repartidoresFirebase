@@ -118,9 +118,9 @@ function RecoverPassword() {
 
         <form className={stylesLogin.formLogin} action="" onSubmit={resetPassword}>
             <span className={stylesText.text070rem}>Type a new password</span>
-            <input className={uiStyles.inputText} onChange={changeDetector} value={values.password.toLowerCase()} name="password" type="password" autoComplete="off"  placeholder="Enter a new password..." />
+            <input className={uiStyles.inputText} autocomplete="new-password" id="new-password" onChange={changeDetector} value={values.password.toLowerCase()} name="password" type="password" autoComplete="off"  placeholder="Enter a new password..." />
             <span className={stylesText.text070rem}>Confirm password</span>
-            <input className={uiStyles.inputText} onChange={changeDetector} value={values.confirmPassword.toLowerCase()} name="confirmPassword" type="password" autoComplete="off" placeholder="Confirm you new password..." />
+            <input className={uiStyles.inputText} autocomplete="new-password" id="new-password" onChange={changeDetector} value={values.confirmPassword.toLowerCase()} name="confirmPassword" type="password" autoComplete="off" placeholder="Confirm you new password..." />
             <p className={stylesText.textError}>{errorMessage}</p>
             <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
                 <span></span>

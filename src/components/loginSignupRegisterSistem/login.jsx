@@ -146,7 +146,7 @@ export default function LoginEmailPasswordForm(){
                   }
 
                 localStorage.setItem("user",JSON.stringify(userLocalStorage));
-                //console.log(JSON.parse(localStorage.getItem("user")));
+
 
                 setTimeout(() => {
                     if(user.displayName){
@@ -155,7 +155,7 @@ export default function LoginEmailPasswordForm(){
                     if(!user.displayName){
                         navigate(restrictedRoutes.REGISTARION_RESTRICTED)
                     }
-                }, 300);
+                }, 700);
             }
 
             if(!isVerificated) {
@@ -191,7 +191,7 @@ export default function LoginEmailPasswordForm(){
                 if(error.message === "password-empty"){
                     setErrorMesagge("Enter a password.");
                 }
-            }, 200);
+            }, 400);
 
         }
     })
@@ -233,7 +233,7 @@ export default function LoginEmailPasswordForm(){
                     setErrorMessageRecoverEmail("Temporarily blocked. We have detected unusual activity in this account. Try again later.");
                 }
                 
-            }, 200);
+            }, 400);
         }
     }
 
@@ -304,7 +304,7 @@ export default function LoginEmailPasswordForm(){
                         <span className={stylesText.text070rem}>Email</span>
                         <input className={uiStyles.inputText} onChange={changeDetector} value={values.email.toLowerCase()} name="email" type="text" autoComplete="off"  placeholder="Enter your email address..." />
                         <span className={stylesText.text070rem}>Password</span>
-                        <input className={uiStyles.inputText} onChange={changeDetector} value={values.password.toLowerCase()} name="password" type="password" autoComplete="off" placeholder="Enter your password..." />
+                        <input className={uiStyles.inputText} onChange={changeDetector} autocomplete="current-password" id="current-password"  value={values.password.toLowerCase()} name="password" type="password" autoComplete="off" placeholder="Enter your password..." />
                         <p className={stylesText.textError}>{errorMessage}</p>
                         <button tabIndex={"0"} className={`${!buttonLoading? uiStyles.buttonSubmit1 : uiStyles.buttonSubmit1_loading}`} type="submit" >
                             <span></span>

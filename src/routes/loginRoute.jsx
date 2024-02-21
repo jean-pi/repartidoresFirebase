@@ -27,7 +27,7 @@ export default function LoginView(){
             <Link tabIndex={"0"} className={stylesLoginRoute.linkBack} to={publicRoutes.MAINROUTE_PUBLIC}>
                 <div  className={stylesLoginRoute.divBack}>            
                     <img className={stylesLoginRoute.divBack_img} src={backArrowImg} alt="" />
-                    Back
+                    back
                 </div>
             </Link>
             <LoginEmailPassword/> 

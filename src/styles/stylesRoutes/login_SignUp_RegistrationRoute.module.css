@@ -10,8 +10,11 @@
 
 
 .linkBack{
+    position: absolute;
+    top: 2rem;
+    left: 4rem;
     text-decoration: none;
-    border: 2px solid rgba(11, 168, 252, 0);
+    border: 2px solid rgba(27, 175, 255, 0);
 }
 .linkBack:focus{
     border: 2px solid rgba(11, 168, 252, 0.893);
@@ -19,26 +22,26 @@
 
 
 .divBack{
-    position: fixed;
-    top: 2rem;
-    left: 4rem;
-    background-color: rgb(0, 0, 0);
-    color: white;
-    z-index: 0;
+
+    /* background-color: rgb(0, 0, 0); */
+    color: rgb(0, 0, 0);
+    font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
-    padding: .1rem .2rem ;
+    padding: .1rem .2rem;
 }
 
 .divBack_img{
-    left: .7rem;
-    width: .7rem;
+    position: relative;
+    top: .1rem;
+    width: .9rem;
     background-color: rgba(255, 255, 255, 0.167);
-    margin-right: .3rem;
+    margin-right: .2rem;
+    transform: rotate(-90deg);
 }
 
 
 @media (max-width: 600px){
-   .divBack{
+   .linkBack{
     left: 1rem;
     top: 1rem;
    }

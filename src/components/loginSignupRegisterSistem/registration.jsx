@@ -99,7 +99,7 @@ export default function RegistrationForm(){
             setRegisterComplete(true);
             setTimeout(() => {
                 navigate("/app")
-            }, 800);
+            }, 500);
             
         } catch (error) {
             console.log(error);
