@@ -99,7 +99,7 @@ export default function RegistrationForm(){
             setRegisterComplete(true);
             setTimeout(() => {
                 navigate("/app")
-            }, 500);
+            }, 300);
             
         } catch (error) {
             console.log(error);
@@ -144,7 +144,7 @@ export default function RegistrationForm(){
                             add a photo
                         </div>
                         <span className={stylesText.text070rem}>What should we call you?</span>
-                        <input tabIndex={"0"} className={uiStyles.inputText} type="text" name="nameUser" value={values.nameUser} onChange={handleInputChangeValues} autoComplete="off" placeholder="e.g. Ada Lovelace, Ada, AL" />
+                        <input tabIndex={"0"} className={uiStyles.inputText} type="text" name="nameUser" maxlength="15" value={values.nameUser} onChange={handleInputChangeValues} autoComplete="off" placeholder="e.g. Ada Lovelace, Ada, AL" />
                         <button tabIndex={"0"} className={buttonTreeStates} type="submit" disabled = {values.nameUser? false: true}>
                             <span></span>
                             Continue

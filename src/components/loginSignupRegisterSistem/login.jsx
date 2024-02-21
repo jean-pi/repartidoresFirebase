@@ -147,6 +147,12 @@ export default function LoginEmailPasswordForm(){
 
                 localStorage.setItem("user",JSON.stringify(userLocalStorage));
 
+                window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "instant",
+                });
+
 
                 setTimeout(() => {
                     if(user.displayName){
@@ -342,7 +348,8 @@ export default function LoginEmailPasswordForm(){
 
             {loginComplete === true &&(
                 <div className={uiStyles.divLoading}>
-                    <span></span> {auth.currentUser.displayName ? " Logining" : "Just one second"}
+                    <span></span> 
+                    {auth.currentUser.displayName ? " Logining" : "Just one second"}
                 </div>
             )}
 

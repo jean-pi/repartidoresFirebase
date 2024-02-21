@@ -21,12 +21,14 @@ export default function RepartidorBox({time, repartidoresSpecific, repartidoresT
 
     const docRepartidoresRef = doc(dbFirestore, "repartidoresCollection", "3Y2mm2xA0C8nlde2UVgo");
 
-    let uidUser = JSON.parse(localStorage.getItem("user")).uid;
+    let uidUser = JSON.parse(localStorage.getItem("user")).diplayName;
 
     
+
     async function handleClickOrdenar(e){
 
 
+        console.log(repartidoresTomados)
 
         if(repartidoresSpecific === 0 && isRepartidorTomado){ 
             setDisponible(false);
@@ -90,6 +92,16 @@ export default function RepartidorBox({time, repartidoresSpecific, repartidoresT
         <p >Motorcyclists: {repartidoresSpecific} </p>
         <div  onClick={handleClickOrdenar} className={`${stylesRepartidorBox.repartidorBoxButton} ${!isDisponible? stylesRepartidorBox.repartidorBoxButton_disabled : stylesRepartidorBox.repartidorBoxButton_active }`}> {isDisponible? "Make an order" : "Cancel order"} </div>
         <div>{time}</div>
+        
+        <span className={stylesRepartidorBox.repartidorUserSpan}>Users:</span>
+        <div className={stylesRepartidorBox.repartidorUserContainer}>
+            <div className={stylesRepartidorBox.repartidorbox_users}>{`${repartidoresTomados[0]}`} </div>
+            <div className={stylesRepartidorBox.repartidorbox_users}>{`${repartidoresTomados[1]}`} </div>
+            <div className={stylesRepartidorBox.repartidorbox_users}>{`${repartidoresTomados[2]}`} </div>
+        </div>
+
+
+
    </div>
     );
 }

@@ -17,7 +17,7 @@
 }
 .inputText::placeholder{
     color: rgba(168, 168, 168, 0.605);
-    font-size: 12px;
+    font-size: 14px;
 }
 .inputText:focus{
     outline: 2px solid rgba(7, 168, 255, 0.559);
@@ -211,7 +211,7 @@
     background-color: rgb(255, 255, 255);
     height: 100vh;
     position: absolute;
-    top: 0;
+    top: -2rem;
     left: 0;
     display: flex;
     align-items: center;
@@ -254,4 +254,5 @@
     .inputText, .retroalimentacionDiv,.buttonSubmit1, .buttonSubmit2{
         width: 18rem;
     }
+
  }

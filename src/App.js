@@ -27,6 +27,7 @@ import DetectorUrlAction from "./guards/detectorUrlAction.guard";
 
 function App() {
 
+  window.history.forward()
 
   const navigate = useNavigate()
 
@@ -53,8 +54,9 @@ function App() {
           <Route path = {publicRoutes.LOGIN_PUBLIC} element = {<LoginView/> } />
           <Route element={<AuthGuard/>}>
             <Route path = {restrictedRoutes.APP_RESTRICTED} element = {<React.StrictMode> <MyApp/> </React.StrictMode>}/>
-            <Route path = {restrictedRoutes.REGISTARION_RESTRICTED} element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
           </Route>
+          <Route path = {restrictedRoutes.REGISTARION_RESTRICTED} element = {<React.StrictMode><RegistrationView/></React.StrictMode>}/>
+
           <Route path={publicRoutes.RECOVERPASSWORD_PUBLIC} element={<React.StrictMode> <RecoverRouter/> </React.StrictMode>}></Route> 
           <Route path = "*" element = {<h1>Error 404?</h1>}/> 
           

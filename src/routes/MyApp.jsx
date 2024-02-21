@@ -69,7 +69,7 @@ export default function MyApp(){
             <CardUserLogeado/>
 
 
-            <p abIndex={"0"}  className={stylesMyApp.descriptionProyect}>
+            <p tabIndex={"0"}  className={stylesMyApp.descriptionProyect}>
                 Build a list containing time slots, in 30-min intervals.
                 Let it start at 9 am and end at 5 pm. The company
                 has availability of 8 motorcyclists every 30 min. when someone does

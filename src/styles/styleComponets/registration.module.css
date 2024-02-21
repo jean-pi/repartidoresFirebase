@@ -19,6 +19,15 @@
     white-space: nowrap;
 }
 
+@media (max-width: 600px){
+    .h1{
+        font-size: 1.6rem;
+    }
+  .h3{
+    font-size: .9rem;
+  }
+ }
+
 .registrationForm{
     display: flex;
     flex-direction: column;
@@ -40,6 +49,7 @@
 .buttonAddFotoContainer{
     width: 5rem;
     height: 1.6;
+    font-family:  sans-serif;
     white-space: noWrap;
    position: relative;
    margin: 0 auto .7rem auto;
@@ -60,6 +70,7 @@
     left: 1px;
     opacity: 100%;
     border-radius: 4px;
+    font-family:  sans-serif;
 }
 .buttonAddFoto::-webkit-file-upload-button{
     cursor: pointer;
